@@ -1,0 +1,5 @@
+Nazewnictwo
+
+Zmienne:
+
+Wszystkie zmienne zaczynają się z małej litery, a pierwszą literę kolejnego słowa w nazwie zmiennej piszemy z dużej
