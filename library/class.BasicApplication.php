@@ -8,11 +8,6 @@ abstract class BasicApplication {
 	protected $url = "";
 	public function __construct() {
 		$this->_session = HttpSession::getSession();
-		global $conn;
-		global $host;
-		global $user;
-		global $password;
-		global $dbname;
 		$url = substr($_SERVER['REQUEST_URI'], 1);
 		$conn = DBConnection::connection(Settings::getParam("db", "host"), Settings::getParam("db", "user"), Settings::getParam("db", "password"));
 		$conn->selectDB(Settings::getParam("db", "dbname"));

@@ -3,7 +3,7 @@
  	private $_content = null;
  	private $articles = null;
 	 protected function initAll() {	
-		$this->_view->user_name = $this->_session->getAttribute("user_name");
+	//	$this->_view->user_name = $this->_session->getAttribute("user_name");
 		
 	}
 	function indexAction() {

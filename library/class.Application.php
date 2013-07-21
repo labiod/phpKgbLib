@@ -9,7 +9,7 @@ class Application extends BasicApplication {
 	public function dispatch() {
 		$url = $this->url;
 		if($url == "" || $url == "/") {
-			$url = "oferta/index";
+			$url = "index";
 		}
 		$attr = explode("/",$url);
 		$flink = new Table("friendly_links");
