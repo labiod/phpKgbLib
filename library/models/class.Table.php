@@ -5,7 +5,7 @@
  * @author Krzysiek
  * @package library
  * @subpackage models
- * @version 0.0.1
+ * @version 0.0.3
  *
  */
 class Table {
@@ -13,8 +13,10 @@ class Table {
 	protected $table;
 	protected $_id;
 	protected $join = array();
+	private $conditions = "";
 	protected $group = "";
 	protected $having = "";
+	protected $order = "";
 	public function __construct($table_name, $conn = 0) {
 		$this->table = $table_name;
 		$this->conn = DBConnection::getConnection($conn);
@@ -40,6 +42,37 @@ class Table {
 	public function groupBy($cols, $having = "") {
 		$this->group = $text;
 		$this->having = $having;
+	}
+	
+	/**
+	 * Ustawia warunek do zapytania jeśli był jakiś wcześniej ustawiny nadpisuje go
+	 * @param string $where
+	 */
+	public function where($where) {
+		$this->conditions = $where;
+		return $this;
+	}
+	
+	/**
+	 * Dodaje nowy warunke
+	 * @param string $where
+	 */
+	public function andWhere($where) {
+		$this->conditions = "(". $this->conditions .") AND ". $where;
+		return $this;
+	}
+	
+	/**
+	 * Dodaje nowy warunke
+	 * @param string $where
+	 */
+	public function orWhere($where) {
+		$this->conditions = "(". $this->conditions .") OR ". $where;
+		return $this;
+	}
+	
+	public function setOrderBy($orderBy) {
+		$this->order = $orderBy;
 	}
 	
 	/**
@@ -100,16 +133,34 @@ class Table {
 			$sql .= " HAVING ".$this->having;
 		if($orderBy != "")
 			$sql .= " ORDER BY ".$orderBy;
+		else 
+			$sql .= " ORDER By ".$this->order;
 		return $this->conn->query($sql);
 	}
-	/*	public function find($id, $key) {
-		$sql = "SELECT * FROM ".$this->table." WHERE ".$key." = ".$id;
-		$result = mysql_query($sql, $this->conn);
-		if(!$result || mysql_num_rows($result) == 0)
-			return -1;
-		$row = mysql_fetch_array($result) or die(mysql_error());
-		return $row;
-	}*/
+	
+	/**
+	 * Metoda wyciąga jeden rekord z bazy, jesli jest ich więcej bierze pierwszy
+	 * @return DBResult
+	 */
+	public function fetch() {
+		$sql = "SELECT * FROM ".$this->table;
+		if(count($this->join) != 0 ) {
+			foreach($this->join as $key=>$value) {
+				$sql .= " JOIN ".$key." ON ".$value;
+			}
+		}
+		if($this->conditions != "")
+			$sql .= " WHERE ".$this->conditions;
+		if($this->group != "") {
+			$sql .= " GROUP BY ".$this->group;
+		}
+		if($this->having != "")
+			$sql .= " HAVING ".$this->having;
+		if($this->order != "")
+			$sql .= " ORDER BY ".$orderBy;
+		return $this->conn->query($sql);
+	}
+
 	/**
 	 * 
 	 * @param string $where
