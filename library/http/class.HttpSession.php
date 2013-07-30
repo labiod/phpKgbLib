@@ -16,8 +16,11 @@ class HttpSession {
 			return true;
 		return false;
 	}
-	public function getAttribute($name) {
-		return $this->attr[$name];
+	public function getAttribute($name, $default = 0) {
+		if($this->isSetAttr($name))
+			return $this->attr[$name];
+		else
+			return $default;
 	}
 	public function clearAttribute($attr) {
 		unset($this->attr[$attr]);
