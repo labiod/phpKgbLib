@@ -133,9 +133,11 @@ class Table {
 			$sql .= " HAVING ".$this->having;
 		if($orderBy != "")
 			$sql .= " ORDER BY ".$orderBy;
-		else 
-			$sql .= " ORDER By ".$this->order;
+                elseif ($this->order != ""){
+                        $sql .= " ORDER By ".$this->order;
+                } 			
 		return $this->conn->query($sql);
+                
 	}
 	
 	/**
@@ -207,7 +209,7 @@ class Table {
 	 * @return int
 	 */
 	public function insert(Array $set) {
-		$sql = "INSERT INTO ".$this->table."(";
+		$sql = "INSERT INTO ".$this->table." (";
 		$i1 = true;
 		foreach ($set as $key => $value) {
 			if ($i1){

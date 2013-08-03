@@ -12,7 +12,7 @@ class DBResult extends Data {
 	private $current;
 	private $index;
 	private $id;
-	private $_error;
+	private $error;
 	public function __construct($result=null) {
 		$this->id = $result;
 		if($result != null) {
@@ -41,7 +41,6 @@ class DBResult extends Data {
 			}		
 		}
 		$this->goToBegin();
-		
 		return $res;
 	}
 	public function getData() {
@@ -52,7 +51,8 @@ class DBResult extends Data {
 	}
 	public function goToBegin() {
 		$this->index = -1;
-		$this->current = $this->data[0];
+                if (isset($this->data[0]))
+                    $this->current = $this->data[0];
 	}
 	public function next() {
 		$this->index++;

@@ -69,6 +69,13 @@ img#logo {
     width: 400px;
     height: 100px;
 }
+/********** message ***********/
+h3#message {
+    position: absolute;
+    float: left;
+    color: #d74700;
+    font-size: 0.9em;  
+}
 /********** content ***********/
 #content {
     border: 2px solid #A3A3A3;
@@ -77,6 +84,8 @@ img#logo {
     padding-bottom: 30px;
     margin-bottom: 30px;
 }
+/******** register form ********/
+
 /*******nagłówek podstrony po prawej niebieski*********/
 #title{ 
     float: right;
@@ -107,6 +116,58 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005bd7', end
 h3 {
     text-align: center;
     font-style: italic;
+}
+/************ navi_info ****************/
+#navi_info {
+    height: 180px;
+    background: #a8a8a8;
+}
+#informator {
+    background: #dfdfdf;
+    float: right;
+    clear: right;
+    margin: 5px;
+    padding: 3px 8px;
+    line-height: 1em;
+    font-weight: 800;
+    font-size: 0.9em;
+    letter-spacing: 0.02em;
+    font-style: italic;
+}
+#informator h3, #informator button{
+    padding: 3px;
+    -webkit-box-shadow:  2px 2px 1px 1px rgba(05, 05, 05, 0.5);      
+    box-shadow:  2px 2px 1px 1px rgba(05, 05, 05, 0.5);
+    border: 1px solid #a8a8a8;
+    background: #efefef;
+    color: #005bd7;
+}
+#informator h3 {
+    display: block;    
+    float: left;
+    height: 16px;
+    margin: 3px 10px 10px 0;
+}
+#informator button{
+    width: 30px; 
+    height: 24px;  
+    margin: 3px 3px 10px;
+    position: relative;
+}
+#informator button:hover{
+    -webkit-box-shadow:  -2px -2px 1px 1px rgba(05, 05, 05, 0.5);      
+    box-shadow:  -2px -2px 1px 1px rgba(05, 05, 05, 0.5);
+    top: 4px
+}
+#informator p {
+    margin: 0;
+    padding: 0;
+}
+#search_form {
+    position: relative;
+    top: -30px;
+    right: 0;
+    float: right;
 }
 /******** inner left menu ************/
 ul#inner_left_menu{
