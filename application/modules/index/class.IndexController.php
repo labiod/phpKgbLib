@@ -8,7 +8,7 @@
 	}
 	function indexAction() {
 		$this->_content = new Table("content");
-		$this->_view->content = $this->_content->fetchAll("id_content = 1");
+		$this->_view->content = $this->_content->fetchAll("id = 1");
 		$this->_view->id = 1;
 	}
  	

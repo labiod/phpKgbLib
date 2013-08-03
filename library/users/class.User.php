@@ -2,10 +2,11 @@
 require_once ("library/models/class.SerializeModel.php");
 class User extends SerializeModel {
 	private $privilage = array();
-	private $user_name = "";
-	private $id_role;
+	private $email = "";
+	private $nr = "";
+	private $role_id;
 	private $role_name;
-	protected function __construct($id) {
+	public function __construct($id) {
 		parent::__construct("users", $id);
 	}
 	
@@ -44,7 +45,7 @@ class User extends SerializeModel {
 		array_push($array, 'privilage');
 		array_push($array, 'user_name');
 		array_push($array, 'role_name');
-		array_push($array, 'id_role');
+		array_push($array, 'role_id');
 		return $array;
 	}
 	
@@ -57,16 +58,17 @@ class User extends SerializeModel {
 	
 	public function createQuery() {
 		$query = parent::createQuery();
-		$query->join("roles", "users.id_role = roles.id_role");
+		$query->join("roles", "users.role_id = roles.id_role");
 		$query->where("id_user = ".$this->id);
 		return $query;
 	}
 	
 	public function fetchData($data) {
-		$this->user_name = $data["user_login"];
-		$this->id_role = $data["id_role"];
+		$this->email = $data["email"];
+		$this->nr = $data["nr"];
+		$this->role_id = $data["role_id"];
 		$this->role_name = $data["role_name"];
-		$this->loadPrivilage($data["id_role"]);
+		$this->loadPrivilage($data["role_id"]);
 	}
 	
 	public function loadPrivilage($id_role) {

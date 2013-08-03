@@ -9,7 +9,7 @@ set_include_path(get_include_path(). PATH_SEPARATOR. implode(PATH_SEPARATOR, $li
 require_once("utils/class.AutoLoader.php");
 AutoLoader::setLoader(STANDARD_LOADER);
 try {
-	
+	echo HttpSession::getSession()->getAttribute("users:2"); die; 
 	$index = new Application();
 	$index->dispatch();
 } catch(Exception $e) {

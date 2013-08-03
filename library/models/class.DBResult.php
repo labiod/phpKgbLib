@@ -9,7 +9,7 @@
  */
 class DBResult extends Data {
 	private $count;
-	private $current;
+	private $currentRow = null;
 	private $index;
 	private $id;
 	private $error;
@@ -27,7 +27,8 @@ class DBResult extends Data {
 			$this->index = -1;
 			$this->count = 0;
 			$this->data = array();
-			//throw new DBResultException($this->_error);
+			if($this->error != null && count($this->error) > 0)
+				throw new DBResultException($this->error);
 		}
 		//$this->current = $this->data[0];
 	}
@@ -47,17 +48,19 @@ class DBResult extends Data {
 		return $this->data;
 	}
 	public function current() {
-		return $this->current;
+		if($this->currentRow == null)
+			$this->next();
+		return $this->currentRow;
 	}
 	public function goToBegin() {
 		$this->index = -1;
                 if (isset($this->data[0]))
-                    $this->current = $this->data[0];
+                    $this->currentRow = $this->data[0];
 	}
 	public function next() {
 		$this->index++;
 		if($this->index < $this->count) {
-			$this->current = $this->data[$this->index];
+			$this->currentRow = $this->data[$this->index];
 			return true;
 		}
 		return false;
@@ -67,8 +70,8 @@ class DBResult extends Data {
 		return $this->count;
 	}
 	public function __toString() {
-		if($this->count() == 0)
-			return null;
+		if($this->numRows() == 0)
+			return "";
 		else
 			return "".$this->id;
 	}

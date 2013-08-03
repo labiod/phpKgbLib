@@ -3,15 +3,6 @@ class OtherController extends BasicController {
 	public function faqAction() {
 		
 	}
-	public function darmowaWycenaAction() {
-		
-	}
-	public function wycenaAction() {
-		
-	}
-	public function regulaminAction() {
-		
-	}
 	public function downloadAction() {
 		$file = $this->getParam("file", "");
 		$this->_view->file = $file;

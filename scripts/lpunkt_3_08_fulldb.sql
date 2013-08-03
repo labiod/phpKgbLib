@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Baza danych: `lpunkt`
+-- Baza danych: `lpunktdb`
 --
 CREATE DATABASE IF NOT EXISTS `lpunkt` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
 USE `lpunkt`;
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `friendly_links` (
   `link` varchar(100) NOT NULL,
   `module` varchar(20) NOT NULL,
   `type` enum('Index','Admin','User') NOT NULL DEFAULT 'Index',
-  `action` int(20) NOT NULL,
+  `action` varchar(20) NOT NULL,
   `params` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `link` (`link`)
