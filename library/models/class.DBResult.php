@@ -74,7 +74,7 @@ class DBResult extends Data {
 	}
 	/**
 	 * 
-	 * Metoda sprawdza obiekt nie jest null-em
+	 * Metoda sprawdza, czy obiekt nie jest null-em
 	 * Obiekt DBResult jest null-em jeśli dane w nim zawarte są puste
 	 * lub gdy liczba rekordów jest równa 0
 	 * @return boolean
