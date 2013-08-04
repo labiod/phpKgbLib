@@ -2,7 +2,7 @@
 require_once ("library/models/class.Model.php");
 abstract class SerializeModel extends Model {
 	private $serialize_name;
-	private $toSave = false;
+	protected $toSave = false;
 	
 	protected function __construct($table_name, $id) {
 		parent::__construct($table_name, $id);

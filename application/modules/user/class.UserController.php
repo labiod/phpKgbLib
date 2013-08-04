@@ -17,9 +17,10 @@ class UserController extends BasicIndexController {
         	$query->addParameter($tab["login"])->addParameter($tab["password"]);
         	$result = $query->fetch();
         	if($result->numRows() > 0 && $result->next()) {
-        		User::createUser($result->current());
+        		$row = $result->current();
+        		User::createUser($row);
         		HttpSession::getSession()->setAttribute("user_id", $row["id_user"]);
-        		$this->forward("./user/index");
+        		$this->forward("./index");
         		return;
         	} else {
         		$this->_view->msg = "Nieprawidłowy login lub hasło";

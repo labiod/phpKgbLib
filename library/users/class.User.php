@@ -29,6 +29,11 @@ class User extends SerializeModel {
 		$user_id = $session->getAttribute("user_id");
 		if($user_id != 0) {
 			$user_key = "users:".$user_id;
+			$sObj = $session->getAttribute($user_key, null);
+			if($sObj == null) {
+				HttpSession::getSession()->clearAttribute("user_id");
+				return null;
+			}
 			$sObj = unserialize($session->getAttribute($user_key));
 			self::$_instance = $sObj;
 			return self::$_instance;
@@ -40,7 +45,7 @@ class User extends SerializeModel {
 	public static function createUser($row) {
 		$user = new User($row["id_user"]);
 		$user->fetchData($row);
-		$user->login();
+		$user->setToSave(true);
 		self::$_instance = $user;
 	}
 	
@@ -63,7 +68,7 @@ class User extends SerializeModel {
 	public function __sleep() {
 		$array = parent::__sleep();
 		array_push($array, 'privilage');
-		array_push($array, 'user_name');
+		array_push($array, 'email');
 		array_push($array, 'role_name');
 		array_push($array, 'role_id');
 		return $array;
@@ -97,7 +102,7 @@ class User extends SerializeModel {
 		$priv = array();
 		while($result->next()) {
 			$current = $result->current();
-			if(!array_key_exists($current["module"])) {
+			if(!array_key_exists($current["module"], $priv)) {
 				$priv[$current["module"]] = array();
 			}
 			array_push($priv[$current["module"]], $current["action_name"]);
@@ -106,10 +111,6 @@ class User extends SerializeModel {
 	}
 	
 	public function logout() {
-		$this->isLogged = false;
-	}
-	
-	public function login() {
-		$this->isLogged = true;
+		$this->setToSave(false);
 	}
 }
