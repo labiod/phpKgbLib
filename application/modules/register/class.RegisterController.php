@@ -1,5 +1,5 @@
 <?php
- class RegisterController extends BasicController {
+ class RegisterController extends BasicIndexController {
      private $_users = null;
      private $_roles = null;
      protected function initAll() {	
@@ -16,8 +16,8 @@
         $tab = $this->getParametersMap();
         if (isset($tab['submit'])) {
             unset($tab['submit']);
-            $user = $this->_users->find("email = " . $tab["email"]);
-            if (!$user->isNull()) {
+            $user = $this->_users->find("email = '" . $tab["email"] ."'");
+            if ($user->isNull()) {
                 if ($tab["role"] == "kursant") {
                     unset($tab['nr']);
                 } 

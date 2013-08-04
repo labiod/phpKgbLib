@@ -10,6 +10,7 @@ $(document).ready(function(){
   });
   
   //rejestracja
+  $("#nr_div").hide();
   $("input[name='role']").change(function(){
     if ($("input[name='role']:checked").val() == "osk" || $("input[name='role']:checked").val() == "instruktor"){
         $("#nr_div").show();
