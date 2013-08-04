@@ -1,7 +1,14 @@
 <?php
-require_once 'library/controllers/class.BasicController.php';
-class UserController extends BasicController {
+require_once 'library/controllers/class.BasicIndexController.php';
+class UserController extends BasicIndexController {
+	/**
+	 * @access general
+	 */
 	public function loginAction() {
+		if ($this->isUserLogged()) {
+			$this->forward("./user/index");
+			return;
+		}
 		$tab = $this->getParametersMap();
         if (isset($tab['submit'])) {
         	$query = new Table("users");
@@ -10,13 +17,30 @@ class UserController extends BasicController {
         	$query->addParameter($tab["login"])->addParameter($tab["password"]);
         	$result = $query->fetch();
         	if($result->numRows() > 0 && $result->next()) {
-        		$row = $result->current();
-        		$user = new User($row["id_user"]);	
-        		$user->fetchData($row);
-        		$this->forward("./");
+        		User::createUser($result->current());
+        		HttpSession::getSession()->setAttribute("user_id", $row["id_user"]);
+        		$this->forward("./user/index");
+        		return;
         	} else {
         		$this->_view->msg = "Nieprawidłowy login lub hasło";
         	}
         }
 	}	
+	
+	/**
+	 * @access restricted
+	 */
+	public function indexAction() {
+		
+	}
+	
+	/**
+	 * @access restricted
+	 */
+	public function logoutAction() {
+		User::getLoggedUser()->logout();
+		HttpSession::getSession()->clearAttribute("user_id");
+		$this->setMessage("Zostałeś wylogowany");
+		$this->forward("./index");
+	}
 }

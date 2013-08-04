@@ -1,4 +1,5 @@
 <?php
+require_once 'library/models/class.DBResult.php';
 /**
  * 
  * Klasa bazowa dla klas ktore są odpowiednikami tabel z bazy danych

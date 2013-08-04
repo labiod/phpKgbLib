@@ -1,5 +1,5 @@
 <?php
-	class AdminBasicController extends MainController {
+	class AdminBasicController extends BasicController {
 		public function __construct(Request $request) {
 			parent::__construct($request);
 			$name = get_class($this);
@@ -20,14 +20,7 @@
 				$this->_view->admin_name = $this->_session->getAttribute("admin_name");
 		}
 		
-		
-		public function dispatch($action) {	
-			$this->setHeader("Content-Type: text/html; charset=utf-8");	
-			$path = $this->_module."/view/admin/".$action.".php";
-			$this->setView($path);
-			$this->_action = $action;
-			$fun = $action."Action";
-			$this->$fun();
-			$this->showView();
+		public function getViewPath() {
+			return $this->_module."/view/admin/".$this->_action.".php";
 		}
 	}
