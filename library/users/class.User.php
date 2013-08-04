@@ -1,26 +1,47 @@
 <?php
 require_once ("library/models/class.SerializeModel.php");
+/**
+ * Singleton
+ * @author KB
+ * 
+ *
+ */
 class User extends SerializeModel {
 	private $privilage = array();
-	private $user_name = "";
-	private $id_role;
+	private $email = "";
+	private $nr = "";
+	private $role_id;
 	private $role_name;
+	private static $_instance = null;
+	
 	protected function __construct($id) {
 		parent::__construct("users", $id);
 	}
 	
 	/**
 	 * 
-	 * @param int $user_id
 	 * @return User
 	 */
-	public static function getForId($user_id) {
+	public static function getLoggedUser() {
+		if(self::$_instance != null)
+			return self::$_instance;
 		$session = HttpSession::getSession();
-		if($session->isSetAttr($user_id)) {
-			return unserialize($session->getAttribute($user_id));
+		$user_id = $session->getAttribute("user_id");
+		if($user_id != 0) {
+			$user_key = "users:".$user_id;
+			$sObj = unserialize($session->getAttribute($user_key));
+			self::$_instance = $sObj;
+			return self::$_instance;
 		} else {
-			return new User($user_id);
-		}		
+			return null;
+		}	
+	}
+	
+	public static function createUser($row) {
+		$user = new User($row["id_user"]);
+		$user->fetchData($row);
+		$user->login();
+		self::$_instance = $user;
 	}
 	
 	/**
@@ -29,7 +50,7 @@ class User extends SerializeModel {
 	 * @param string $action
 	 * @return boolean
 	 */
-	public function checkPrivilage($modules, $action) {
+	public function checkPrivilage($module, $action) {
 		if($this->privilage == null) {
 			$this->loadPrivilage($this->id_role);
 		}
@@ -44,7 +65,7 @@ class User extends SerializeModel {
 		array_push($array, 'privilage');
 		array_push($array, 'user_name');
 		array_push($array, 'role_name');
-		array_push($array, 'id_role');
+		array_push($array, 'role_id');
 		return $array;
 	}
 	
@@ -57,16 +78,17 @@ class User extends SerializeModel {
 	
 	public function createQuery() {
 		$query = parent::createQuery();
-		$query->join("roles", "users.id_role = roles.id_role");
+		$query->join("roles", "users.role_id = roles.id_role");
 		$query->where("id_user = ".$this->id);
 		return $query;
 	}
 	
 	public function fetchData($data) {
-		$this->user_name = $data["user_login"];
-		$this->id_role = $data["id_role"];
+		$this->email = $data["email"];
+		$this->nr = $data["nr"];
+		$this->role_id = $data["role_id"];
 		$this->role_name = $data["role_name"];
-		$this->loadPrivilage($data["id_role"]);
+		$this->loadPrivilage($data["role_id"]);
 	}
 	
 	public function loadPrivilage($id_role) {
@@ -75,11 +97,19 @@ class User extends SerializeModel {
 		$priv = array();
 		while($result->next()) {
 			$current = $result->current();
-			if(!array_key_exists($current["modules"])) {
-				$priv[$current["modules"]] = array();
+			if(!array_key_exists($current["module"])) {
+				$priv[$current["module"]] = array();
 			}
-			array_push($priv[$current["modules"]], $current["action"]);
+			array_push($priv[$current["module"]], $current["action_name"]);
 		}
 		$this->privilage = $priv;	
+	}
+	
+	public function logout() {
+		$this->isLogged = false;
+	}
+	
+	public function login() {
+		$this->isLogged = true;
 	}
 }

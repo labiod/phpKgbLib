@@ -8,7 +8,7 @@
     <meta name="Author" content=" Gabriela Betlej, Krzysztof Betlej " />
     <meta name="verify-v1" content="7/ZGLd5IaiD47BhTo/P8KbkLEsNYDtNk0Aezk5lmeRI=" />
 <?php  $title = (isset($this->title)) ? "Lpunkt.pl - ".$this->title : "Lpunkt.pl - strona w budowie"; ?>
-    <title><?php  echo $this->title;  ?> </title>
+    <title><?php  echo $title;  ?> </title>
     <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
     <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="/public/js/script.js" type="text/javascript"></script>   
@@ -24,7 +24,7 @@
     <div id="main">
         <div id="header">
             <img src="/public/images/logo_lpunkt.png" id="logo" />
-            <div id="log_info" class="shadow">Jesteś zalogowany jako: <a href="#">Twój login</a> <a href="#" id="logout">Wyloguj</a></div>
+            <div id="log_info" class="shadow">Jesteś zalogowany jako: <a href="#">Twój login</a> <a href="/user/logout" id="logout">Wyloguj</a></div>
             <div id="logo_osk">OSK<br/>logo o rozm. max: 400 x 100 px</div>
         </div>
         <div id="content">

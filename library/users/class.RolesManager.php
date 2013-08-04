@@ -1,8 +1,9 @@
 <?php
 class RolesManager {
-	public function checkPrivilage($module, $action) {
-		$session = HttpSession::getSession();
-		$user = User::getForName($session->getAttribute("user_name"));
-		$user->checkPrivilage($module, $action);
+	public static function checkPrivilage($module, $action) {
+		$user = User::getLoggedUser();
+		if($user == null)
+			return false;
+		return $user->checkPrivilage($module, $action);
 	}
 }

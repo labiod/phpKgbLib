@@ -31,10 +31,11 @@ abstract class BasicApplication {
 		}
 		return $tab;	
 	}
-        public static function getRedirect() {
-            foreach($_SERVER as $key=>$val) {
-		if(strtoupper($key) == "REQUEST_URI")
-			return substr($val, 1);
-            }
-        }
+	
+    public static function getRedirect() {
+    	foreach($_SERVER as $key=>$val) {
+			if(strtoupper($key) == "REQUEST_URI")
+				return substr($val, 1);
+    	}
+    }
 }

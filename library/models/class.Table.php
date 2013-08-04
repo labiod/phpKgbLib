@@ -1,4 +1,5 @@
 <?php
+require_once 'library/models/class.DBResult.php';
 /**
  * 
  * Klasa bazowa dla klas ktore są odpowiednikami tabel z bazy danych
@@ -17,6 +18,7 @@ class Table {
 	protected $group = "";
 	protected $having = "";
 	protected $order = "";
+	protected $params = array();
 	public function __construct($table_name, $conn = 0) {
 		$this->table = $table_name;
 		$this->conn = DBConnection::getConnection($conn);
@@ -151,8 +153,13 @@ class Table {
 				$sql .= " JOIN ".$key." ON ".$value;
 			}
 		}
-		if($this->conditions != "")
+		if($this->conditions != "") {
+			foreach($this->params as $key=>$param) {
+				$param = mysql_real_escape_string($param);
+				$this->conditions = str_replace("\$".$key, $param, $this->conditions);
+			}
 			$sql .= " WHERE ".$this->conditions;
+		}
 		if($this->group != "") {
 			$sql .= " GROUP BY ".$this->group;
 		}
@@ -270,6 +277,20 @@ class Table {
 		if(!$result)
 			throw new Exception();
 		return $result;		
+	}
+	
+	/**
+	 * 
+	 * @param string $param
+	 * @param string $key
+	 * @return Table
+	 */
+	public function addParameter($param, $key= null) {
+		if($key != null)
+			$this->params[$key] = $param;
+		else 
+			$this->params[] = $param;
+		return $this;	
 	}
 	
 	/**

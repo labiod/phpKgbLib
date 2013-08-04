@@ -1,15 +1,15 @@
 <?php
- class IndexController extends BasicController {
+require_once 'library/controllers/class.BasicIndexController.php';
+ class IndexController extends BasicIndexController {
  	private $_content = null;
  	private $articles = null;
 	 protected function initAll() {	
 	//	$this->_view->user_name = $this->_session->getAttribute("user_name");
 		
 	}
+	
 	function indexAction() {
-		$this->_content = new Table("content");
-		$this->_view->content = $this->_content->fetchAll("id_content = 1");
-		$this->_view->id = 1;
+		$this->_view->header = $this->isUserLogged() ? "uheader.php" : "header.php";
 	}
  	
 }
