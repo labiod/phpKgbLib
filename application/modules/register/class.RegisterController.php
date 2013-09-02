@@ -21,9 +21,10 @@
                 if ($tab["role"] == "kursant") {
                     unset($tab['nr']);
                 } 
-                $role = $this->_roles->find("role_name = " . $tab["role"]);
+                $role = $this->_roles->find("role_name = '" . $tab["role"] ."'");
                 unset($tab['role']);
-                $tab["role_id"] = $role["id_role"];
+                $tmp = $role->current();
+                $tab["role_id"] = $tmp["id_role"];
                 $index = $this->_users->insert($tab);
 
                 $this->setMessage("Rejestracja powiodła się! Zaloguj się!");

@@ -5,12 +5,12 @@ class UserController extends BasicIndexController {
 	 * @access general
 	 */
 	public function loginAction() {
-		if ($this->isUserLogged()) {
-			$this->forward("./user/index");
-			return;
-		}
-		$tab = $this->getParametersMap();
-        if (isset($tab['submit'])) {
+            if ($this->isUserLogged()) {
+                    $this->forward("./user/index");
+                    return;
+            }
+            $tab = $this->getParametersMap();
+            if (isset($tab['submit'])) {
         	$query = new Table("users");
         	$query->join("roles", "users.role_id = roles.id_role");
         	$query->where("email = '$0' or nr = '$0'")->andWhere("password = '$1'")->andWhere("active = 'Y'");
@@ -25,7 +25,7 @@ class UserController extends BasicIndexController {
         	} else {
         		$this->_view->msg = "Nieprawidłowy login lub hasło";
         	}
-        }
+            }
 	}	
 	
 	/**

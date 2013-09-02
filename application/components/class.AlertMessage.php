@@ -5,8 +5,10 @@ class AlertMessage extends Component {
 		$this->msg = $msg;	
 	}
 	public static function showMessage($msg) {
+            if(isset($msg) && $msg != ''){
 		$alert = new AlertMessage($msg);
 		echo $alert->show();
+            }
 	}
 	public function show() {
 		$content =<<<EOD
