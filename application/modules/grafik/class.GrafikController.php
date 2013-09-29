@@ -7,12 +7,12 @@
 class GrafikController extends BasicIndexController {
     private $_jazdy = null;
     //z tabeli users pogrupowac po rolach, uwaga! tylko dla okreslonego osk!
-    private $_kursanci = null; 
-    private $_instruktorzy = null; 
+    private $_users = null; 
+    private $_settings = null; 
     public function initAll() {
         $this->_jazdy = new Table("jazdy");
-        $this->_kursanci = new Table("users");
-        $this->_instruktorzy = new Table("users");
+        $this->_users = new Table("users");
+        $this->$_settings = new Table("settings");
     }
     public function indexAction(){
         //where osk!!!
@@ -28,7 +28,7 @@ class GrafikController extends BasicIndexController {
             $date["mc"] = $tab['m'];
         } 
         
-        $dateLinks['dayLink'] = "/grafik/kursant/y/".$date["rok"]."/m/".$date["mc"]."/d/";
+        $dateLinks['dayLink'] = "/grafik/podgladDnia/y/".$date["rok"]."/m/".$date["mc"]."/d/";
         $dateLinks['prevLink'] = $this->getLink(-1, $date["rok"], $date["mc"]);
         $dateLinks['nextLink'] = $this->getLink(+1, $date["rok"], $date["mc"]);
         $this->_view->dateLinks = $dateLinks;
@@ -39,8 +39,19 @@ class GrafikController extends BasicIndexController {
         $this->_view->dateInfo = $date;
        
     }
-    public function podgladDniaAction(){
-        $date = $this->getParam("date");
+    public function podgladDniaAction(){    
+        $tab = $this->getParametersMap();
+        if(isset($tab["fullLoad"]) && $tab["fullLoad"] == true){
+                $this->_view->isAjax = false;
+        }else {
+                $this->_view->isAjax = true;
+        }
+        $date = $tab['y'].'-'.$tab['m'].'-'.$tab['d']; //2013-09-28 14:26:07
+      //  $this->_settings->find('osk_id = OSK!!! AND name = working_hours' )  8-16
+     //   $this->_view->workingHours[0]=
+        $this->_view->tab = $tab;
+
+//WHERE DATE(`data`)
     }
         
     private function getLink($shift,$y,$mc){

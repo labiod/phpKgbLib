@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/public/styles/grafik.css" type="text/css" />
     <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="/public/js/script.js" type="text/javascript"></script>   
+    <script src="/public/js/grafik.js" type="text/javascript"></script>  
 <!--[if gte IE 9]>
   <style type="text/css">
     .gradient {
@@ -24,7 +25,7 @@
 <body>
     <div id="main">
         <div id="header">
-            <img src="/public/images/logo_lpunkt.png" id="logo" />
+            <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
             <div id="log_info" class="shadow">Jesteś zalogowany jako: <a href="#">Twój login</a> <a href="/user/logout" id="logout">Wyloguj</a></div>
             <div id="logo_osk">OSK<br/>logo o rozm. max: 400 x 100 px</div>
         </div>
@@ -41,7 +42,7 @@
           <ul id="main_tab_menu">
                 <li><a>Strefa kursanta</a>
                     <ul class="tab_menu_lvl2">
-                        <li>grafik jazd</li>
+                        <a href="../grafik/kursant"><li>grafik jazd</li></a>
                         <li>dokup jazdy</li>
                         <li>historia jazd</li>
                         <li>trasy egzaminacyjne</li>

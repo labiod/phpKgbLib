@@ -1,0 +1,18 @@
+/* 
+    Document   : grafik
+    Created on : 2013-08-14, 22:40:37
+    Author     : Gabus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#monthViewTable{
+    
+}
+#monthViewTable td {
+    text-align: right;
+    padding: 1px;
+}
+#dayPlan {
+    display: none;
+}
