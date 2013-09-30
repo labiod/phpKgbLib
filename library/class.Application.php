@@ -6,6 +6,7 @@ require_once 'http/class.HttpSession.php';
 require_once 'models/class.DBConnection.php';
 require_once 'models/class.Table.php';
 class Application extends BasicApplication {
+	
 	public function dispatch() {
 		$url = $this->url;
 		if($url == "" || $url == "/") {

@@ -10,16 +10,6 @@ require_once 'controllers/class.BasicController.php';
 			$this->_module = strtolower($mod);
 			
 		}
-		public function userAuthorization() {
-			$session = HttpSession::getSession();
-			if($session->attrEquals("logged_user", true)) {
-				return true;
-			} else {
-				$this->setMessage("Nie masz uprawnień do oglądania zawartości tej strony");
-				header("Location: /users");
-				die();
-			}
-		}
 		
 		public function getViewPath() {
 			return strtolower($this->_module)."/view/".$this->_action.".php";

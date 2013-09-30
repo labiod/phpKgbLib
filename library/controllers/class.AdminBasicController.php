@@ -8,13 +8,6 @@
 			$mod = substr($mod, 5);
 			$mod = strtolower($mod);
 			$this->_module = $mod;
-			if(!$this->_session->isSetAttr("logged")) {
-				if($this->_module != "auth") {
-					$this->forward("auth/panel");
-					die();
-				}
-					
-			}	
 			$this->_view->menu = true;	
 			if($this->_session->isSetAttr("admin_name"))
 				$this->_view->admin_name = $this->_session->getAttribute("admin_name");

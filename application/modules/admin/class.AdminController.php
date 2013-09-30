@@ -1,9 +1,26 @@
 <?php
-class AdminController extends BasicController {
+require_once 'controllers/class.AdminBasicController.php';
+class AdminController extends AdminBasicController {
 	public function initAll() {
-		$this->admin = new Table("administratorzy");
 	}
+	
+	/**
+	 * @access restricted
+	 */
 	public function indexAction() {
-		$this->forward("auth/admin/index");
+		echo "hello";
+	}
+	
+	/**
+	 * @access general
+	 */
+	public function loginAction() {
+		echo $this->_session->getAttribute("msg"); die;
+	}
+	
+	
+	public function accessDeniedAction() {
+		$this->forward("admin/login", "msg=Aby mieć dostęp do tej części musisz się zalogować");
+		die;
 	}
 }

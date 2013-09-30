@@ -1,5 +1,9 @@
 <?php
 abstract class BasicApplication {
+	/**
+	 * 
+	 * @var BasicController
+	 */
 	protected $controller = null;
 	protected $_module = "";
 	protected $_request = null;
