@@ -16,22 +16,32 @@ class Application extends BasicApplication {
 		$flink = new Table("friendly_links");
 		$result = $flink->fetchAll("link = '".$url."'");
 		if($result->isNull()) {
-			if(count($attr) == 1)
-				$attr[1] = "index";
-			$module = $attr[0];
-			if(trim($attr[1]) == "admin") {
+			$controller = "";
+			if(count($attr) == 1) {
+				if($attr[0] == "admin") {
+					$attr[1] = "user";
+					$attr[2] = "index";
+				} else {
+					$attr[1] = "index";
+				}
+			}
+			if($attr[0] == "admin") {
 				$controller = "Admin";
+				if(trim($attr[1]) == "") {
+					$attr[1] = "user";
+				}
 				if(!isset($attr[2]) || trim($attr[2]) == "")
-					$action = "index";
-				else
-					$action = $attr[2];
-					$i = 3;				
+					$attr[2] = "index";
+				$module = $attr[1];
+				$action = $attr[2];
+				$i = 3;
 			} else {
+				$module = $attr[0];
 				if(trim($attr[1]) == "")
 					$action = "index";
 				else
 					$action = $attr[1];
-				$controller = "";	
+				$controller = "";
 				$i = 2;
 			}
 			$tab = $this->getAppParams($attr, $i);						
