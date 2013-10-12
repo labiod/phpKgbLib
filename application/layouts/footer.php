@@ -1,5 +1,4 @@
 <div class="clear"></div>
-    </div>
 </div>
     <div id="footer">
         <div class="block_footer">© Lpunkt 2013 - Updated: 13-10-2013</div>
@@ -12,6 +11,8 @@
         </div>
         
     </div>
+
+</div>
 
 </body>
 </html>

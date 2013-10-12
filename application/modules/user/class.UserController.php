@@ -1,9 +1,6 @@
 <?php
 require_once 'library/controllers/class.BasicIndexController.php';
 class UserController extends BasicIndexController {
-	/**
-	 * @access general
-	 */
 	public function loginAction() {
             if ($this->isUserLogged()) {
                     $this->forward("./user/index");
@@ -20,25 +17,15 @@ class UserController extends BasicIndexController {
         		$row = $result->current();
         		User::createUser($row);
         		HttpSession::getSession()->setAttribute("user_id", $row["id_user"]);
-//tutaj zalogowanie do OSK!
-        		$this->forward("./index");
-        		return;
-        	} else {
-        		$this->_view->msg = "Nieprawidłowy login lub hasło";
-        	}
-            }
-	}	
-	
-	/**
-	 * @access general
-	 */
-	public function indexAction() {
-		
+				$this->forward ( "./index" );
+				return;
+			} else {
+				$this->_view->msg = "Nieprawidłowy login lub hasło";
+			}
+		}
 	}
-	
-	/**
-	 * @access general
-	 */
+	public function indexAction() {
+	}
 	public function logoutAction() {
 		User::getLoggedUser()->logout();
 		HttpSession::getSession()->clearAttribute("user_id");

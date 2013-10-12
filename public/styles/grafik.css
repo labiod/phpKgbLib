@@ -5,14 +5,15 @@
     Description:
         Purpose of the stylesheet follows.
 */
+#monthViewTable {
+	
+}
 
-#monthViewTable{
-    
-}
 #monthViewTable td {
-    text-align: right;
-    padding: 1px;
+	text-align: right;
+	padding: 1px;
 }
+
 #dayPlan {
-    display: none;
+	display: none;
 }

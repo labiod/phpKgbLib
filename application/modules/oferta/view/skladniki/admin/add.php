@@ -1,5 +1,5 @@
-<?php 
-	$site =<<<EOD
+<?php
+$site = <<<EOD
 	<form name="skladniki" action="/oferta/admin/confirm/submodule/skladniki" class="{$this->popup}" method="post" enctype="multipart/form-data">
 			<table id="tab_edit" cellspacing="0">
 				<tr>
@@ -17,11 +17,11 @@
 			
 	</form>
 EOD;
-	if($this->textOnly)
-		echo $site;
-	else {
-		include ("layouts/aheader.php"); 
-		echo $site;
-		include ("layouts/afooter.php"); 
-	}
+if ($this->textOnly)
+	echo $site;
+else {
+	include ("layouts/aheader.php");
+	echo $site;
+	include ("layouts/afooter.php");
+}
 ?>

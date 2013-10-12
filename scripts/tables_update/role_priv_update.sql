@@ -8,8 +8,22 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Baza danych: `lpunkt`
---
-INSERT INTO `lpunkt`.`roles` (`id_role`, `role_name`) VALUES (NULL, 'admin');
-INSERT INTO `lpunkt`.`roles` (`id_role`, `role_name`) VALUES (NULL, 'guest');
+INSERT INTO `lpunkt`.`roles_priv` (
+`id_privilage` ,
+`id_role` ,
+`module` ,
+`action_name`
+)
+VALUES (
+NULL , '5', 'user', 'login'
+);
+
+INSERT INTO `lpunkt`.`roles_priv` (
+`id_privilage` ,
+`id_role` ,
+`module` ,
+`action_name`
+)
+VALUES (
+NULL , '5', 'index', 'index'
+);

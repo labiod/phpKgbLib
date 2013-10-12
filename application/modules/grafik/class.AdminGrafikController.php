@@ -1,8 +1,7 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * To change this template, choose Tools | Templates and open the template in the editor.
  */
 
 /**
@@ -10,8 +9,8 @@
  *
  * @author Gabus
  */
-class AdminGrafikController extends AdminBasicController{
-    //put your code here
+class AdminGrafikController extends AdminBasicController {
+	// put your code here
 }
 
 ?>

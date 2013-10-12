@@ -1,22 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
-<html xmlns="http://www.w3.org/1999/xhtml">  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head> 
     <?php
-// Application::loadComponent("MetaTags");
-    ?> 
+				// Application::loadComponent("MetaTags");
+				?> 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="Author" content=" Gabriela Betlej, Krzysztof Betlej " />
-    <meta name="verify-v1" content="7/ZGLd5IaiD47BhTo/P8KbkLEsNYDtNk0Aezk5lmeRI=" />
-    <title>
-    <?php if(isset($this->title)) {
-        echo $this->title;
-    }else {    
-        echo "Lpunkt.pl - strona w budowie";
-    }    ?>	
+<meta name="Author" content=" Gabriela Betlej, Krzysztof Betlej " />
+<meta name="verify-v1"
+	content="7/ZGLd5IaiD47BhTo/P8KbkLEsNYDtNk0Aezk5lmeRI=" />
+<title>
+    <?php
+				
+				if (isset ( $this->title )) {
+					echo $this->title;
+				} else {
+					echo "Lpunkt.pl - strona w budowie";
+				}
+				?>	
     </title>
-    <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
-    <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="/public/js/script.js" type="text/javascript"></script>   
+<link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
+<script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="/public/js/script.js" type="text/javascript"></script>
 <!--[if gte IE 9]>
   <style type="text/css">
     .gradient {
@@ -24,7 +28,7 @@
     }
   </style>
 <![endif]-->
-</head>  
+</head>
 <body>
     <div id="main">
         <div id="header">
