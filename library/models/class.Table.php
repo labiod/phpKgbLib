@@ -188,7 +188,7 @@ class Table {
 	 * @param unknown_type $where
 	 * @throws Exception
 	 */
-	public function update(Array $set, int $where) {
+	public function update(Array $set, $where) {
 		$sql = "UPDATE ".$this->table." SET ";
 		$i1 = true;
 		foreach ($set as $key => $value) {
@@ -201,7 +201,7 @@ class Table {
 		}
 		if($where != "")
 			$sql .= " WHERE ".$where;
-		$result = mysql_query($sql, $this->conn->getConn()) or die(mysql_error()." ".$sql);
+		$result = $this->conn->query($sql) or die(mysql_error()." ".$sql);
 		if(!$result)
 			throw new Exception();			
 		return $result;

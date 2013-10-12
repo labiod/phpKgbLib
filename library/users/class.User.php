@@ -56,7 +56,7 @@ class User extends SerializeModel {
 	 * @return boolean
 	 */
 	public function checkPrivilage($module, $action) {
-                if($this->role_name == "admin" && $module == "admin"){
+                if($this->role_name == "admin"){
                         return true;
                 }
 		if($this->privilage == null) {

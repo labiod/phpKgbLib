@@ -11,9 +11,13 @@
     <title><?php  echo $title;  ?> </title>
     <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
     <link rel="stylesheet" href="/public/styles/grafik.css" type="text/css" />
+    <link rel="stylesheet" href="/public/styles/admin.css" type="text/css" />
+<!--    <link rel="stylesheet" href="/public/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" type="text/css" />
+    <script src="/public/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script> -->
     <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="/public/js/script.js" type="text/javascript"></script>   
     <script src="/public/js/grafik.js" type="text/javascript"></script>  
+    <script src="/public/js/admin.js" type="text/javascript"></script>  
 <!--[if gte IE 9]>
   <style type="text/css">
     .gradient {
@@ -36,8 +40,8 @@
           <ul id="main_tab_menu">
                 <li><a>Ośrodki</a>
                     <ul class="tab_menu_lvl2">
-                        <a href="../admin/osk"><li>lista ośrodków</li></a>
-                        <a href="../admin/osk/registerOsk"><li>dodaj ośrodek</li></a>                    
+                        <a href="/admin/osk"><li>lista ośrodków</li></a>
+                        <a href="/admin/osk/registerOsk"><li>dodaj ośrodek</li></a>                    
                     </ul>
                 </li>
                 <li><a>Dane kursu</a>

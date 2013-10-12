@@ -1,0 +1,19 @@
+/* 
+    Document   : admin
+    Created on : 2013-10-12, 16:33:02
+    Author     : Gabus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#osk_info{
+    font-size: 0.9em;
+}
+
+#osk_info label{
+    display: inline-block;
+    width: 100px;
+}
+#osk_info span{
+    font-weight: bold;
+}

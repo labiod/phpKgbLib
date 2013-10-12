@@ -9,10 +9,12 @@ class GrafikController extends BasicIndexController {
     //z tabeli users pogrupowac po rolach, uwaga! tylko dla okreslonego osk!
     private $_users = null; 
     private $_settings = null; 
+    private $_auta = null; 
     public function initAll() {
         $this->_jazdy = new Table("jazdy");
         $this->_users = new Table("users");
-        $this->$_settings = new Table("settings");
+        $this->_settings = new Table("settings");
+        $this->_auta = new Table("auta");
     }
     public function indexAction(){
         //where osk!!!
@@ -50,6 +52,7 @@ class GrafikController extends BasicIndexController {
       //  $this->_settings->find('osk_id = OSK!!! AND name = working_hours' )  8-16
      //   $this->_view->workingHours[0]=
         $this->_view->tab = $tab;
+      //  $this->_view->auta = $this->_auta->find('osk_id = '.User::getLoggedUser());
 
 //WHERE DATE(`data`)
     }
