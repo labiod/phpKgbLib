@@ -1,45 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta name="author" content="KGBetlej" /> 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script type="text/javascript" src="/public/js/jquery.js"></script>
-	<script type="text/javascript" src="/public/js/fancybox/jquery.fancybox-1.3.4.js"></script>
-	<link type="text/css" rel="stylesheet" href="/public/js/fancybox/jquery.fancybox-1.3.4.css" />
-	<link href="/public/css/admin.css" type="text/css" rel="stylesheet" />
-<?php 
-	$this->attachStyles();
-	$title = (isset($this->title)) ? "Panel Administracyjny - ".$this->title : "Panel Administracyjny";
-?>
-	<script src="/public/js/ajax/ajaxObject.js" language="Javascript" type="text/javascript"></script>
-		<script src="/public/js/ajax/getContent.js" language="Javascript" type="text/javascript"></script>
-	<script type="text/javascript" src="/public/js/ajax/uploadfile.js"></script>
-	<script type="text/javascript" src="/public/js/control/control.js"></script>
-	<script type="text/javascript" src="/public/js/upload/FileUploader.js"></script>
-	<script type="text/javascript" src="/public/js/tiny_mce/tiny_mce.js"></script>
-	
-	<title><?php echo $title; ?></title>
-	<script type="text/javascript"> 
-	$(document).ready(function() {
-		$("a.galeria").fancybox(); 
-	}); 
-	</script>
-	<script type="text/javascript" src="/public/js/admin.js"></script>
-</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head> 
+    <?php
+// Application::loadComponent("MetaTags");
+    ?> 
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="Author" content=" Gabriela Betlej, Krzysztof Betlej " />
+    <meta name="verify-v1" content="7/ZGLd5IaiD47BhTo/P8KbkLEsNYDtNk0Aezk5lmeRI=" />
+<?php  $title = (isset($this->title)) ? "Lpunkt.pl - ".$this->title : "Lpunkt.pl - strona w budowie"; ?>
+    <title><?php  echo $title;  ?> </title>
+    <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
+    <link rel="stylesheet" href="/public/styles/grafik.css" type="text/css" />
+    <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="/public/js/script.js" type="text/javascript"></script>   
+    <script src="/public/js/grafik.js" type="text/javascript"></script>  
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+</head>  
 <body>
-	<div id="header" >
-		<img id="logo" alt="LOGO" src="/public/images/logo.png">
-		<h2> Panel Administracyjny</h2>
-	</div>
-	<div id="main">
-		<div id="zalogowany" >Jestes zalogowany jako  <?php echo $this->admin_name; ?> <a href="/auth/panel/logout">Wyloguj <img class="icon" src="<?php echo Settings::getParam("icon", "logout"); ?>" alt="Wyloguj" title="Wyloguj" /></a></div>
-	<?php 
-		if(isset($this->message)) {
-		?><h3 id="message" ><?php echo $this->message; ?></h3>
-		<?php 
-		} 
-		if(isset($this->menu)) {
-			echo loadModule("showMenuPanel");
-		}
-	?>
-	<div id="right_div">
+    <div id="main">
+        <div id="header">
+            <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
+            <div id="log_info" class="shadow">Jesteś zalogowany jako: 
+                <a href="#"><?php echo User::getLoggedUser()->getEmail(); ?></a> 
+                <a href="/user/logout" id="logout">Wyloguj</a></div>
+            <div id="logo_osk">Panel administracyjny</div>
+        </div>
+        <div id="content">
+            <div id="navi_info">
+          <ul id="main_tab_menu">
+                <li><a>Ośrodki</a>
+                    <ul class="tab_menu_lvl2">
+                        <a href="../admin/osk"><li>lista ośrodków</li></a>
+                        <a href="../admin/osk/registerOsk"><li>dodaj ośrodek</li></a>                    
+                    </ul>
+                </li>
+                <li><a>Dane kursu</a>
+                    <ul class="tab_menu_lvl2">
+                        <li>grafik jazd</li>
+                        <li>dokup jazdy</li>
+                        <li>historia jazd</li>
+                        <li>trasy egzaminacyjne</li>
+                        <li>pytania egzaminacyjne</li>
+                        <li>ranking instruktorów</li>
+                    </ul>
+                </li>
+                <li><a>Profil</a>
+                     <ul class="tab_menu_lvl2">
+                        <li>pokaż profil</li>
+                        <li>edytuj profil</li>
+                        <li>historia wpłat</li>
+                    </ul>   
+                </li>
+            </ul>
+
+          </div>
+<?php 
+if(isset($this->message)) {
+        echo "<h3 id=\"message\" >".$this->message."</h3>";
+}	

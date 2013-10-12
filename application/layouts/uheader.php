@@ -26,19 +26,13 @@
     <div id="main">
         <div id="header">
             <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
-            <div id="log_info" class="shadow">Jesteś zalogowany jako: <a href="#">Twój login</a> <a href="/user/logout" id="logout">Wyloguj</a></div>
+            <div id="log_info" class="shadow">Jesteś zalogowany jako: 
+                <a href="#"><?php echo User::getLoggedUser()->getEmail(); ?></a> 
+                <a href="/user/logout" id="logout">Wyloguj</a></div>
             <div id="logo_osk">OSK<br/>logo o rozm. max: 400 x 100 px</div>
         </div>
         <div id="content">
             <div id="navi_info">
-   <!-- <h2 id="title">Logowanie</h2>  <div class="clear"></div> -->
-          <!-- 
-            <ul id="inner_left_menu">
-                <li>Kursant</li>
-                <li>Instruktor</li>
-                <li>OSK</li>
-            </ul>
-          -->
           <ul id="main_tab_menu">
                 <li><a>Strefa kursanta</a>
                     <ul class="tab_menu_lvl2">

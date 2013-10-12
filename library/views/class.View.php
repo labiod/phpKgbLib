@@ -5,7 +5,7 @@ abstract class View {
 	public function __get($name) {
 		if(isset($this->_parameters[$name]))
 			return $this->_parameters[$name];
-		return Settings::getParam("site", "title");
+		return null;//Settings::getParam("site", "title");
 	}
     
     public function __set($name, $value) {

@@ -20,6 +20,7 @@ class UserController extends BasicIndexController {
         		$row = $result->current();
         		User::createUser($row);
         		HttpSession::getSession()->setAttribute("user_id", $row["id_user"]);
+//tutaj zalogowanie do OSK!
         		$this->forward("./index");
         		return;
         	} else {
@@ -29,14 +30,14 @@ class UserController extends BasicIndexController {
 	}	
 	
 	/**
-	 * @access restricted
+	 * @access general
 	 */
 	public function indexAction() {
 		
 	}
 	
 	/**
-	 * @access restricted
+	 * @access general
 	 */
 	public function logoutAction() {
 		User::getLoggedUser()->logout();

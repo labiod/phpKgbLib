@@ -56,8 +56,11 @@ class User extends SerializeModel {
 	 * @return boolean
 	 */
 	public function checkPrivilage($module, $action) {
+                if($this->role_name == "admin" && $module == "admin"){
+                        return true;
+                }
 		if($this->privilage == null) {
-			$this->loadPrivilage($this->id_role);
+			$this->loadPrivilage($this->role_id);
 		}
 		if(array_key_exists($module, $this->privilage)) {
 			return in_array($action, $this->privilage[$module]);
@@ -113,4 +116,10 @@ class User extends SerializeModel {
 	public function logout() {
 		$this->setToSave(false);
 	}
+        public function getEmail() {
+            return $this->email;
+        }
+        public function getRoleName() {
+            return $this->role_name;
+        }
 }

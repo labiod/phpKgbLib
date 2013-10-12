@@ -9,7 +9,15 @@ require_once 'library/controllers/class.BasicIndexController.php';
 	}
 	
 	function indexAction() {
-		$this->_view->header = $this->isUserLogged() ? "uheader.php" : "header.php";
+            if($this->isUserLogged()){
+                if(User::getLoggedUser()->getRoleName() == "admin"){
+                    $this->_view->header = "aheader.php";
+                } else {
+                    $this->_view->header = "uheader.php";
+                }
+            }else{
+                $this->_view->header = "header.php";
+            }
 	}
  	
 }
