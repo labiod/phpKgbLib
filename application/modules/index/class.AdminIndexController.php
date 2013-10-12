@@ -1,6 +1,5 @@
 <?php
-	class AdminIndexController extends AdminBasicController {
-		
-		function indexAction() {
-		}
+class AdminIndexController extends AdminBasicController {
+	function indexAction() {
 	}
+}

@@ -1,23 +1,22 @@
 <?php
-error_reporting(E_ALL);
-ini_set('upload_tmp_dir', sys_get_temp_dir());
+error_reporting ( E_ALL );
+ini_set ( 'upload_tmp_dir', sys_get_temp_dir () );
 require_once 'library/utils/function.php';
-require_once("library/utils/class.AutoLoader.php");
-require_once("library/class.Application.php");
+require_once ("library/utils/class.AutoLoader.php");
+require_once ("library/class.Application.php");
 
-$lib[] = "library";
-$lib[] = "application";
-$lib[] = "application/modules";
-set_include_path(get_include_path(). PATH_SEPARATOR. implode(PATH_SEPARATOR, $lib));
+$lib [] = "library";
+$lib [] = "application";
+$lib [] = "application/modules";
+set_include_path ( get_include_path () . PATH_SEPARATOR . implode ( PATH_SEPARATOR, $lib ) );
 
-AutoLoader::setLoader(STANDARD_LOADER);
+AutoLoader::setLoader ( STANDARD_LOADER );
 try {
-	$index = new Application();
-	$index->dispatch();
-} catch(Exception $e) {
-	//header ("Content-Type: text/html; charset=utf-8");
-	echo "error ". $e;
+	$index = new Application ();
+	$index->dispatch ();
+} catch ( Exception $e ) {
+	// header ("Content-Type: text/html; charset=utf-8");
+	echo "error " . $e;
 }
-
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 class Site extends SerializeModel {
 	/**
-	 * 
+	 *
 	 * @var Site
 	 */
 	private static $_instance;
@@ -9,8 +9,7 @@ class Site extends SerializeModel {
 	/**
 	 * return Site
 	 */
-	public static function getSite() { 	
-		return self::$_instance;	
+	public static function getSite() {
+		return self::$_instance;
 	}
- 
 }
