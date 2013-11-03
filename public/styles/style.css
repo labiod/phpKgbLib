@@ -236,7 +236,8 @@ ul#main_tab_menu {
 }
 
 ul#main_tab_menu>li {
-	width: 80px;
+        display: block;
+	width: 120px;
 	height: 30px;
 	padding: 2px;
 	float: left;
@@ -249,7 +250,6 @@ ul#main_tab_menu>li {
 
 ul#main_tab_menu>li a {
 	width: 80px;
-	height: 30px;
 	padding: 0;
 	margin: 0;
 	display: block;
@@ -264,7 +264,7 @@ ul#main_tab_menu li ul {
 	width: 150px;
 	z-index: 10;
 	position: relative;
-	top: 4px;
+	top: 10px;
 	left: -4px;
 	margin: 0;
 	padding: 0;

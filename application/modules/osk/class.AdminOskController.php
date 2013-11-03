@@ -55,6 +55,22 @@ class AdminOskController extends AdminBasicController {
                 $this->_view->action_link = "/admin/osk/edit";
             }
     }
+            /**
+	 * @access restricted
+	 */
+        public function deleteAction(){
+            $tab = $this->getParametersMap();  
+            if(isset($tab['id'])){
+                $id = $tab['id'];
+                unset($tab['id']);
+                $this->_osk->delete("id_osk = ".$id);
+                $this->setMessage("Ośrodek został usunięty.");          
+            }else{
+                $this->setMessage("Nie wybrano ośrodka do usunięcia!");    
+            }
+            header("Location: /admin/osk");
+            
+    }
         /**
 	 * @access restricted
 	 */
@@ -65,8 +81,8 @@ class AdminOskController extends AdminBasicController {
             if (isset($tab['submit'])) {
                 unset($tab['submit']);
                 $new_osk = null;
-                $osk = $this->_osk->find("nr = '" . $tab["osk_nr"] ."'");
-                if ($osk->isNull()) {
+//                $osk = $this->_osk->find("nr = '" . $tab["osk_nr"] ."'");
+//                if ($osk->isNull()) {
                     $new_osk["nazwa"] = $tab["osk_name"];
                     $new_osk["nr"] = $tab["osk_nr"];
                     $new_osk["adres"] = $tab["osk_adr"];
@@ -81,10 +97,10 @@ class AdminOskController extends AdminBasicController {
 
                     $this->setMessage("Rejestracja powiodła się! Ośrodek został dodany.");
                     $link = "Location: /admin/osk";
-                } else {
-                    $this->setMessage("Podany nr ośrodka już jest w bazie! Rejestracja nie powiodła się!");
-                    $link = "Location: /admin/osk/registerOsk";
-                }
+//                } else {
+//                    $this->setMessage("Podany nr ośrodka już jest w bazie! Rejestracja nie powiodła się!");
+//                    $link = "Location: /admin/osk/registerOsk";
+//                }
                 header($link);
             }            	
 		

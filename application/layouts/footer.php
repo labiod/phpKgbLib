@@ -1,7 +1,7 @@
 <div class="clear"></div>
 </div>
     <div id="footer">
-        <div class="block_footer">© Lpunkt 2013 - Updated: 13-10-2013</div>
+        <div class="block_footer">© Lpunkt 2013 - Updated: 3-11-2013</div>
         <div class="block_footer">
             Design by: <a href="mailto:#">Kamil Grudzień</a>
         </div>

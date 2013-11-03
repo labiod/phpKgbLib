@@ -1,7 +1,7 @@
 <?php include ("layouts/aheader.php"); 	?>
 <h2 id="title">Rejestracja OSK</h2>  <div class="clear"></div> 
 <?php AlertMessage::showMessage($this->msg); ?>
-<form id="add_osk_form" action="<?php echo $this->action_link; ?>" method="post">
+<form id="osk_info" action="<?php echo $this->action_link; ?>" method="post">
     <label for="osk_name">Nazwa ośrodka: </label>
     <input name="osk_name" id="osk_name" type="text" required/> <br />
     <label for="osk_nr">Numer ośrodka: </label>
@@ -9,7 +9,7 @@
     <label for="osk_adr">Adres: </label>
     <input name="osk_adr" id="osk_adr" type="text" required/> <br />
     <label for="osk_miasto">Miasto: </label>
-    <input name="osk_miasto" id="osk_miasto" type="text" required/>
+    <input name="osk_miasto" id="osk_miasto" type="text" required/><br/>
     <label for="osk_kod">Kod: </label>
     <input name="osk_kod" id="osk_kod" type="text" required/> <br />
     <label for="osk_woj">Województwo: </label>

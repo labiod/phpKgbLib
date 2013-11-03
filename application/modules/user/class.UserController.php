@@ -10,7 +10,7 @@ class UserController extends BasicIndexController {
             if (isset($tab['submit'])) {
         	$query = new Table("users");
         	$query->join("roles", "users.role_id = roles.id_role");
-        	$query->where("email = '$0' or nr = '$0'")->andWhere("password = '$1'")->andWhere("active = 'Y'");
+        	$query->where("email = '$0'")->andWhere("password = '$1'")->andWhere("active = 'Y'");
         	$query->addParameter($tab["login"])->addParameter($tab["password"]);
         	$result = $query->fetch();
         	if($result->numRows() > 0 && $result->next()) {

@@ -44,14 +44,13 @@
                         <a href="/admin/osk/registerOsk"><li>dodaj ośrodek</li></a>                    
                     </ul>
                 </li>
-                <li><a>Dane kursu</a>
+                <li><a>Użytkownicy</a>
                     <ul class="tab_menu_lvl2">
-                        <li>grafik jazd</li>
-                        <li>dokup jazdy</li>
-                        <li>historia jazd</li>
-                        <li>trasy egzaminacyjne</li>
-                        <li>pytania egzaminacyjne</li>
-                        <li>ranking instruktorów</li>
+                        <a href="/admin/user"><li>użytkownicy</li></a>
+                        <a href="/admin/user/index/role/kursant"><li>kursanci</li></a>
+                        <a href="/admin/user/index/role/instruktor"><li>instruktorzy</li></a>
+                        <a href="/admin/user/index/role/osk"><li>lista pracowników osk</li></a>
+                        <a href="/admin/user/index/role/admin"><li>administratorzy</li></a>
                     </ul>
                 </li>
                 <li><a>Profil</a>

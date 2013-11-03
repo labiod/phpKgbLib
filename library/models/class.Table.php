@@ -182,7 +182,7 @@ class Table {
 		if ($this->having != "")
 			$sql .= " HAVING " . $this->having;
 		if ($this->order != "")
-			$sql .= " ORDER BY " . $orderBy;
+			$sql .= " ORDER BY " . $this->order;
 		return $this->conn->query ( $sql );
 	}
 	
