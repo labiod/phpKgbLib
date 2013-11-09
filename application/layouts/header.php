@@ -9,14 +9,13 @@
 <meta name="verify-v1"
 	content="7/ZGLd5IaiD47BhTo/P8KbkLEsNYDtNk0Aezk5lmeRI=" />
 <title>
-    <?php
-				
-				if (isset ( $this->title )) {
-					echo $this->title;
-				} else {
-					echo "Lpunkt.pl - strona w budowie";
-				}
-				?>	
+<?php			
+if (isset ( $this->title )) {
+        echo $this->title;
+} else {
+        echo "Lpunkt.pl - strona w budowie";
+}
+?>	
     </title>
 <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
 <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
@@ -33,7 +32,7 @@
     <div id="main">
         <div id="header">
             <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
-            <div id="log_info" class="shadow">Nie jesteś zalogowany - <a href="/user/login">Zaloguj się</a> <a href="/user/register">Zarejestruj się</a></div>
+            <div id="log_info" class="shadow">Nie jesteś zalogowany - <a href="/user/login">Zaloguj się</a> <a href="/register">Zarejestruj się</a></div>
             <div id="logo_osk">OSK<br/>logo o rozm. max: 400 x 100 px</div>
         </div>
         <div id="content">
