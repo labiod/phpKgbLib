@@ -1,0 +1,1 @@
+<h1>Nie masz dostępu do tej częsci witryny</h1>
