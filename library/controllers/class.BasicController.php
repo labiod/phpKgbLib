@@ -58,7 +58,7 @@ abstract class BasicController {
 			$this->_view->message = $message;
 		}
 		if(!$this->checkPrivilage()) {
-			$this->_action = "accessDenied";
+			$action = "accessDenied";
 			$this->setView("/layouts/accessDennied.php");
 		}
 		
@@ -67,6 +67,7 @@ abstract class BasicController {
 		
 		$fun = $action . "Action";
 		$this->$fun ();
+		$this->_action = $action;
 		$this->showView ();
 	}
 	protected function showView() {

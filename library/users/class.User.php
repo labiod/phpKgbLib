@@ -67,8 +67,8 @@ class User extends SerializeModel {
 	 * @return boolean
 	 */
 	public function checkPrivilage($module, $action) {
-//            print_r($this->getRoleName());
-//            print_r($this->privilage);die();
+//           print_r($this->getRoleName());
+//           print_r($this->privilage);die();
 		if ($this->role_name == "admin")
 			return true;
 		if ($this->privilage->length() == 0) {
@@ -101,7 +101,7 @@ class User extends SerializeModel {
 		return $query;
 	}
 	public function fetchData($data) {
-                $this->user_id = $data["user_id"];
+        $this->user_id = $data["id_user"];
 		$this->email = $data ["email"];
 		$this->nr = $data ["nr"];
 		$this->role_id = $data ["role_id"];

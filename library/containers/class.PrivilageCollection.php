@@ -18,7 +18,13 @@ class PrivilageCollection extends Collection {
 	 * @param string $key
 	 */
 	public function addPriv(Privilage $priv, $key) {
-		$this->addItem($priv, $key);
+		if($this->contains($key)) {
+			$tmp = $this->getPriv($key);
+			$tmp->merge($priv);
+		} else {
+			$this->addItem($priv, $key);
+		}
+		
 	}
 	
 	/**

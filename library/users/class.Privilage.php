@@ -11,6 +11,14 @@ class Privilage {
 		return in_array($action, $this->actions);
 	}
 	
+	public function merge(Privilage $priv) {
+		if($this->module_name != $priv->module_name)
+			return false;
+		$newActions = array_merge($this->actions, $priv->actions);
+		$this->actions = $newActions;
+		return true;
+	}
+	
 	public function __toString() {
 		return $this->module_name.": \n[".implode(", ", $this->actions)."]";
 	}
