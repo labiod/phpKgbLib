@@ -18,6 +18,8 @@ class User extends SerializeModel {
 	private $nr = "";
 	private $role_id;
 	private $role_name;
+        private $oskId;
+        private $user_id;
 	private static $_instance = null;
 	protected function __construct($id) {
 		if ($id == 0) {
@@ -65,11 +67,12 @@ class User extends SerializeModel {
 	 * @return boolean
 	 */
 	public function checkPrivilage($module, $action) {
-		
+//            print_r($this->getRoleName());
+//            print_r($this->privilage);die();
 		if ($this->role_name == "admin")
 			return true;
 		if ($this->privilage->length() == 0) {
-			$this->loadPrivilage ( $this->role_id );
+			$this->loadPrivilage ();
 		}
 		if ($this->privilage->contains ( $module )) {
 			return $this->privilage->getPriv ( $module )->checkAction ( $action );
@@ -78,6 +81,7 @@ class User extends SerializeModel {
 	}
 	public function __sleep() {
 		$array = parent::__sleep ();
+                array_push ( $array, 'user_id' );
 		array_push ( $array, 'privilage' );
 		array_push ( $array, 'email' );
 		array_push ( $array, 'role_name' );
@@ -97,16 +101,17 @@ class User extends SerializeModel {
 		return $query;
 	}
 	public function fetchData($data) {
+                $this->user_id = $data["user_id"];
 		$this->email = $data ["email"];
 		$this->nr = $data ["nr"];
 		$this->role_id = $data ["role_id"];
 		$this->role_name = $data ["role_name"];
-		$this->loadPrivilage ( $data ["role_id"] );
+		$this->loadPrivilage ();
 	}
-	public function loadPrivilage($id_role) {
+        public function loadPrivilage() {
 		$query = new Table ( "roles_priv" );
 		$query->join("roles", "roles.id_role = roles_priv.id_role");
-		$result = $query->fetchAll ( "roles.id_role = " . $id_role." OR role_name = 'guest'" );
+		$result = $query->fetchAll ( "roles.id_role = " . $this->role_id." OR role_name = 'guest'" );
 		while ( $result->next () ) {
 			$current = $result->current ();
 			$priv = new Privilage($current);
@@ -116,6 +121,9 @@ class User extends SerializeModel {
 	public function logout() {
 		$this->setToSave ( false );
 	}
+        public function getUserId() {
+            return $this->user_id;
+        }
         public function getEmail() {
             return $this->email;
         }
@@ -130,4 +138,8 @@ class User extends SerializeModel {
 	public function isAdmin() {
 		return $this->role_name == 'admin';
 	}
+        
+        public function getOskId() {
+            return $this->oskId;
+        }
 }

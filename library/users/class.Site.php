@@ -12,4 +12,8 @@ class Site extends SerializeModel {
 	public static function getSite() {
 		return self::$_instance;
 	}
+
+    public function fetchData($data) {
+        
+    }
 }

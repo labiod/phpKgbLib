@@ -14,9 +14,11 @@ class OskController extends BasicIndexController {
         $this->_auta = new Table("auta");
     }
     public function indexAction(){
-
+        
     }
-   
+    public function carsListAction(){
+        
+    }
   
     
 }
