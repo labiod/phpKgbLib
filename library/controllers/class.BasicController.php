@@ -9,6 +9,7 @@ abstract class BasicController {
 	protected $_session;
 	protected $_module;
 	protected $_url;
+	private $viewGeneret = true;
 	public function __construct(Request $request) {
 		$this->_request = $request;
 		$this->_session = HttpSession::getSession ();
@@ -58,6 +59,7 @@ abstract class BasicController {
 		}
 		if(!$this->checkPrivilage()) {
 			$this->_action = "accessDenied";
+			$this->setView("/layouts/accessDennied.php");
 		}
 		
 		$path = $this->getViewPath ();
@@ -68,7 +70,8 @@ abstract class BasicController {
 		$this->showView ();
 	}
 	protected function showView() {
-		$this->_view->show ();
+		if($this->viewGeneret)
+			$this->_view->show ();
 	}
 	public function getParametersMap() {
 		return $this->_request->getParametersMap ();
@@ -114,9 +117,6 @@ abstract class BasicController {
 	public function setHeader($string) {
 		header ( $string );
 	}
-	public function getAnnotation($className, $methodName, $tagName, $default = "general") {
-		return $default;
-	}
 	public function isUserLogged() {
 		$user = User::getLoggedUser ();
 		return $user->isLogged();
@@ -124,6 +124,14 @@ abstract class BasicController {
 	public function checkPrivilage() {
 		return User::getLoggedUser ()->checkPrivilage ( $this->_module, $this->_action );
 		
+	}
+	
+	/**
+	 * 
+	 * @param boolean $generet
+	 */
+	public function setViewGenerete($generet) {
+		$this->viewGeneret = $generate;
 	}
 	public abstract function getViewPath();
 }
