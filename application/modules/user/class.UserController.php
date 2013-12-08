@@ -43,7 +43,6 @@ class UserController extends BasicIndexController {
             $this->setMessage("Brak przypisanych OSK, skontaktuj się z administratorem.");
         } else {
             $this->_view->oskList = $result->getData();
-            print_r($this->_view->oskList); die();
         }
     }
 
