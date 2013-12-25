@@ -1,28 +1,30 @@
 <?php
 require_once 'library/controllers/class.BasicIndexController.php';
+
 class UserController extends BasicIndexController {
-	public function loginAction() {
-            if ($this->isUserLogged()) {
-                    $this->forward("./user/index");
-                    return;
-            }
-            $tab = $this->getParametersMap();
-            if (isset($tab['submit'])) {
-        	$query = new Table("users");
-        	$query->join("roles", "users.role_id = roles.id_role");
-        	$query->where("email = '$0'")->andWhere("password = '$1'")->andWhere("active = 'Y'");
-        	$query->addParameter($tab["login"])->addParameter($tab["password"]);
-        	$result = $query->fetch();
+
+    public function loginAction() {
+        if ($this->isUserLogged()) {
+            $this->forward("./user/index");
+            return;
+        }
+        $tab = $this->getParametersMap();
+        if (isset($tab['submit'])) {
+            $query = new Table("users");
+            $query->join("roles", "users.role_id = roles.id_role");
+            $query->where("email = '$0'")->andWhere("password = '$1'")->andWhere("active = 'Y'");
+            $query->addParameter($tab["login"])->addParameter($tab["password"]);
+            $result = $query->fetch();
             if ($result->numRows() > 0 && $result->next()) {
                 $row = $result->current();
                 User::createUser($row);
                 HttpSession::getSession()->setAttribute("user_id", $row["id_user"]);
-                $user = User::getLoggedUser ();	
+                $user = User::getLoggedUser();
                 $user->loadPrivilage();
-                if($user->isAdmin()) {
+                if ($user->isAdmin()) {
                     $this->forward("./index");
                     return;
-                }else{
+                } else {
                     $this->forward("./user/oskSite");
                     return;
                 }
@@ -33,16 +35,25 @@ class UserController extends BasicIndexController {
     }
 
     public function oskSiteAction() {
-        $user = User::getLoggedUser ();	
-        $query = new Table("osk_site");
-        $query->join("osk", "osk_site.osk_id = osk.id_osk");
-        $query->where("user_id = '$0'");
-        $query->addParameter($user->getUserId());
-        $result = $query->fetch();
-        if ($result->isNull()) {
-            $this->setMessage("Brak przypisanych OSK, skontaktuj się z administratorem.");
+        if (isset($tab['submit'])) {
+//            $user = User::getLoggedUser();
+//            $user->
+            HttpSession::getSession()->setAttribute("osk_id", $row["id_osk"]);
+            $this->setMessage("Poprawnie zalogowano do OSK");
+            $this->forward("./index");
+            return;
         } else {
-            $this->_view->oskList = $result->getData();
+            $user = User::getLoggedUser();
+            $query = new Table("osk_site");
+            $query->join("osk", "osk_site.osk_id = osk.id_osk");
+            $query->where("user_id = '$0'");
+            $query->addParameter($user->getUserId());
+            $result = $query->fetch();
+            if ($result->isNull()) {
+                $this->setMessage("Brak przypisanych OSK, skontaktuj się z administratorem.");
+            } else {
+                $this->_view->oskList = $result->getData();
+            }
         }
     }
 
