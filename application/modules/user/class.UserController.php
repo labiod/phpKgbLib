@@ -22,9 +22,11 @@ class UserController extends BasicIndexController {
                 $user = User::getLoggedUser();
                 $user->loadPrivilage();
                 if ($user->isAdmin()) {
+                    $user->forceSerialize();
                     $this->forward("./index");
                     return;
                 } else {
+                    $user->forceSerialize();
                     $this->forward("./user/oskSite");
                     return;
                 }
@@ -35,11 +37,16 @@ class UserController extends BasicIndexController {
     }
 
     public function oskSiteAction() {
+        $tab = $this->getParametersMap();
         if (isset($tab['submit'])) {
-//            $user = User::getLoggedUser();
-//            $user->
-            HttpSession::getSession()->setAttribute("osk_id", $row["id_osk"]);
-            $this->setMessage("Poprawnie zalogowano do OSK");
+            HttpSession::getSession()->setAttribute("osk_id", $tab["osk_id"]);
+            $query = new Table("osk");
+            $query->find("id_osk = ".$tab["osk_id"]);
+            $result = $query->fetch()->getData();
+            $user = User::getLoggedUser();
+            $user->setOsk($tab["osk_id"],$result[0]["nazwa"]);
+            $this->setMessage("Poprawnie zalogowano do OSK ".$user->getOskId());
+            //$user->forceSerialize();
             $this->forward("./index");
             return;
         } else {
@@ -69,4 +76,13 @@ class UserController extends BasicIndexController {
         $this->forward("./index");
     }
 
+    public function profileAction() {
+        $user = User::getLoggedUser();
+        //print_r($user);die();
+        if($user->getRoleName() == "osk"){
+            $this->forward("/osk/profile");
+            die();
+        }
+    }
+    
 }

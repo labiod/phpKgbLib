@@ -14,6 +14,7 @@ abstract class SerializeModel extends Model {
 				'toSave' 
 		);
 	}
+    
 	public function __destruct() {
 		if ($this->toSave) {
 			$sobj = serialize ( $this );
@@ -30,4 +31,15 @@ abstract class SerializeModel extends Model {
 	protected function setToSave($save) {
 		$this->toSave = $save;
 	}
+        
+                
+        public function forceSerialize() {
+            $sobj = serialize ( $this );
+            echo $this->serialize_name; die();
+            HttpSession::getSession ()->setAttribute ( $this->serialize_name, $sobj );
+        }
+        
+        public function setSerializeName($serializeName) {
+            $this->serialize_name = $serializeName;
+        }
 }

@@ -2,14 +2,13 @@
 abstract class Model {
 	protected $table_name = "";
 	protected $id = 0;
-	private $serialize_name;
 	protected function __construct($table_name, $id) {
 		$this->table_name = $table_name;
 		$this->id = $id;
 		$this->fetch ();
 	}
 	public function getId() {
-		return $id;
+		return $this->id;
 	}
 	public function __toString() {
 		return "table_name = " . $this->table_name . ", id = " . $this->id;

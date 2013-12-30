@@ -1,0 +1,1 @@
+gdy nie ma folderu cache - trzeba go utworzyc recznie. Zautomatyzowac!!

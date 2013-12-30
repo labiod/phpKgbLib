@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml">  
 <head> 
-    <?php
+    <?php $user = User::getLoggedUser();
 // Application::loadComponent("MetaTags");
     ?> 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -27,7 +27,8 @@
         <div id="header">
             <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
             <div id="log_info" class="shadow">Jesteś zalogowany jako: 
-                <a href="#"><?php echo User::getLoggedUser()->getEmail(); ?></a> 
+                <a href="/user/profile"><?php echo $user->getEmail(); ?></a> 
+                OSK: <a href="/user/oskSite"><?php echo $user->getOskName(); ?></a>
                 <a href="/user/logout" id="logout">Wyloguj</a></div>
             <div id="logo_osk">OSK<br/>logo o rozm. max: 400 x 100 px</div>
         </div>
@@ -36,7 +37,7 @@
           <ul id="main_tab_menu">
                 <li><a>Strefa kursanta</a>
                     <ul class="tab_menu_lvl2">
-                        <a href="../grafik/kursant"><li>grafik jazd</li></a>
+                        <a href="/user/profile"><li>grafik jazd</li></a>
                         <li>dokup jazdy</li>
                         <li>historia jazd</li>
                         <li>trasy egzaminacyjne</li>
@@ -56,7 +57,7 @@
                 </li>
                 <li><a>Profil</a>
                      <ul class="tab_menu_lvl2">
-                        <li>pokaż profil</li>
+                         <a href="../grafik/kursant"><li>pokaż profil</li></a>
                         <li>edytuj profil</li>
                         <li>historia wpłat</li>
                     </ul>   

@@ -1,7 +1,7 @@
 <?php include ("layouts/aheader.php"); 	$osk = $this->osk;?>
 <h2 id="title">OSK info: <?php echo $osk["nazwa"];?></h2>  <div class="clear"></div> 
 <?php AlertMessage::showMessage($this->msg); ?>
-<a href="osk" class="back_link">Powrót do listy OSK</a>
+<a href="/admin/osk" class="back_link">Powrót do listy OSK</a>
 <form id="osk_info" action="<?php echo $this->action_link; ?>" method="post">
     <input type="hidden" value="<?php echo $osk["id_osk"];?>" name="id" />
     <div><label>Nazwa: </label><input type="text" value="<?php echo $osk["nazwa"];?>" name="nazwa" required /></div>

@@ -18,7 +18,8 @@ class User extends SerializeModel {
 	private $nr = "";
 	private $role_id;
 	private $role_name;
-        private $oskId;
+        private $osk_id;
+        private $osk_name;
         private $user_id;
 	private static $_instance = null;
 	protected function __construct($id) {
@@ -27,7 +28,7 @@ class User extends SerializeModel {
 			$this->role_name = 'guest';
 		}
 		$this->privilage = new PrivilageCollection();
-		parent::__construct ( "users", $id );
+		parent::__construct ( "users", $this->getId() );
 	}
 	
 	/**
@@ -44,10 +45,10 @@ class User extends SerializeModel {
 			$sObj = $session->getAttribute ( $user_key, null );
 			if ($sObj == null) {
 				HttpSession::getSession ()->clearAttribute ( "user_id" );
-				return null;
+				return new User( 0 );
 			}
-			$sObj = unserialize ( $session->getAttribute ( $user_key ) );
-			self::$_instance = $sObj;
+			$unObj = unserialize ( $sObj );
+			self::$_instance = $unObj;
 			return self::$_instance;
 		} else {
 			return new User( 0 );
@@ -84,8 +85,15 @@ class User extends SerializeModel {
 		array_push ( $array, 'email' );
 		array_push ( $array, 'role_name' );
 		array_push ( $array, 'role_id' );
+                array_push ( $array, 'osk_id' );
+                array_push ( $array, 'osk_name' );
 		return $array;
 	}
+        public function __wakeup()
+        {
+            $this->setSerializeName( "users:" . $this->getId());   
+        }
+        
 	public function __toString() {
 		$parent = parent::__toString ();
 		$parent .= ", user_name = " . $this->user_name;
@@ -99,9 +107,8 @@ class User extends SerializeModel {
 		return $query;
 	}
 	public function fetchData($data) {
-        $this->user_id = $data["id_user"];
+                $this->user_id = $data["id_user"];
 		$this->email = $data ["email"];
-		$this->nr = $data ["nr"];
 		$this->role_id = $data ["role_id"];
 		$this->role_name = $data ["role_name"];
 		$this->loadPrivilage ();
@@ -138,6 +145,13 @@ class User extends SerializeModel {
 	}
         
         public function getOskId() {
-            return $this->oskId;
+            return $this->osk_id;
+        }
+        public function getOskName() {
+            return $this->osk_name;
+        }
+        public function setOsk($id,$name) {
+            $this->osk_id = $id;
+            $this->osk_name = $name;
         }
 }

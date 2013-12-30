@@ -1,4 +1,4 @@
-<?php include ("layouts/header.php"); 	?>
+<?php include ("layouts/uheader.php"); 	?>
 <h2 id="title">Logowanie</h2>
 <div class="clear"></div>
 <?php AlertMessage::showMessage($this->msg); ?>

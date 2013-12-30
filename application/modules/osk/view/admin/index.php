@@ -12,9 +12,9 @@
         <td><?php echo $osk["wojewodztwo"];?></td>
         <td><?php echo $osk["active"];?></td>
         <td>
-            <a href="osk/details/id/<?php echo $osk["id_osk"];?>">podgląd</a> |
-            <a href="osk/edit/id/<?php echo $osk["id_osk"];?>">edytuj</a> |
-            <a href="osk/delete/id/<?php echo $osk["id_osk"];?>" class="potwierdz">usuń</a>
+            <a href="/admin/osk/details/id/<?php echo $osk["id_osk"];?>">podgląd</a> |
+            <a href="/admin/osk/edit/id/<?php echo $osk["id_osk"];?>">edytuj</a> |
+            <a href="/admin/osk/delete/id/<?php echo $osk["id_osk"];?>" class="potwierdz">usuń</a>
         </td>
     </tr>
  <?php } }else{?>

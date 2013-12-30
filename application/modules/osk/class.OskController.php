@@ -16,8 +16,11 @@ class OskController extends BasicIndexController {
     public function indexAction(){
         
     }
-    public function carsListAction(){
+    public function detailsAction(){
         
+    }
+    public function autaAction(){
+        $this->_view->caption = "Samochody";
     }
   
     
