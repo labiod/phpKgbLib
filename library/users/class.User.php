@@ -28,7 +28,7 @@ class User extends SerializeModel {
 			$this->role_name = 'guest';
 		}
 		$this->privilage = new PrivilageCollection();
-		parent::__construct ( "users", $this->getId() );
+		parent::__construct ( "users", $id );
 	}
 	
 	/**

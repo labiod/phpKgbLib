@@ -35,7 +35,6 @@ abstract class SerializeModel extends Model {
                 
         public function forceSerialize() {
             $sobj = serialize ( $this );
-            echo $this->serialize_name; die();
             HttpSession::getSession ()->setAttribute ( $this->serialize_name, $sobj );
         }
         

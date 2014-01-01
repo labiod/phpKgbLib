@@ -46,7 +46,7 @@ class UserController extends BasicIndexController {
             $user = User::getLoggedUser();
             $user->setOsk($tab["osk_id"],$result[0]["nazwa"]);
             $this->setMessage("Poprawnie zalogowano do OSK ".$user->getOskId());
-            //$user->forceSerialize();
+            $user->forceSerialize();
             $this->forward("./index");
             return;
         } else {
