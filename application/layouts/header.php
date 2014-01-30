@@ -32,8 +32,6 @@ if (isset ( $this->title )) {
     <div id="main">
         <div id="header">
             <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
-            <div id="log_info" class="shadow">Nie jesteś zalogowany - <a href="/user/login">Zaloguj się</a> <a href="/register">Zarejestruj się</a></div>
-            <div id="logo_osk">OSK<br/>logo o rozm. max: 400 x 100 px</div>
         </div>
         <div id="content">
         

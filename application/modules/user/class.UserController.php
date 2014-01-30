@@ -45,7 +45,7 @@ class UserController extends BasicIndexController {
             $result = $query->fetch()->getData();
             $user = User::getLoggedUser();
             $user->setOsk($tab["osk_id"],$result[0]["nazwa"]);
-            $this->setMessage("Poprawnie zalogowano do OSK ".$user->getOskId());
+            $this->setMessage("Poprawnie zalogowano do OSK ".$user->getOskName());
             $user->forceSerialize();
             $this->forward("./index");
             return;
@@ -78,7 +78,6 @@ class UserController extends BasicIndexController {
 
     public function profileAction() {
         $user = User::getLoggedUser();
-        //print_r($user);die();
         if($user->getRoleName() == "osk"){
             $this->forward("/osk/profile");
             die();
