@@ -1,5 +1,5 @@
 <?php include ("layouts/uheader.php"); 	?>
-<h2 id="title">Logowanie</h2>
+<h2 id="title" class="blue_button_big">Logowanie</h2>
 <div class="clear"></div>
 <?php AlertMessage::showMessage($this->msg); ?>
 <form id="login_form" action="/user/oskSite" method="post">
