@@ -31,17 +31,17 @@ $(document).ready(function(){
     var nr = 1;
     changeStep = function(){
         switch(nr){
-            case 1:
+            case "1":
                 $("#dalej").show();
                 $("#wstecz").hide();
                 $("#submit").hide();
                 break;
-             case 2:
+             case "2":
                 $("#dalej").show();
                 $("#wstecz").show();
                 $("#submit").hide();
                 break;  
-             case 3:
+             case "3":
                 $("#dalej").hide();
                 $("#wstecz").show();
                 $("#submit").show();
