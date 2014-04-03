@@ -137,7 +137,7 @@ h3#message {
 fieldset {
     position: relative;
     border: 1px solid #A3A3A3;
-    margin: 10px 20px;
+    margin: 30px 20px 10px;
 }
 fieldset legend {
     display: block;
@@ -153,6 +153,9 @@ fieldset legend {
 #register_form {
     margin-left: 30px;
 }
+#register_form > div{
+    clear: left;
+}
 #register_form label {
     display: inline-block;
     width: 100px;
@@ -160,7 +163,7 @@ fieldset legend {
     font-size: 1.2em;
     margin: 3px;
 }
-#register_form #submit{
+#register_form #submit, #register_form #dalej, #register_form #wstecz{
     position: absolute;
     right: 20px;
     bottom: -20px;
@@ -168,6 +171,15 @@ fieldset legend {
     font-size: 1.3em;
     font-weight: bold;
     letter-spacing: 1px;
+}
+#register_form #wstecz{
+    right: 150px;
+}
+#register_form legend{
+    float: left;
+    position: relative;
+    top: -25px;
+    margin-right: 10px;
 }
 /*******nagłówek podstrony po prawej*********/
 #title {

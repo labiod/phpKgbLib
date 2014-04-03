@@ -37,7 +37,7 @@
           <ul id="main_tab_menu">
                 <li><a>Strefa kursanta</a>
                     <ul class="tab_menu_lvl2">
-                        <a href="/user/profile"><li>grafik jazd</li></a>
+                        <a href="../grafik/kursant"><li>grafik jazd</li></a>
                         <li>dokup jazdy</li>
                         <li>historia jazd</li>
                         <li>trasy egzaminacyjne</li>
@@ -57,7 +57,7 @@
                 </li>
                 <li><a>Profil</a>
                      <ul class="tab_menu_lvl2">
-                         <a href="../grafik/kursant"><li>pokaż profil</li></a>
+                         <a href="/user/profile"><li>pokaż profil</li></a>
                         <li>edytuj profil</li>
                         <li>historia wpłat</li>
                     </ul>   

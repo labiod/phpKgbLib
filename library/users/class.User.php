@@ -70,10 +70,8 @@ class User extends SerializeModel {
 	public function checkPrivilage($module, $action) {
 		if ($this->role_name == "admin")
 			return true;
-		if ($this->privilage->length() == 0) {
-			$this->loadPrivilage ();
-		}
-		if ($this->privilage->contains ( $module )) {
+                $this->loadPrivilage ();
+                if ($this->privilage->contains ( $module )) {
 			return $this->privilage->getPriv ( $module )->checkAction ( $action );
 		}
 		return false;
@@ -81,7 +79,6 @@ class User extends SerializeModel {
 	public function __sleep() {
 		$array = parent::__sleep ();
                 array_push ( $array, 'user_id' );
-		array_push ( $array, 'privilage' );
 		array_push ( $array, 'email' );
 		array_push ( $array, 'role_name' );
 		array_push ( $array, 'role_id' );
@@ -120,8 +117,11 @@ class User extends SerializeModel {
 		while ( $result->next () ) {
 			$current = $result->current ();
 			$priv = new Privilage($current);
-			$this->privilage->addPriv($priv, $current["module"]);
+                        if(!isset($this->privilage))
+                            $this->privilage = new PrivilageCollection();
+			$this->privilage->addPriv($priv, $current["module"]);                  
 		}
+         //       print_r($this->privilage); die();
 	}
 	public function logout() {
 		$this->setToSave ( false );

@@ -10,14 +10,18 @@ require_once 'library/controllers/class.BasicIndexController.php';
 	
 	function indexAction() {
             if($this->isUserLogged()){
-                if(User::getLoggedUser()->getRoleName() == "admin"){
-                    $this->_view->header = "aheader.php";
-                } else {
-                    $this->_view->header = "uheader.php";
-                }
+//                if(User::getLoggedUser()->getRoleName() == "admin"){
+//                   // $this->_view->header = "aheader.php";
+//                } else {
+//                    
+//                }
+                $this->forward("./index/index_logged");
             }else{
                 $this->_view->header = "header.php";
             }
 	}
+        function index_loggedAction(){
+            
+        }
  	
 }
