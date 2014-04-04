@@ -204,14 +204,20 @@ h3 {
 }
 /************ navi_info ****************/
 #navi_info {
-    height: 180px;
     background: #a8a8a8;
+    height: 180px;
+    position: relative;
+}
+#navigation {
+    width: 670px;
 }
 
 #informator {
     background: #dfdfdf;
-    float: right;
-    clear: right;
+    position: absolute;
+    right: 0;
+    top: -35px;
+    width: 300px;
     margin: 5px;
     padding: 3px 8px;
     line-height: 1em;
@@ -254,12 +260,28 @@ h3 {
     margin: 0;
     padding: 0;
 }
-
+/*********************** search form **********************/
 #search_form {
-    position: relative;
+    position: absolute;
     top: -30px;
-    right: 0;
-    float: right;
+    left: 180px;
+}
+#search_btn {
+    background: #759fd6; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3NTlmZDYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAzM2VkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-radial-gradient(center, ellipse cover,  #759fd6 0%, #0033ed 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#759fd6), color-stop(100%,#0033ed)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #759fd6 0%,#0033ed 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #759fd6 0%,#0033ed 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #759fd6 0%,#0033ed 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #759fd6 0%,#0033ed 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#759fd6', endColorstr='#0033ed',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+    border: #020BD6;
+    padding: 2px 10px;
+}
+#search_input {
+    width: 450px;
 }
 /******** inner left menu ************/
 ul#inner_left_menu {
@@ -286,62 +308,50 @@ ul#inner_left_menu li button{
 /*********** main tab menu ***************/
 ul#main_tab_menu {
     list-style: none;
-    float: left;
-    position: relative;
-    top: -38px;
-    left: -2px;
     margin: 0;
     padding: 0;
-    font-size: 0.9em;
+    font-size: 1.51em;
     font-weight: 800;
     font-variant: small-caps;
     letter-spacing: 0.02em;
     line-height: 0.9em;
+    border: 2px solid #878787;
+    background: #e6e6e6; 
+    height: 30px;
 }
 
 ul#main_tab_menu>li {
     display: block;
-    width: 120px;
-    height: 30px;
     padding: 2px;
+    margin-right: 10px;
     float: left;
-    background: #e6e6e6;
-    border: 2px solid #878787;
-    border-radius: 5px 5px 0 0;
-    position: relative;
     z-index: 20;
 }
 
 ul#main_tab_menu>li a {
-    width: 80px;
     padding: 0;
     margin: 0;
     display: block;
-}
-
-ul#main_tab_menu li.selected {
-    border-bottom-color: #e6e6e6;
+    color: #fca111;
+    text-shadow: 1px 1px 2px #3B2401;
 }
 
 ul#main_tab_menu li ul {
     display: none;
-    width: 150px;
     z-index: 10;
-    position: relative;
-    top: 10px;
-    left: -4px;
+    position: absolute;
+    top: 30px;
+    left: 0px;
     margin: 0;
-    padding: 0;
-    background: #e6e6e6;
-    border: 2px solid #878787;
-    border-width: 0 2px 2px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    padding: 5px;    
     line-height: 1.2em;
     list-style: none;
     font-size: 0.8em;
     font-weight: 700;
     font-variant: normal;
+}
+ul#main_tab_menu li ul a{
+    text-decoration: none;
 }
 
 ul#main_tab_menu li.selected ul {

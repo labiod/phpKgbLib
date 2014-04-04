@@ -34,56 +34,57 @@
         </div>
         <div id="content">
             <div id="navi_info">
-          <ul id="main_tab_menu">
-                <li><a>Strefa kursanta</a>
-                    <ul class="tab_menu_lvl2">
-                        <a href="../grafik/kursant"><li>grafik jazd</li></a>
-                        <li>dokup jazdy</li>
-                        <li>historia jazd</li>
-                        <li>trasy egzaminacyjne</li>
-                        <li>pytania egzaminacyjne</li>
-                        <li>ranking instruktorów</li>
-                    </ul>
-                </li>
-                <li><a>Dane kursu</a>
-                    <ul class="tab_menu_lvl2">
-                        <li>grafik jazd</li>
-                        <li>dokup jazdy</li>
-                        <li>historia jazd</li>
-                        <li>trasy egzaminacyjne</li>
-                        <li>pytania egzaminacyjne</li>
-                        <li>ranking instruktorów</li>
-                    </ul>
-                </li>
-                <li><a>Profil</a>
-                     <ul class="tab_menu_lvl2">
-                         <a href="/user/profile"><li>pokaż profil</li></a>
-                        <li>edytuj profil</li>
-                        <li>historia wpłat</li>
-                    </ul>   
-                </li>
-            </ul>
-
-<form action="/" method="post" id="search_form">
-    <input type="text" id="search_input" />
-    <input type="submit" id="search_btn" value="?"/>
-</form>
-          <div id="informator" class="shadow">
-              <h3>Informator</h3>       
-              <button id="grafik">*</button>
-              <button id="poczta">*</button>
-              <button id="ocen">*</button>
-              <p>
-                  data: 22 lipca 2013<br/>
-                  kurs kategorii B<br/>
-                  termin jazd: 25 lipca 2013<br/>
-                  data: 22 lipca 2013<br/>
-                  kurs kategorii B<br/>
-                  ilość wyjeżdżonych godz: 18<br/>
-                  ilość zaznaczonych godz: 2<br/>
-              </p>
-          </div>
-          </div>
+                <div id="navigation">
+                <form action="/" method="post" id="search_form">
+                    <input type="text" id="search_input" />
+                    <input type="submit" id="search_btn" value=""/>
+                </form> 
+                <ul id="main_tab_menu">
+                    <li class="selected"><a>Strefa kursanta</a>
+                        <ul class="tab_menu_lvl2">
+                            <a href="../grafik/kursant"><li>grafik jazd</li></a>
+                            <li>dokup jazdy</li>
+                            <li>historia jazd</li>
+                            <li>trasy egzaminacyjne</li>
+                            <li>pytania egzaminacyjne</li>
+                            <li>ranking instruktorów</li>
+                        </ul>
+                    </li>
+                    <li><a>Dane kursu</a>
+                        <ul class="tab_menu_lvl2">
+                            <li>dane kursu</li>
+                            <li>dane kursu 2</li>
+                            <li>dane kursu 3</li>
+                        </ul>
+                    </li>
+                    <li><a>Profil</a>
+                        <ul class="tab_menu_lvl2">
+                            <a href="/user/profile"><li>pokaż profil</li></a>
+                            <li>edytuj profil</li>
+                            <li>historia wpłat</li>
+                        </ul>   
+                    </li>
+                </ul>
+                
+            </div>
+           
+            <div id="informator" class="shadow">
+                <h3>Informator</h3>       
+                <button id="grafik">*</button>
+                <button id="poczta">*</button>
+                <button id="ocen">*</button>
+                <p>
+                    data: 22 lipca 2013<br/>
+                    kurs kategorii B<br/>
+                    termin jazd: 25 lipca 2013<br/>
+                    data: 22 lipca 2013<br/>
+            kurs kategorii B<br/>
+            ilość wyjeżdżonych godz: 18<br/>
+            ilość zaznaczonych godz: 2<br/>
+        </p>
+    </div>
+                 </div>
+            <div class="clear"></div>
 <?php 
 if(isset($this->message)) {
         echo "<h3 id=\"message\" >".$this->message."</h3>";
