@@ -39,3 +39,8 @@ NULL, '2', '4'
 ), (
 NULL , '2', '5'
 );
+
+INSERT INTO `lpunkt`.`roles_priv` (`id_privilage`, `id_role`, `module`, `action_name`) VALUES 
+(NULL, '1', 'grafik', 'kursant'),
+(NULL, '2', 'grafik', 'kursant'),
+(NULL, '3', 'grafik', 'kursant');

@@ -3,7 +3,7 @@
  * 
  * Klasa połączenia z bazą danych
  * @author kb
- * @category Data Base Conection
+ * @category Data Base Connection
  * @package models
  * @version 0.0.1
  *
@@ -11,7 +11,7 @@
 class DBConnection {
 	/**
 	 *
-	 * @var array DBConection
+	 * @var array DBConnection
 	 */
 	private static $conns = array ();
 	private $_conn = null;
@@ -43,15 +43,17 @@ class DBConnection {
 	 *
 	 *
 	 *
-	 * Metoda zwraca obiekt klasy DBConection zapisany w tablicy pod podaną nazwą
+	 * Metoda zwraca obiekt klasy DBConnection zapisany w tablicy pod podaną nazwą
 	 * Jeśli w tablicy nie ma danego obiektu metoda zwraca null
 	 *
 	 * @param string $name        	
 	 * @return DBConnection
 	 */
 	public static function getConnection($name = 0) {
-		if (isset ( self::$conns [$name] ))
+		if (isset ( self::$conns [$name] )) {
+			self::$conns[$name]->selectDB(Settings::getParam ( "db", "dbname" ));
 			return self::$conns [$name];
+		}
 		else
 			return null;
 	}
@@ -78,7 +80,7 @@ class DBConnection {
 	 * @param string $dbname        	
 	 */
 	public function selectDB($dbname) {
-		mysql_select_db ( $dbname, $this->_conn );
+		$selected = mysql_select_db ( $dbname, $this->_conn );
 	}
 	/**
 	 *
@@ -89,7 +91,7 @@ class DBConnection {
 	 *
 	 * @param string $sql        	
 	 * @return DBResult
-	 * @example $conn = DBConection::getConnection();<br />
+	 * @example $conn = DBConnection::getConnection();<br />
 	 *          $result = $conn->query("SELECT * FROM users");<br />
 	 *          $data = $result->getData();
 	 */

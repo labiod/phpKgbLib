@@ -41,9 +41,12 @@ class Settings {
 			throw new FileNotFound ( "Nie znaleziono żądanego pliku: " . $path );
 		}
 	}
-	public static function getParam($namespace, $name) {
+	public static function getParam($namespace, $name, $default = null) {
 		if (count ( self::$_table ) == 0)
 			self::loadConfiguration ( self::$tmpPath );
-		return self::$_table [$namespace . "." . $name];
+		if(array_key_exists($namespace . "." . $name, self::$_table))
+			return self::$_table [$namespace . "." . $name];
+		else
+			return $default;
 	}
 }

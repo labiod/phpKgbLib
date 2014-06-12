@@ -22,11 +22,9 @@ class UserController extends BasicIndexController {
                 $user = User::getLoggedUser();
                 $user->loadPrivilage();
                 if ($user->isAdmin()) {
-                    $user->forceSerialize();
                     $this->forward("./index");
                     return;
                 } else {
-                    $user->forceSerialize();
                     $this->forward("./user/oskSite");
                     return;
                 }
@@ -45,6 +43,7 @@ class UserController extends BasicIndexController {
             $result = $query->fetch()->getData();
             $user = User::getLoggedUser();
             $user->setOsk($tab["osk_id"],$result[0]["nazwa"]);
+            HttpSession::getSession()->setAttribute("osk_name", $result[0]["nazwa"]);
             $this->setMessage("Poprawnie zalogowano do OSK ".$user->getOskName());
             //tu coś nie działa!!!
          //   $user->forceSerialize();

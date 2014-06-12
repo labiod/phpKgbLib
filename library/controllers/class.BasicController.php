@@ -57,9 +57,9 @@ abstract class BasicController {
 		if ($message = $this->getParam ( "message", "" ) != "") {
 			$this->_view->message = $message;
 		}
-		if(!$this->checkPrivilage()) {
+		if (! $this->checkPrivilage ()) {
 			$action = "accessDenied";
-			$this->setView("/layouts/accessDennied.php");
+			$this->setView ( "/layouts/accessDennied.php" );
 		}
 		
 		$path = $this->getViewPath ();
@@ -71,7 +71,7 @@ abstract class BasicController {
 		$this->showView ();
 	}
 	protected function showView() {
-		if($this->viewGeneret)
+		if ($this->viewGeneret)
 			$this->_view->show ();
 	}
 	public function getParametersMap() {
@@ -120,16 +120,19 @@ abstract class BasicController {
 	}
 	public function isUserLogged() {
 		$user = User::getLoggedUser ();
-		return $user->isLogged();
+		return $user->isLogged ();
 	}
 	public function checkPrivilage() {
-		return User::getLoggedUser ()->checkPrivilage ( $this->_module, $this->_action );
-		
+		if (Settings::getParam ( $this->_module, $this->_action ) != null) {
+			return Settings::getParam ( $this->_module, $this->_action );
+		} else {
+			return User::getLoggedUser ()->checkPrivilage ( $this->_module, $this->_action );
+		}
 	}
 	
 	/**
-	 * 
-	 * @param boolean $generet
+	 *
+	 * @param boolean $generet        	
 	 */
 	public function setViewGenerete($generet) {
 		$this->viewGeneret = $generate;

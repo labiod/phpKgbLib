@@ -8,7 +8,7 @@ require_once ("library/containers/class.PrivilageCollection.php");
  *        
  *        
  */
-class User extends SerializeModel {
+class User extends Model {
 	/**
 	 *
 	 * @var PrivilageCollection
@@ -18,17 +18,18 @@ class User extends SerializeModel {
 	private $nr = "";
 	private $role_id;
 	private $role_name;
-        private $osk_id;
-        private $osk_name;
-        private $user_id;
+	private $osk_id;
+	private $osk_name;
+	private $user_id;
 	private static $_instance = null;
 	protected function __construct($id) {
-		if ($id == 0) {
-			$this->role_id = 0;
-			$this->role_name = 'guest';
+		if($id == 0) {
+			$this->role_id = -1;
+			$this->role_name = "guest";
 		}
-		$this->privilage = new PrivilageCollection();
+		$this->privilage = new PrivilageCollection ();
 		parent::__construct ( "users", $id );
+		$this->fetch ();
 	}
 	
 	/**
@@ -41,23 +42,20 @@ class User extends SerializeModel {
 		$session = HttpSession::getSession ();
 		$user_id = $session->getAttribute ( "user_id" );
 		if ($user_id != 0) {
-			$user_key = "users:" . $user_id;
-			$sObj = $session->getAttribute ( $user_key, null );
-			if ($sObj == null) {
-				HttpSession::getSession ()->clearAttribute ( "user_id" );
-				return new User( 0 );
+			self::$_instance = new User ( $user_id );
+			$osk_id = $session->getAttribute("osk_id", -1);
+			$osk_name = $session->getAttribute("osk_name", "");
+			if($osk_id != -1) {
+				self::$_instance->setOsk($osk_id, $osk_name);
 			}
-			$unObj = unserialize ( $sObj );
-			self::$_instance = $unObj;
 			return self::$_instance;
 		} else {
-			return new User( 0 );
+			return new User ( 0 );
 		}
 	}
 	public static function createUser($row) {
 		$user = new User ( $row ["id_user"] );
 		$user->fetchData ( $row );
-		$user->setToSave ( true );
 		self::$_instance = $user;
 	}
 	
@@ -70,27 +68,12 @@ class User extends SerializeModel {
 	public function checkPrivilage($module, $action) {
 		if ($this->role_name == "admin")
 			return true;
-                $this->loadPrivilage ();
-                if ($this->privilage->contains ( $module )) {
+		$this->loadPrivilage ();
+		if ($this->privilage->contains ( $module )) {
 			return $this->privilage->getPriv ( $module )->checkAction ( $action );
 		}
 		return false;
 	}
-	public function __sleep() {
-		$array = parent::__sleep ();
-                array_push ( $array, 'user_id' );
-		array_push ( $array, 'email' );
-		array_push ( $array, 'role_name' );
-		array_push ( $array, 'role_id' );
-                array_push ( $array, 'osk_id' );
-                array_push ( $array, 'osk_name' );
-		return $array;
-	}
-        public function __wakeup()
-        {
-            $this->setSerializeName( "users:" . $this->getId());   
-        }
-        
 	public function __toString() {
 		$parent = parent::__toString ();
 		$parent .= ", user_name = " . $this->user_name;
@@ -104,54 +87,52 @@ class User extends SerializeModel {
 		return $query;
 	}
 	public function fetchData($data) {
-                $this->user_id = $data["id_user"];
+		$this->user_id = $data ["id_user"];
 		$this->email = $data ["email"];
 		$this->role_id = $data ["role_id"];
 		$this->role_name = $data ["role_name"];
 		$this->loadPrivilage ();
 	}
-        public function loadPrivilage() {
+	public function loadPrivilage() {
+		if($this->user_id == 0)
+			return;
 		$query = new Table ( "roles_priv" );
-		$query->join("roles", "roles.id_role = roles_priv.id_role");
-		$result = $query->fetchAll ( "roles.id_role = " . $this->role_id." OR role_name = 'guest'" );
+		$query->join ( "roles", "roles.id_role = roles_priv.id_role" );
+		$result = $query->fetchAll ( "roles.id_role = " . $this->role_id );
 		while ( $result->next () ) {
 			$current = $result->current ();
-			$priv = new Privilage($current);
-                        if(!isset($this->privilage))
-                            $this->privilage = new PrivilageCollection();
-			$this->privilage->addPriv($priv, $current["module"]);                  
+			$priv = new Privilage ( $current );
+			if (! isset ( $this->privilage ))
+				$this->privilage = new PrivilageCollection ();
+			$this->privilage->addPriv ( $priv, $current ["module"] );
 		}
-         //       print_r($this->privilage); die();
+		// print_r($this->privilage); die();
 	}
 	public function logout() {
-		$this->setToSave ( false );
 	}
-        public function getUserId() {
-            return $this->user_id;
-        }
-        public function getEmail() {
-            return $this->email;
-        }
-        public function getRoleName() {
-            return $this->role_name;
-        }
-	
+	public function getUserId() {
+		return $this->user_id;
+	}
+	public function getEmail() {
+		return $this->email;
+	}
+	public function getRoleName() {
+		return $this->role_name;
+	}
 	public function isLogged() {
-		return $this->role_name != 'guest';	
+		return $this->role_name != 'guest';
 	}
-	
 	public function isAdmin() {
 		return $this->role_name == 'admin';
 	}
-        
-        public function getOskId() {
-            return $this->osk_id;
-        }
-        public function getOskName() {
-            return $this->osk_name;
-        }
-        public function setOsk($id,$name) {
-            $this->osk_id = $id;
-            $this->osk_name = $name;
-        }
+	public function getOskId() {
+		return $this->osk_id;
+	}
+	public function getOskName() {
+		return $this->osk_name;
+	}
+	public function setOsk($id, $name) {
+		$this->osk_id = $id;
+		$this->osk_name = $name;
+	}
 }
