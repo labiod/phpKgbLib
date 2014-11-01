@@ -1,6 +1,7 @@
 <?php //print_r($this->dateLinks); die();?>
 <?php include ("layouts/uheader.php"); 	?>
-<h2 id="title">Grafik jazd</h2>
+<div id="grafik_content" >
+<h2 id="grafik_title">Grafik jazd</h2>
 <div class="clear"></div>
 <div id="dayPlan"></div>
 <?php $ldni = $this->dateInfo["ldni"]; $start = $this->dateInfo["mcstart"]; $max = $start + $ldni; $j=0; $i = 1; ?>
@@ -45,4 +46,5 @@ echo "</td>";
 				}
 				?>
 </table>
+</div>
 <?php include ("layouts/footer.php"); ?>

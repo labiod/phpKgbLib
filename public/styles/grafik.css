@@ -1,19 +1,46 @@
 /* 
     Document   : grafik
     Created on : 2013-08-14, 22:40:37
-    Author     : Gabus
+    Author     : Gabus, Krzysztof
     Description:
         Purpose of the stylesheet follows.
 */
+
 #monthViewTable {
-	
+	text-align: center;
+}
+
+#monthViewTable caption {
+	font-size: 2.5em;
+	text-align: center;
+	padding: 3px;
+}
+
+#monthViewTable th {
+	text-align: center;
+	font-size: 1.8em;
 }
 
 #monthViewTable td {
-	text-align: right;
-	padding: 1px;
+	text-align: center;
+}
+
+#monthViewTable td a {
+	display: block;
+	padding: 1.1em;
+	background: #eee;
+	font-size: 2em;
 }
 
 #dayPlan {
 	display: none;
+}
+
+#grafik_content {
+	margin-top: 5px;
+	text-align: center;
+}
+
+#grafik_title {
+	text-align: center;
 }
