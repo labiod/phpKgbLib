@@ -1,28 +1,15 @@
 <?php
 $tableHeader = <<<EOD
 <table>
-   <caption>{$tab[d]}-{$tab[m]}-{$tab[y]}</caption>
+   <caption>{$this->tab['d']}-{$this->tab['m']}-{$this->tab['y']}</caption>
 <tr><th>Godzina</th>
 EOD;
-?>
 
-
-
-
-
-
-
-
-<?php
 if ($this->isAjax) {
-	echo $tableHeader;
+    echo $tableHeader;
 } else {
 	include ("layouts/uheader.php");
-	?>
-
-
-<?php
-	
+    echo $tableHeader;
 	include ("layouts/footer.php");
 }
 ?>

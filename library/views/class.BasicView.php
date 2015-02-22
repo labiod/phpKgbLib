@@ -15,21 +15,28 @@ class BasicView extends View {
 		}
 		echo $styles;
 	}
-	public function show() {
-		if ($this->view != "") {
-			if ($this->layout == "")
-				include $this->view;
-			else {
-				include $this->layout;
-			}
-		}
-	}
+
+    public function draw() {
+        $this->onDraw();
+    }
+
+    protected function onDraw() {
+        if ($this->view != "") {
+            if ($this->layout == "")
+                include $this->view;
+            else {
+                include $this->layout;
+            }
+        }
+    }
+
 	public function showAction($type, $url, $text = "", $params = array()) {
 		if (count ( $params ) != 0)
 			$param = putAll ( $params );
 		else
 			$param = "";
-		return "<a " . $param . " href=\"" . $url . "\" ><img class='icon' alt=" . $text . " title=" . $text . " src='" . Settings::getParam ( "icon", $type ) . "' />" . $text . "</a> ";
+		return "<a " . $param . " href=\"" . $url . "\" ><img class='icon' alt=" . $text
+        . " title=" . $text . " src='" . Settings::getParam ( "icon", $type ) . "' />" . $text . "</a> ";
 	}
 	public function setView($path) {
 		$this->view = $path;

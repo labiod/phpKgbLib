@@ -22,6 +22,11 @@ class Table {
 	protected $having = "";
 	protected $order = "";
 	protected $params = array ();
+
+    /**
+     * @param String $table_name
+     * @param int $conn
+     */
 	public function __construct($table_name, $conn = 0) {
 		$this->table = $table_name;
 		$this->conn = DBConnection::getConnection ( $conn );
@@ -51,7 +56,7 @@ class Table {
 	 * @param string $having        	
 	 */
 	public function groupBy($cols, $having = "") {
-		$this->group = $text;
+		$this->group = $cols;
 		$this->having = $having;
 	}
 	

@@ -5,10 +5,28 @@ require_once 'http/class.Response.php';
 require_once 'http/class.HttpSession.php';
 require_once 'models/class.DBConnection.php';
 require_once 'models/class.Table.php';
-require_once 'utils/class.Settings.php';
+require_once 'class.Context.php';
 require_once 'users/class.User.php';
+
 class Application extends BasicApplication {
-	public function dispatch() {
+
+    /**
+     * @var Application
+     */
+    private static $_instance = null;
+
+    /**
+     * @return Application
+     */
+    public static function getInstance()
+    {
+        if(self::$_instance == null) {
+            self::$_instance = new Application();
+        }
+        return self::$_instance;
+    }
+
+    public function dispatch() {
 		$url = $this->url;
 		if ($url == "" || $url == "/") {
 			$url = "index";
@@ -58,7 +76,7 @@ class Application extends BasicApplication {
 			$request = new Request ( $tab );
 		else
 			$request = new Request ();
-		$this->_module = $module;
+        $this->_module = $module;
 		$tmp = $module;
 		$tmp [0] = strtoupper ( $tmp [0] );
 		$controller .= $tmp . "Controller";

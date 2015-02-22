@@ -21,6 +21,7 @@ class User extends Model {
 	private $osk_id;
 	private $osk_name;
 	private $user_id;
+    private $_userName;
 	private static $_instance = null;
 	protected function __construct($id) {
 		if($id == 0) {
@@ -29,7 +30,6 @@ class User extends Model {
 		}
 		$this->privilage = new PrivilageCollection ();
 		parent::__construct ( "users", $id );
-		$this->fetch ();
 	}
 	
 	/**
@@ -76,7 +76,7 @@ class User extends Model {
 	}
 	public function __toString() {
 		$parent = parent::__toString ();
-		$parent .= ", user_name = " . $this->user_name;
+		$parent .= ", user_name = " . $this->_userName;
 		$parent .= ", privilage = " . sizeof ( $this->privilage );
 		return $parent;
 	}
@@ -91,6 +91,7 @@ class User extends Model {
 		$this->email = $data ["email"];
 		$this->role_id = $data ["role_id"];
 		$this->role_name = $data ["role_name"];
+		$this->_userName = $data ["imie"] . " " . $data["nazwisko"];
 		$this->loadPrivilage ();
 	}
 	public function loadPrivilage() {
@@ -106,7 +107,6 @@ class User extends Model {
 				$this->privilage = new PrivilageCollection ();
 			$this->privilage->addPriv ( $priv, $current ["module"] );
 		}
-		// print_r($this->privilage); die();
 	}
 	public function logout() {
 	}
@@ -135,4 +135,8 @@ class User extends Model {
 		$this->osk_id = $id;
 		$this->osk_name = $name;
 	}
+
+    public function getUserName() {
+        return $this->_userName;
+    }
 }

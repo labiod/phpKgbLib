@@ -1,20 +1,30 @@
 <?php
 abstract class BasicApplication {
+    private static $TMP_PATH = "config.ini";
+
 	/**
 	 *
 	 * @var BasicController
 	 */
+
+
+    /**
+     * @var Context
+     */
+    private $_context;
 	protected $controller = null;
 	protected $_module = "";
 	protected $_request = null;
 	protected $_action = "";
 	protected $_session = null;
 	protected $url = "";
-	public function __construct() {
+	protected function __construct() {
+        $this->_context = new Context(BasicApplication::$TMP_PATH);
 		$this->_session = HttpSession::getSession ();
 		$url = substr ( $_SERVER ['REQUEST_URI'], 1 );
-		$conn = DBConnection::connection ( Settings::getParam ( "db", "host" ), Settings::getParam ( "db", "user" ), Settings::getParam ( "db", "password" ) );
-		$conn->selectDB ( Settings::getParam ( "db", "dbname" ) );
+		$conn = DBConnection::connection ( $this->_context->getParam ( "db", "host" ),
+            $this->_context->getParam ( "db", "user" ), $this->_context->getParam ( "db", "password" ) );
+		$conn->selectDB ( $this->_context->getParam ( "db", "dbname" ) );
 		$conn->setCharset ( "utf8" );
 		$this->url = $url;
 	}
@@ -41,4 +51,8 @@ abstract class BasicApplication {
 				return substr ( $val, 1 );
 		}
 	}
+
+    public function getContext() {
+        return $this->_context;
+    }
 }

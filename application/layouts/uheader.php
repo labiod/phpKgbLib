@@ -25,22 +25,28 @@
 <body>
     <div id="main">
         <div id="header">
-            <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
-            <div id="log_info" class="shadow">Jesteś zalogowany jako: 
-                <a href="/user/profile"><?php echo $user->getEmail(); ?></a> 
-                OSK: <a href="/user/oskSite"><?php echo $user->getOskName(); ?></a>
-                <a href="/user/logout" id="logout">Wyloguj</a></div>
-            <div id="logo_osk">OSK<br/>logo o rozm. max: 400 x 100 px</div>
+
+            <a href="/"><div id="logo" >&nbsp;</div></a>
         </div>
         <div id="content">
             <div id="navi_info">
-                <div id="navigation">
-                <form action="/" method="post" id="search_form">
-                    <input type="text" id="search_input" />
-                    <input type="submit" id="search_btn" value=""/>
-                </form> 
-                <ul id="main_tab_menu">
-                    <li class="selected"><a>Strefa kursanta</a>
+                <div  class="box_top">
+                    <h4>Zalogowany:</h4>
+                <dl>
+                    <dt>Konto:</dt>
+                    <dd><?php echo $user->getRoleName(); ?></dd>
+                    <dt>Imię:</dt>
+                    <dd><?php echo $user->getUserName(); ?></dd>
+                    <dt>Nazwisko:</dt>
+                    <dd><?php echo $user->getUserName(); ?></dd>
+                    <dt>E-mail:</dt>
+                    <dd><?php echo $user->getEmail(); ?></dd>
+                    <dt>PESEL:</dt>
+                    <dd><?php echo $user->getUserName(); ?></dd>
+                    <dt>OSK:</dt>
+                    <dd><?php echo $user->getOskName(); ?></dd>
+                </dl>
+                   <!-- <li><a></a>
                         <ul class="tab_menu_lvl2">
                             <a href="../grafik/kursant"><li>grafik jazd</li></a>
                             <li>dokup jazdy</li>
@@ -64,26 +70,35 @@
                             <li>historia wpłat</li>
                         </ul>   
                     </li>
-                </ul>
+                </ul>-->
                 
             </div>
-           
-            <div id="informator" class="shadow">
-                <h3>Informator</h3>       
-                <button id="grafik">*</button>
-                <button id="poczta">*</button>
-                <button id="ocen">*</button>
-                <p>
-                    data: 22 lipca 2013<br/>
-                    kurs kategorii B<br/>
-                    termin jazd: 25 lipca 2013<br/>
-                    data: 22 lipca 2013<br/>
-            kurs kategorii B<br/>
-            ilość wyjeżdżonych godz: 18<br/>
-            ilość zaznaczonych godz: 2<br/>
-        </p>
+           <div class="box_top">Miejsce na shoutbox</div>
+                <div  class="box_top">
+                <h4>Informator:</h4>
+                <dl>
+                    <dt>Kurs Kategoria:</dt>
+                    <dd><?php /*echo $user->getRoleName(); */?></dd>
+                    <dt>Wyjeżdżono godzin:</dt>
+                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
+                    <dt>Zaznaczono godzin:</dt>
+                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
+                    <dt>Pozostało godzin:</dt>
+                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
+                    <dt>Termin jazd:</dt>
+                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
+                    <dt>Egzamin wewnętrzny:</dt>
+                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
+                    <dt>Powiadomienia:</dt>
+                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
+                </dl>
+                    </div>
     </div>
-                 </div>
+
+            <div id="log_info" class="shadow">Jesteś zalogowany jako:
+                <a href="/user/profile"><?php /*echo $user->getEmail(); */?></a><br/>
+                OSK: <a href="/user/oskSite"><?php /*echo $user->getOskName(); */?></a>
+                <a href="/user/logout" id="logout">Wyloguj</a></div>
             <div class="clear"></div>
 <?php 
 if(isset($this->message)) {

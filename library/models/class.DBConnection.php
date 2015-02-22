@@ -9,10 +9,9 @@
  *
  */
 class DBConnection {
-	/**
-	 *
-	 * @var array DBConnection
-	 */
+    /**
+     * @var DBConnection[]
+     */
 	private static $conns = array ();
 	private $_conn = null;
 	/**
@@ -50,12 +49,13 @@ class DBConnection {
 	 * @return DBConnection
 	 */
 	public static function getConnection($name = 0) {
-		if (isset ( self::$conns [$name] )) {
-			self::$conns[$name]->selectDB(Settings::getParam ( "db", "dbname" ));
-			return self::$conns [$name];
-		}
-		else
-			return null;
+        $context = Application::getInstance()->getContext();
+		if (!isset ( self::$conns [$name] )) {
+            self::$conns[$name] = self::connection($context->getParam("db", "host"),
+                $context->getParam("db", "user"), $context->getParam("db", "password"));
+        }
+        self::$conns[$name]->selectDB($context->getParam( "db", "dbname" ));
+        return self::$conns [$name];
 	}
 	private function __construct($conn) {
 		$this->_conn = $conn;

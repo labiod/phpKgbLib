@@ -9,7 +9,8 @@ abstract class BasicController {
 	protected $_session;
 	protected $_module;
 	protected $_url;
-	private $viewGeneret = true;
+    private $_context;
+	private $viewGenerate = true;
 	public function __construct(Request $request) {
 		$this->_request = $request;
 		$this->_session = HttpSession::getSession ();
@@ -17,8 +18,8 @@ abstract class BasicController {
 			$this->_session->setAttribute ( "user_id", $this->getParam ( "user_id", 0 ) );
 			$this->_session->setAttribute ( "logged_user", true );
 		}
-		
-		$this->_view = new BasicView ();
+		$this->_context = Application::getInstance()->getContext();
+		$this->_view = new BasicView($this->_context);
 		$this->_response = new Response ();
 		$this->_view->redirect = $this->_url;
 		$this->initAll ();
@@ -71,8 +72,8 @@ abstract class BasicController {
 		$this->showView ();
 	}
 	protected function showView() {
-		if ($this->viewGeneret)
-			$this->_view->show ();
+		if ($this->viewGenerate)
+			$this->_view->draw();
 	}
 	public function getParametersMap() {
 		return $this->_request->getParametersMap ();
@@ -123,8 +124,9 @@ abstract class BasicController {
 		return $user->isLogged ();
 	}
 	public function checkPrivilage() {
-		if (Settings::getParam ( $this->_module, $this->_action ) != null) {
-			return Settings::getParam ( $this->_module, $this->_action );
+		$priv = $this->_context->getParam( $this->_module, $this->_action );
+        if ($priv != null) {
+			return $priv;
 		} else {
 			return User::getLoggedUser ()->checkPrivilage ( $this->_module, $this->_action );
 		}
@@ -132,10 +134,10 @@ abstract class BasicController {
 	
 	/**
 	 *
-	 * @param boolean $generet        	
+	 * @param boolean $generate
 	 */
-	public function setViewGenerete($generet) {
-		$this->viewGeneret = $generate;
+	public function setViewGenerete($generate) {
+		$this->viewGenerate = $generate;
 	}
 	public abstract function getViewPath();
 }

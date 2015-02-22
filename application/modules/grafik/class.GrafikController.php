@@ -34,13 +34,14 @@ class GrafikController extends BasicIndexController {
         $dateLinks['prevLink'] = $this->getLink(-1, $date["rok"], $date["mc"]);
         $dateLinks['nextLink'] = $this->getLink(+1, $date["rok"], $date["mc"]);
         $this->_view->dateLinks = $dateLinks;
+        $this->_view->userView = HttpSession::getSession()->getAttribute("user_name", "");
         $date["mcstart"] = new DateTime($date["rok"].'-'.$date["mc"].'-01');
         $date["ldni"] = date_format($date["mcstart"], 't');
         $date["mcstart"] = date_format($date["mcstart"], 'N');
         $date["mc"] = DateFormat::getMonth($date["mc"]);
         $this->_view->dateInfo = $date;
-       
     }
+
     public function podgladDniaAction(){    
         $tab = $this->getParametersMap();
         if(isset($tab["fullLoad"]) && $tab["fullLoad"] == true){
@@ -48,7 +49,7 @@ class GrafikController extends BasicIndexController {
         }else {
                 $this->_view->isAjax = true;
         }
-        $date = $tab['y'].'-'.$tab['m'].'-'.$tab['d']; //2013-09-28 14:26:07
+        $date = $tab["y"]."-".$tab["m"]."-".$tab["d"]; //2013-09-28 14:26:07
       //  $this->_settings->find('osk_id = OSK!!! AND name = working_hours' )  8-16
      //   $this->_view->workingHours[0]=
         $this->_view->tab = $tab;
