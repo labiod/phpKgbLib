@@ -25,26 +25,48 @@
 <body>
     <div id="main">
         <div id="header">
+<div id="menu_top">
+    <ul>
+        <li><a href="/">O Lpunkt</a></li>
+        <li class="selected_menu"><a href="/">Dla Kursanta</a></li>
+        <li><a href="/">Dla Instruktora</a></li>
+        <li><a href="/">Dla OSK</a></li>
+        <li><a href="/">Kontakt</a></li>
+        <li id="logout"><a href="/user/logout">Wyloguj</a></li>
+    </ul>
 
+</div>
             <a href="/"><div id="logo" >&nbsp;</div></a>
         </div>
         <div id="content">
-            <div id="navi_info">
+            <div id="info_boxes_top">
                 <div  class="box_top">
                     <h4>Zalogowany:</h4>
                 <dl>
-                    <dt>Konto:</dt>
-                    <dd><?php echo $user->getRoleName(); ?></dd>
-                    <dt>Imię:</dt>
-                    <dd><?php echo $user->getUserName(); ?></dd>
-                    <dt>Nazwisko:</dt>
-                    <dd><?php echo $user->getUserName(); ?></dd>
-                    <dt>E-mail:</dt>
-                    <dd><?php echo $user->getEmail(); ?></dd>
-                    <dt>PESEL:</dt>
-                    <dd><?php echo $user->getUserName(); ?></dd>
-                    <dt>OSK:</dt>
-                    <dd><?php echo $user->getOskName(); ?></dd>
+                    <div>
+                        <dt>Konto:</dt>
+                        <dd><?php echo $user->getRoleName(); ?></dd>
+                    </div>
+                    <div>
+                        <dt>Imię:</dt>
+                        <dd><?php echo $user->getUserName(); ?></dd>
+                    </div>
+                    <div>
+                        <dt>Nazwisko:</dt>
+                        <dd><?php echo $user->getUserName(); ?></dd>
+                    </div>
+                    <div>
+                        <dt>E-mail:</dt>
+                        <dd><?php echo $user->getEmail(); ?></dd>
+                    </div>
+                    <div>
+                        <dt>PESEL:</dt>
+                        <dd><?php echo $user->getUserName(); ?></dd>
+                    </div>
+                    <div>
+                        <dt>OSK:</dt>
+                        <dd><?php echo $user->getOskName(); ?></dd>
+                    </div>
                 </dl>
                    <!-- <li><a></a>
                         <ul class="tab_menu_lvl2">
@@ -73,33 +95,45 @@
                 </ul>-->
                 
             </div>
-           <div class="box_top">Miejsce na shoutbox</div>
+           <div class="box_top" id="shoutbox">
+               <h4>Lpunkt Box:</h4>
+               <div id="box_content"></div>
+           </div>
                 <div  class="box_top">
                 <h4>Informator:</h4>
                 <dl>
-                    <dt>Kurs Kategoria:</dt>
-                    <dd><?php /*echo $user->getRoleName(); */?></dd>
-                    <dt>Wyjeżdżono godzin:</dt>
-                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
-                    <dt>Zaznaczono godzin:</dt>
-                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
-                    <dt>Pozostało godzin:</dt>
-                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
-                    <dt>Termin jazd:</dt>
-                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
-                    <dt>Egzamin wewnętrzny:</dt>
-                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
-                    <dt>Powiadomienia:</dt>
-                    <dd><?php /*echo $user->getRoleName(); */ ?></dd>
+                    <div>
+                        <dt>Kurs Kategoria:</dt>
+                        <dd>B<?php /*echo $user->getRoleName(); */ ?></dd>
+                    </div>
+                    <div>
+                        <dt>Wyjeżdżono godzin:</dt>
+                        <dd>12<?php /*echo $user->getRoleName(); */ ?></dd>
+                    </div>
+                    <div>
+                        <dt>Zaznaczono godzin:</dt>
+                        <dd>8<?php /*echo $user->getRoleName(); */ ?></dd>
+                    </div>
+                    <div>
+                        <dt>Pozostało godzin:</dt>
+                        <dd>20<?php /*echo $user->getRoleName(); */ ?></dd>
+                    </div>
+                    <div>
+                        <dt>Termin jazd:</dt>
+                        <dd class="yellow_text">23 II 2015r.<?php /*echo $user->getRoleName(); */ ?></dd>
+                    </div>
+                    <div>
+                        <dt>Egzamin wewnętrzny:</dt>
+                        <dd class="red_text">25 II 2015r.<?php /*echo $user->getRoleName(); */ ?></dd>
+                    </div>
+                    <div>
+                        <dt>Powiadomienia:</dt>
+                        <dd class="orange_text">3<?php /*echo $user->getRoleName(); */ ?></dd>
+                    </div>
                 </dl>
                     </div>
+                <div class="clear"></div>
     </div>
-
-            <div id="log_info" class="shadow">Jesteś zalogowany jako:
-                <a href="/user/profile"><?php /*echo $user->getEmail(); */?></a><br/>
-                OSK: <a href="/user/oskSite"><?php /*echo $user->getOskName(); */?></a>
-                <a href="/user/logout" id="logout">Wyloguj</a></div>
-            <div class="clear"></div>
 <?php 
 if(isset($this->message)) {
         echo "<h3 id=\"message\" >".$this->message."</h3>";

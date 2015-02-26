@@ -20,6 +20,7 @@ div {
     margin: 0 auto;
 }
 
+/*********** common classes *********/
 .clear {
     clear: both;
     height: 0;
@@ -30,9 +31,18 @@ div {
     -webkit-box-shadow: 2px 2px 2px 1px rgba(03, 03, 03, 0.5);
     box-shadow: 2px 2px 2px 1px rgba(03, 03, 03, 0.5);
 }
+.yellow_text{
+    color: #f5eb17 !important;
+}
+.orange_text{
+    color: #ed6923 !important;
+}
+.red_text{
+    color: #ed2024 !important;
+}
 /********** header ************/
 #header {
-    height: 200px;
+    height: 242px;
 }
 
 div#logo {
@@ -40,14 +50,100 @@ div#logo {
     background-size: contain;
     height: 180px;
 }
+div#menu_top {
+    background: rgb(61,61,61); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(61,61,61,1) 0%, rgba(35,31,32,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(61,61,61,1)), color-stop(100%,rgba(35,31,32,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(35,31,32,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(35,31,32,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(61,61,61,1) 0%,rgba(35,31,32,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(61,61,61,1) 0%,rgba(35,31,32,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d3d3d', endColorstr='#231f20',GradientType=0 ); /* IE6-9 */
+    border: 1px solid #5f6161; /*231f20*/
+    border-width: 0 1px 1px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    height: 40px;
+    width: 995px;
+    margin-bottom: 5px;
+}
+div#menu_top ul{
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+    color: #7d7d7d;
+    position: relative;
+}
+div#menu_top li{
+    float: left;
+    padding: 2px 10px;
+    font-size:18px;
+    font-weight: bold;
+    border-left: 2px solid #5f6161;
+}
+div#menu_top li:first-child{
+    border: none;
+}
+div#menu_top li.selected_menu a{
+    color: #f6eb19;
+}
+div#menu_top a{
+    color: #7d7d7d;
+    text-decoration: none;
+}
+div#menu_top #logout {
+    position: absolute;
+    right: 0;
+    border: none;
+}
+/********** top boxes *********/
+#info_boxes_top{
+    border: 1px solid #606262;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    border-radius: 2px 2px 2px 2px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#info_boxes_top h4{
+    color: #f6eb19;
+    font-size: 16px;
+    border-bottom: 1px solid #606262;
+    margin: 5px;
+    padding: 0 20px 0 5px;
+    display: inline-block;
+}
+#info_boxes_top .box_top{
+    float: left;
+}
+#info_boxes_top dl, #info_boxes_top dt, #info_boxes_top dd{
+    margin: 0;
+    padding: 0;
+}
+#info_boxes_top dt {
+    color: #606262;
+    width: 160px;
+    display: inline-block;
+}
+#info_boxes_top dd{
+    color: #ffffff;
+    display: inline-block;
+}
 
+#shoutbox{
+    width: 50%;
+}
+/********** shoutbox ***********/
+#shoutbox #box_content {
+    background: #3b3b3b;
+    border: 1px solid #3b3b3b;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 110px;
+    padding: 0 5px;
+}
 /********** content ***********/
 #content {
-    border: 2px solid #A3A3A3;
-    border-radius: 0 5px 5px 5px;
-    background: #F5F5F5;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
+
 }
 /******** register form ********/
 fieldset {
