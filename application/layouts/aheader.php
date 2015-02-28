@@ -39,30 +39,7 @@
                     <input type="text" id="search_input" />
                     <input type="submit" id="search_btn" value=""/>
                 </form> 
-            <ul id="main_tab_menu">
-                <li><a>Ośrodki</a>
-                    <ul class="tab_menu_lvl2">
-                        <a href="/admin/osk"><li>lista ośrodków</li></a>
-                        <a href="/admin/osk/registerOsk"><li>dodaj ośrodek</li></a>                    
-                    </ul>
-                </li>
-                <li><a>Użytkownicy</a>
-                    <ul class="tab_menu_lvl2">
-                        <a href="/admin/user"><li>użytkownicy</li></a>
-                        <a href="/admin/user/index/role/kursant"><li>kursanci</li></a>
-                        <a href="/admin/user/index/role/instruktor"><li>instruktorzy</li></a>
-                        <a href="/admin/user/index/role/osk"><li>lista pracowników osk</li></a>
-                        <a href="/admin/user/index/role/admin"><li>administratorzy</li></a>
-                    </ul>
-                </li>
-                <li><a>Profil</a>
-                     <ul class="tab_menu_lvl2">
-                        <li>pokaż profil</li>
-                        <li>edytuj profil</li>
-                        <li>historia wpłat</li>
-                    </ul>   
-                </li>
-            </ul>
+            <?php $component = Component::factory("Lpunkt")
                 
             </div>
            

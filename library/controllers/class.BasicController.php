@@ -2,6 +2,9 @@
 abstract class BasicController {
 	protected $subModule = "";
 	protected $_conn;
+    /**
+     * @var BasicView
+     */
 	protected $_view;
 	protected $_request;
 	protected $_response;

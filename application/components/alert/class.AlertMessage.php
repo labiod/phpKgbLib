@@ -7,15 +7,10 @@ class AlertMessage extends Component {
 	public static function showMessage($msg) {
 		if (isset ( $msg ) && $msg != '') {
 			$alert = new AlertMessage ( $msg );
-			echo $alert->show ();
+            $alert->show();
 		}
 	}
 	public function show() {
-		$content = <<<EOD
-			<div class="alert_message">
-			<h3>{$this->msg}</h3>
-			</div>
-EOD;
-		return $content;
+        include "view/alert.phtml";
 	}
 }
