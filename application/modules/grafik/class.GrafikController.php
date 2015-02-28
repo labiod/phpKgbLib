@@ -42,6 +42,28 @@ class GrafikController extends BasicIndexController {
         $this->_view->dateInfo = $date;
     }
 
+    public function oskAction() {
+        $tab = $this->getParametersMap();
+        if(!isset($tab['y']) && !isset($tab['m'])) {
+            $date["rok"] = date('Y');
+            $date["mc"] = date('m');
+        }else{
+            $date["rok"] = $tab['y'];
+            $date["mc"] = $tab['m'];
+        }
+
+        $dateLinks['dayLink'] = "/grafik/podgladDnia/y/".$date["rok"]."/m/".$date["mc"]."/d/";
+        $dateLinks['prevLink'] = $this->getLink(-1, $date["rok"], $date["mc"]);
+        $dateLinks['nextLink'] = $this->getLink(+1, $date["rok"], $date["mc"]);
+        $this->_view->dateLinks = $dateLinks;
+        $this->_view->userView = HttpSession::getSession()->getAttribute("user_name", "");
+        $date["mcstart"] = new DateTime($date["rok"].'-'.$date["mc"].'-01');
+        $date["ldni"] = date_format($date["mcstart"], 't');
+        $date["mcstart"] = date_format($date["mcstart"], 'N');
+        $date["mc"] = DateFormat::getMonth($date["mc"]);
+        $this->_view->dateInfo = $date;
+    }
+
     public function podgladDniaAction(){    
         $tab = $this->getParametersMap();
         if(isset($tab["fullLoad"]) && $tab["fullLoad"] == true){
