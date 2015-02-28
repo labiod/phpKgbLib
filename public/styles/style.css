@@ -129,17 +129,17 @@ div#menu_top #logout {
     display: inline-block;
 }
 
+/********** shoutbox ***********/
 #shoutbox{
     width: 50%;
 }
-/********** shoutbox ***********/
 #shoutbox #box_content {
     background: #3b3b3b;
     border: 1px solid #3b3b3b;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     height: 110px;
-    padding: 0 5px;
+    margin: 0 5px;
 }
 /********** content ***********/
 #content {

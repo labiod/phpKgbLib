@@ -28,7 +28,7 @@
 <div id="menu_top">
     <ul>
         <li><a href="/">O Lpunkt</a></li>
-        <li class="selected_menu"><a href="/">Dla Kursanta</a></li>
+        <li class="selected_menu"><a href="../grafik/kursant">Dla Kursanta</a></li>
         <li><a href="/">Dla Instruktora</a></li>
         <li><a href="/">Dla OSK</a></li>
         <li><a href="/">Kontakt</a></li>
