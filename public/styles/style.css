@@ -42,7 +42,7 @@ div {
 }
 /********** header ************/
 #header {
-    height: 242px;
+
 }
 
 div#logo {
@@ -112,7 +112,7 @@ div#menu_top #logout {
     padding: 0 20px 0 5px;
     display: inline-block;
 }
-#info_boxes_top .box_top{
+#info_boxes_top .box_top, #info_boxes_top .box_separator{
     float: left;
 }
 #info_boxes_top dl, #info_boxes_top dt, #info_boxes_top dd{
@@ -128,18 +128,68 @@ div#menu_top #logout {
     color: #ffffff;
     display: inline-block;
 }
-
-#shoutbox{
-    width: 50%;
+#info_boxes_top div{
+    padding-right: 3px;
+}
+#info_boxes_top .box_separator {
+    height: 120px;
+    width: 1px;
+    margin: 30px 5px 10px;
+    padding: 0;
+    background: #606262;
 }
 /********** shoutbox ***********/
+#shoutbox{
+    width: 40%;
+}
 #shoutbox #box_content {
     background: #3b3b3b;
-    border: 1px solid #3b3b3b;
+    border: 1px solid #606262;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    height: 110px;
-    padding: 0 5px;
+    height: 100px;
+    margin: 0 5px;
+    padding: 3px;
+    font-size: 13px;
+    overflow-y: auto;
+}
+.box_date {
+    color: #f6eb19;
+    font-size: 12px;
+}
+.box_user {
+    color: #000;
+}
+.box_msg {
+    color: #fff;
+}
+#shoutbox form {
+    padding: 3px;
+    color: #606262;
+}
+#shoutbox input[type=text] {
+    border: none;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #3b3b3b;
+    padding: 4px;
+    width: 160px;
+    color: #fff;
+}
+#shoutbox input[type=submit], #shoutbox button {
+    border: 1px solid #fff;
+    background: rgb(34,31,31); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(34,31,31,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(34,31,31,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#221f1f', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
 }
 /********** content ***********/
 #content {

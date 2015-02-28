@@ -28,7 +28,7 @@
 <div id="menu_top">
     <ul>
         <li><a href="/">O Lpunkt</a></li>
-        <li class="selected_menu"><a href="/">Dla Kursanta</a></li>
+        <li class="selected_menu"><a href="../grafik/kursant">Dla Kursanta</a></li>
         <li><a href="/">Dla Instruktora</a></li>
         <li><a href="/">Dla OSK</a></li>
         <li><a href="/">Kontakt</a></li>
@@ -95,10 +95,41 @@
                 </ul>-->
                 
             </div>
+                <div class="box_separator"></div>
            <div class="box_top" id="shoutbox">
                <h4>Lpunkt Box:</h4>
-               <div id="box_content"></div>
+
+               <div id="box_content">
+                   <div>
+                       <span class="box_date">[22-02-2015 18:45]</span>
+                       <span class="box_user">Zygmunt</span>
+                       <span class="box_msg">Treść wiadomości...</span>
+                   </div>
+                   <div>
+                       <span class="box_date">[22-02-2015 20:15]</span>
+                       <span class="box_user">Aureliusz</span>
+                       <span class="box_msg">Treść wiadomości...</span>
+                   </div>
+                   <div>
+                       <span class="box_date">[Dzisiaj 20:15]</span>
+                       <span class="box_user">Ginewra</span>
+                       <span class="box_msg">Treść wiadomości...</span>
+                   </div>
+                   <div>
+                       <span class="box_date">[Dzisiaj 20:20]</span>
+                       <span class="box_user">Zuzanna</span>
+                       <span class="box_msg">Treść wiadomości...</span>
+                   </div>
+               </div>
+               <form action="nie-wiem-gdzie" method="post">
+                   <label>Wiadomość</label>
+                   <input type="text" name="box_msg"/>
+                   <input type="hidden" name="box_user" value="login_aktualnie_zalogowany"/>
+                   <button>Wybierz</button>
+                   <input type="submit" value="Wyślij"/>
+               </form>
            </div>
+                <div class="box_separator"></div>
                 <div  class="box_top">
                 <h4>Informator:</h4>
                 <dl>
