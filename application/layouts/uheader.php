@@ -25,18 +25,24 @@
 <body>
     <div id="main">
         <div id="header">
-<div id="menu_top">
-    <ul>
-        <li><a href="/">O Lpunkt</a></li>
-        <li class="selected_menu"><a href="../grafik/kursant">Dla Kursanta</a></li>
-        <li><a href="/">Dla Instruktora</a></li>
-        <li><a href="/">Dla OSK</a></li>
-        <li><a href="/">Kontakt</a></li>
-        <li id="logout"><a href="/user/logout">Wyloguj</a></li>
-    </ul>
-
-</div>
+            <div id="menu_top">
+    <?php
+        $component = new SimpleMenu(array(
+            new ListItem("Dla Kursanta", "/kursant", "", "selected_Menu"),
+            new ListItem("Dla instruktora", "/instruktor"),
+            new ListItem("Dla OSK", "/osk"),
+            new ListItem("Kontakt", "/index/contact"),
+            new ListItem("Wyloguj", "/user/logout", "logout")
+        ));
+        $component->show();
+    ?>
+            </div>
             <a href="/"><div id="logo" >&nbsp;</div></a>
+            <?php if(sizeof($this->subMenu) > 0) { ?>
+            <div id="sub_menu" >
+                $subMenu = new SimpleMenu($this->subMenu);
+                $subMenu->show(); ?>
+            </div><?php } ?>
         </div>
         <div id="content">
             <div id="info_boxes_top">
