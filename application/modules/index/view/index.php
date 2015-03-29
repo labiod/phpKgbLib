@@ -18,6 +18,7 @@ if (isset ( $this->title )) {
 ?>	
     </title>
 <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
+<link rel="stylesheet" href="/public/styles/start_page.css" type="text/css" />
 <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="/public/js/script.js" type="text/javascript"></script>
 <!--[if gte IE 9]>
@@ -27,23 +28,25 @@ if (isset ( $this->title )) {
     }
   </style>
 <![endif]-->
-<style type="text/css">
-    img#logo{
-        width:600px;
-        margin-left:200px;
-    }
-    #main{
-        padding-top: 200px;
-    }
-</style>
 </head>
 <body>
     <div id="main">
+        <div id="menu">
+            <ul>
+                <li><a href="">O Lpunkt</a></li>
+                <li><a href="">Dla kursanta</a></li>
+                <li><a href="">Dla Instruktora</a></li>
+                <li><a href="">Dla Osk</a></li>
+                <li><a href="">Kontakt</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
         <div id="header">
             <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
         </div>
 	    <div id="buttons">
                 <a href="/register" id="register_butt" class="orange_button_big">Rejestracja</a>
                 <a href="/user/login" id="login_butt" class="blue_button_big">Logowanie</a>
-
+        </div>
+        <div class="clear"></div>
 <?php include ("layouts/footer.php"); ?>
