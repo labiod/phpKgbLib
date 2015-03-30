@@ -19,7 +19,7 @@ class BaseLpunktController extends BasicIndexController {
                 new ListItem("Artykuły", "/articles"),
                 new ListItem("Powiadomienia", "/content/messages"),
             );
-        } else if($user->getRoleId() == 2) {
+        } else if($user->getRoleId() == 3) {
             $this->_view->subMenu = array(
                 new ListItem("Twój Profil", "/instruktor/profil"),
                 new ListItem("Strefa Instruktora", "/instruktor/grafik"),
@@ -27,7 +27,7 @@ class BaseLpunktController extends BasicIndexController {
                 new ListItem("Publikacje", "/articles"),
                 new ListItem("Powiadomienia", "/content/messages"),
             );
-        } else if($user->getRoleId() == 3) {
+        } else if($user->getRoleId() == 2) {
             $this->_view->subMenu = array(
                 new ListItem("Profil OSK", "/osk/profil"),
                 new ListItem("Kursy", "/osk/kursy"),
