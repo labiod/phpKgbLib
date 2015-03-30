@@ -136,4 +136,23 @@ class Utilities {
 		
 		return true;
 	}
+
+    public static function readFile($filePath) {
+        $download_rate = 20.5;
+        $content = "";
+        if(file_exists($filePath) && is_file($filePath))
+        {
+
+            $file = fopen($filePath, "r");
+            while(!feof($file))
+            {
+                // send the current file part to the browser
+                $content .= fread($file, round($download_rate * 1024));
+            }
+            fclose($file);
+        } else {
+            echo "dupa wołowa"; die;
+        }
+        return $content;
+    }
 }

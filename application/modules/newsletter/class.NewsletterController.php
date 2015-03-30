@@ -1,5 +1,5 @@
 <?php
-class NewsletterController extends BasicController {
+class NewsletterController extends BaseLpunktController {
 	private $newsletter = null;
 	public function initAll() {
 		$this->newsletter = new Table ( "newsletter" );

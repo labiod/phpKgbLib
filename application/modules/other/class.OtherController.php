@@ -1,5 +1,5 @@
 <?php
-class OtherController extends BasicController {
+class OtherController extends BaseLpunktController {
 	public function faqAction() {
 	}
 	

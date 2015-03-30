@@ -1,5 +1,5 @@
 <?php
-class ContentController extends BasicController {
+class ContentController extends BaseLpunktController {
 	private $_content = null;
 	protected function initAll() {
 		$this->_content = new Table ( "content" );

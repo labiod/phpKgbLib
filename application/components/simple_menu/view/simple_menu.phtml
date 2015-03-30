@@ -1,7 +1,6 @@
-<ul <?php if (sizeof($this->_id) > 0) {
-    echo "id='". $this->_id."'"; } ?>">
+<ul<?php if (strlen($this->_id) > 0) {
+    echo " id='". $this->_id."'"; } ?>>
     <?php
-
     foreach($this->_menuItems as $item) {?>
     <li<?php if(strlen($item->getId()) > 0){
             echo " id='" . $item->getId() . "'";

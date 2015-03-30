@@ -12,10 +12,11 @@ class ListItem {
     private $_className = "";
 
     /**
-     * @param string $itemText
-     * @param string $url
-     * @param string $id
-     * @param string $className
+     *
+     * @param string $itemText - Text display in li
+     * @param string $url - default empty
+     * @param string $id - element id
+     * @param string $className - element className
      */
     public function __construct($itemText, $url = "", $id = "", $className = "")
     {

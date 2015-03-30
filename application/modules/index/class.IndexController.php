@@ -1,13 +1,14 @@
 <?php
 require_once 'library/controllers/class.BasicIndexController.php';
 
-class IndexController extends BasicIndexController
+class IndexController extends BaseLpunktController
 {
     private $_content = null;
     private $articles = null;
 
     protected function initAll()
     {
+        parent::initAll();
         //	$this->_view->user_name = $this->_session->getAttribute("user_name");
     }
 
@@ -27,8 +28,5 @@ class IndexController extends BasicIndexController
 
     function index_loggedAction()
     {
-        $this->_view->subMenu = array(
-            new ListItem("Twoj profil")
-        );
     }
 }

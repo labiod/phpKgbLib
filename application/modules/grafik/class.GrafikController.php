@@ -4,7 +4,7 @@
  *
  * @author Gabus
  */
-class GrafikController extends BasicIndexController {
+class GrafikController extends BaseLpunktController {
     private $_jazdy = null;
     //z tabeli users pogrupowac po rolach, uwaga! tylko dla okreslonego osk!
     private $_users = null; 

@@ -14,6 +14,14 @@ class SimpleMenu extends Component {
         $this->_id = $id;
     }
 	public function show() {
-        require "view/simple_menu.phtml";
+        ob_start();
+        include "view/simple_menu.phtml";
+        $content = ob_get_contents();
+        ob_end_clean();
+        $content =<<<EOD
+            {$content}
+EOD;
+        echo $content;
+
 	}
 }

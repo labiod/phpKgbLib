@@ -119,6 +119,9 @@ class User extends Model {
 	public function getRoleName() {
 		return $this->role_name;
 	}
+    public function getRoleId() {
+        return $this->role_id;
+    }
 	public function isLogged() {
 		return $this->role_name != 'guest';
 	}

@@ -1,5 +1,5 @@
 <?php
-class GalleryController extends BasicController {
+class GalleryController extends BaseLpunktController {
 	private $_gallery = null;
 	protected function initAll() {
 		$this->_gallery = new Table ( "photo" );

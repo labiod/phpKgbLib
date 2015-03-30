@@ -1,5 +1,5 @@
 <?php
-class RegisterController extends BasicIndexController {
+class RegisterController extends BaseLpunktController {
 	private $_users = null;
 	private $_roles = null;
 	protected function initAll() {

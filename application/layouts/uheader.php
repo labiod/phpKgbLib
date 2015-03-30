@@ -38,11 +38,6 @@
     ?>
             </div>
             <a href="/"><div id="logo" >&nbsp;</div></a>
-            <?php if(sizeof($this->subMenu) > 0) { ?>
-            <div id="sub_menu" >
-                $subMenu = new SimpleMenu($this->subMenu);
-                $subMenu->show(); ?>
-            </div><?php } ?>
         </div>
         <div id="content">
             <div id="info_boxes_top">
@@ -170,7 +165,12 @@
                 </dl>
                     </div>
                 <div class="clear"></div>
-    </div>
+            </div>
+            <?php if(sizeof($this->subMenu) > 0) { ?>
+                <div id="sub_menu" ><?php
+                $subMenu = new SimpleMenu($this->subMenu);
+                $subMenu->show(); ?>
+                </div><?php } ?>
 <?php 
 if(isset($this->message)) {
         echo "<h3 id=\"message\" >".$this->message."</h3>";

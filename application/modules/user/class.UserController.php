@@ -1,7 +1,7 @@
 <?php
-require_once 'library/controllers/class.BasicIndexController.php';
+require_once 'application/controllers/class.BaseLpunktController.php';
 
-class UserController extends BasicIndexController {
+class UserController extends BaseLpunktController {
 
     public function loginAction() {
         if ($this->isUserLogged()) {

@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 div {
@@ -96,6 +97,51 @@ div#menu_top #logout {
     right: 0;
     border: none;
 }
+/**
+    User menu
+*/
+#sub_menu {
+    margin-top: 4px;
+    text-align: center;
+    background: #d2832a; /* Old browsers */
+    background: -moz-linear-gradient(top, #d2832a 0%, #ef5125 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2832a), color-stop(100%,#ef5125)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #d2832a 0%,#ef5125 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #d2832a 0%,#ef5125 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #d2832a 0%,#ef5125 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #d2832a 0%,#ef5125 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2832a', endColorstr='#ef5125',GradientType=0 ); /* IE6-9 */
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #606262;
+}
+#sub_menu ul {
+    list-style: none;
+    height: 1.6em;
+    margin: 0;
+    padding: 8px 0 8px 0;
+    display: inline-block;
+}
+
+div#sub_menu ul li {
+    float: left;
+    border-left: 2px solid #221f1f;
+    padding: 0 5px;
+}
+div#sub_menu ul li:first-child {
+    border: none;
+    margin-left: 0.1em;
+}
+div#sub_menu ul li a {
+    font-weight: bold;
+    color: #221f1f;
+    text-decoration: none;
+    padding: 2px 10px;
+    display: inline-block;
+    font-size: 1.30em;
+}
+
 /********** top boxes *********/
 #info_boxes_top{
     border: 1px solid #606262;

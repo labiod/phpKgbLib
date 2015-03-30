@@ -1,5 +1,5 @@
 <?php
-class OfertaController extends BasicController {
+class OfertaController extends BaseLpunktController {
 	private $_tarty = null;
 	private $_zlaczenia = null;
 	private $_nalesniki = null;
