@@ -6,13 +6,12 @@ body, html, * {
     padding: 0;
 }
 img#logo{
-    width:600px;
-    margin: 0;
+    width: 560px;
 }
 div#menu {
     text-align: center;
     padding: 5px 20px;
-    margin: 2px 150px;
+    margin: 2px 60px;
 }
 div#menu ul {
     list-style: none;
@@ -27,7 +26,7 @@ div#menu ul li {
 }
 div#menu ul li:first-child {
     border: none;
-    margin-left: 100px;
+    margin-left: 60px;
 }
 div#menu ul li a {
     font-weight: bold;
@@ -36,6 +35,9 @@ div#menu ul li a {
     padding: 5px;
     display: inline-block;
     font-size: 1.1em;
+}
+div#menu ul li a.selected_menu {
+    color: #f6eb19;
 }
 
 div#main {
@@ -50,9 +52,47 @@ div#main {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#221f1f', endColorstr='#3d3d3d',GradientType=0 ); /* IE6-9 */
     margin-top: 200px;
     padding-top: 0;
+    width: 700px;
+    height: 250px;
 }
 
 div#header {
-    width: 800px;
     float: left;
+    left: -40px;
+    position: relative;
+    margin: 0;
+    width: 560px;
+}
+
+#buttons {
+    margin-top: 20px;
+    position: relative;
+    left: 550px;
+    top: -160px;
+}
+#buttons a {
+    border: 1px solid #d7d7d7;
+    background: rgb(34,31,31); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(34,31,31,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(34,31,31,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(34,31,31,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#221f1f', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    padding-top: 10px;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+#register_butt {
+    color: #f05025;
+}
+#login_butt {
+     color: #faed25;
 }

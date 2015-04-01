@@ -34,7 +34,7 @@ if (isset ( $this->title )) {
         <div id="menu">
             <ul>
                 <li><a href="">O Lpunkt</a></li>
-                <li><a href="">Dla kursanta</a></li>
+                <li><a href="" class="selected_menu">Dla kursanta</a></li>
                 <li><a href="">Dla Instruktora</a></li>
                 <li><a href="">Dla Osk</a></li>
                 <li><a href="">Kontakt</a></li>
@@ -45,7 +45,7 @@ if (isset ( $this->title )) {
             <a href="/"><img src="/public/images/logo_lpunkt.png" id="logo" /></a>
         </div>
 	    <div id="buttons">
-                <a href="/register" id="register_butt" class="orange_button_big">Rejestracja</a>
+                <a href="/register" id="register_butt" class="orange_button_big">Rejestracja</a><br/>
                 <a href="/user/login" id="login_butt" class="blue_button_big">Logowanie</a>
         </div>
         <div class="clear"></div>
