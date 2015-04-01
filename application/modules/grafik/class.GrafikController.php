@@ -11,6 +11,7 @@ class GrafikController extends BaseLpunktController {
     private $_settings = null; 
     private $_auta = null; 
     public function initAll() {
+        parent::initAll();
         $this->_jazdy = new Table("jazdy");
         $this->_users = new Table("users");
         $this->_settings = new Table("settings");
@@ -62,6 +63,15 @@ class GrafikController extends BaseLpunktController {
         $date["mcstart"] = date_format($date["mcstart"], 'N');
         $date["mc"] = DateFormat::getMonth($date["mc"]);
         $this->_view->dateInfo = $date;
+
+        $items = array(
+            new ListItem("Grafik Osk", "/osk/grafik"),
+            new ListItem("Godziny otwarcia", "/osk/godziny"),
+            new ListItem("Historia jazd", "/osk/grafik_historia"),
+            new ListItem("Pytania Testowe", "/osk/pytania"),
+        );
+        $component = new SimpleMenu($items, "Strefa Osk", "user_strefa");
+        $this->_view->addComponent($component, "strefa");
     }
 
     public function podgladDniaAction(){    

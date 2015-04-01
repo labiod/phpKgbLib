@@ -37,9 +37,11 @@ class BaseLpunktController extends BasicIndexController {
                 new ListItem("Artykuły", "/articles"),
                 new ListItem("Powiadomienia", "/content/messages"),
                 new ListItem("Finanse", "/osk/finanse"),
-                new ListItem("Strefa OSK", "/osk/grafik"),
+                new ListItem("Strefa OSK", "/grafik/osk"),
             );
         }
+
+
     }
 
 } 

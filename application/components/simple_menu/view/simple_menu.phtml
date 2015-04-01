@@ -1,17 +1,28 @@
-<ul<?php if (strlen($this->_id) > 0) {
+<?php
+/**
+ * @var $this SimpleMenu
+ */
+    if($this->hasTitle()) {
+?><div class="menu_title"><?php echo $this->hasTitle(); ?></div>
+<?php
+    }
+?><ul<?php if (strlen($this->_id) > 0) {
     echo " id='". $this->_id."'"; } ?>>
     <?php
+    /**
+     * @var $item ListItem
+     */
     foreach($this->_menuItems as $item) {?>
-    <li<?php if(strlen($item->getId()) > 0){
+        <li<?php if(strlen($item->getId()) > 0){
             echo " id='" . $item->getId() . "'";
-    }
-    if(strlen($item->getClassName()) > 0) {
-        echo " class='". $item->getClassName(). "'";
-    }
-    ?>><?php if (strlen($item->getUrl()) > 0) {?><a href="<?php echo $item->getUrl(); ?>"><?php
-            echo $item->getText();
-        ?></a><?php } else {
-            echo $item->getText();
-        }?></li>
+        }
+        if(strlen($item->getClassName()) > 0) {
+            echo " class='". $item->getClassName(). "'";
+        }
+        ?>><?php if (strlen($item->getUrl()) > 0) {?><a href="<?php echo $item->getUrl(); ?>"><?php
+                echo $item->getText();
+                ?></a><?php } else {
+                echo $item->getText();
+            }?></li>
     <?php }?>
 </ul>

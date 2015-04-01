@@ -7,7 +7,9 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="Author" content=" Gabriela Betlej, Krzysztof Betlej " />
     <meta name="verify-v1" content="7/ZGLd5IaiD47BhTo/P8KbkLEsNYDtNk0Aezk5lmeRI=" />
-<?php  $title = (isset($this->title)) ? "Lpunkt.pl - ".$this->title : "Lpunkt.pl - strona w budowie"; ?>
+<?php
+/** @var $this BasicView */
+$title = (isset($this->title)) ? "Lpunkt.pl - ".$this->title : "Lpunkt.pl - strona w budowie"; ?>
     <title><?php  echo $title;  ?> </title>
     <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
     <link rel="stylesheet" href="/public/styles/grafik.css" type="text/css" />
@@ -171,7 +173,7 @@
                 $subMenu = new SimpleMenu($this->subMenu);
                 $subMenu->show(); ?>
                 </div><?php } ?>
-<?php 
+<?php
 if(isset($this->message)) {
         echo "<h3 id=\"message\" >".$this->message."</h3>";
 }	

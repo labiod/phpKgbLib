@@ -22,8 +22,6 @@ class OskController extends BaseLpunktController {
     public function autaAction(){
         $this->_view->caption = "Samochody";
     }
-  
-    
 }
 
 ?>

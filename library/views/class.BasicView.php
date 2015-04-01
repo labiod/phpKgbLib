@@ -3,6 +3,10 @@ require_once 'views/class.View.php';
 class BasicView extends View {
 	private $view = "";
 	private $layout = "";
+    /**
+     * @var Component[]
+     */
+    private $_components = array();
 	private $_styles = array ();
 	private $_action = array ();
 	public function appendStyle($path) {
@@ -44,4 +48,25 @@ class BasicView extends View {
 	public function setLayout($layout) {
 		$this->layout = $layout;
 	}
+
+    /**
+     * @param $component Component
+     * @param $name string
+     */
+    public function addComponent($component, $name) {
+        $this->_components[$name] = $component;
+    }
+
+    /**
+     * @param $name string
+     * @return Component
+     */
+    public function getComponent($name)
+    {
+        if (array_key_exists($name, $this->_components)) {
+            return $this->_components[$name];
+        } else {
+            return null;
+        }
+    }
 }

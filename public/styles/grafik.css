@@ -39,6 +39,7 @@
 #grafik_content {
 	margin-top: 5px;
 	text-align: center;
+    float: left;
 }
 
 #grafik_title {

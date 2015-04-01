@@ -50,4 +50,4 @@ INSERT INTO `lpunkt`.`roles_priv` (`id_privilage`, `id_role`, `module`, `action_
 (NULL, '2', 'grafik', 'podgladDnia'), 
 (NULL, '3', 'grafik', 'podgladDnia');
 
-INSERT INTO `lpunkt`.`roles_priv` (`id_privilage`, `id_role`, `module`, `action_name`) VALUES (NULL, '2', 'grafik', 'osk');
+INSERT INTO `lpunkt`.`roles_priv` (`id_privilage`, `id_role`, `module`, `action_name`) VALUES (NULL, '2', 'osk', 'grafik');
