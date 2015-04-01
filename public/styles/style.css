@@ -145,7 +145,7 @@ div#sub_menu ul li a {
 div ul#user_strefa {
     list-style: none;
     margin: 5px 0 0 0;
-    padding: 8px 4px 8px 4px;
+    padding: 10px 2px;
     display: block;
     border: 1px solid #606262;
 }
@@ -153,8 +153,8 @@ div ul#user_strefa {
 div ul#user_strefa li {
     background-image: url("/public/images/left_menu_background.png");
     height: 25px;
-    width: 200px;
-    padding: 0 0 0 10px;
+    width: 190px;
+    padding: 0 0 0 15px;
     margin: 4px 0;
 }
 
@@ -175,7 +175,7 @@ div.strefa_left_menu {
 div.menu_title {
     font-size: 1.4em;
     color: #fdd015;
-    width: 200px;
+    width: 205px;
     border: 1px solid #606262;
     padding: 2px 4px;
     text-align: center;

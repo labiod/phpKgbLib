@@ -10,20 +10,45 @@ if($component != null) {
     </div><?php
 } ?>
     <div id="grafik_content">
-        <h2 id="grafik_title">Grafik jazd</h2>
-
-        <div class="clear"></div>
+        <div id="grafik_top">
+            <div id="grafik_title">Grafik jazd</div>
+            <div>
+                <a class="dni_grafik" href="grafik/osk/prev">&lt;&lt;</a>
+                <div class="dni_grafik"><a>1</a></div>
+                <div class="dni_grafik"><a>2</a></div>
+                <div class="dni_grafik"><a>3</a></div>
+                <div class="dni_grafik"><a>4</a></div>
+                <div class="dni_grafik"><a>5</a></div>
+                <div class="dni_grafik"><a>6</a></div>
+                <div class="dni_grafik"><a>7</a></div>
+                <a class="dni_grafik" href="grafik/osk/next">&gt;&gt;</a>
+            </div>
+            <div id="category">
+                <div id="category_title">Kategoria</div>
+                <div id="category_type">B</div>
+            </div>
+        </div>
+        <div id="day_info">
+            <div id="day_of_month">24</div>
+            <div id="month_name">
+                <a class="dni_grafik" href="grafik/osk/prevMonth">&lt;&lt;</a>
+                <div class="grafik_div_floating_left">Październik</div>
+                <a class="dni_grafik" href="grafik/osk/nextMonth">&gt;&gt;</a>
+            </div>
+            <div id="day_of_week">
+                <a class="dni_grafik" href="grafik/osk/prevDay">&lt;&lt;</a>
+                <div class="grafik_div_floating_left">Czwartek</div>
+                <a class="dni_grafik" href="grafik/osk/nextDay">&gt;&gt;</a>
+            </div>
+        </div>
         <div id="dayPlan"></div>
         <?php $ldni = $this->dateInfo["ldni"];
         $start = $this->dateInfo["mcstart"];
         $max = $start + $ldni;
         $j = 0;
-        $i = 1; ?>
-        <span>Użytkownik: <?php
-            $user = User::getLoggedUser();
-            echo $user->getUserName(); ?></span>
-        <a href="<?php echo $this->dateLinks['prevLink']; ?>">&lt;&lt; Poprzedni</a>
-        <a href="<?php echo $this->dateLinks['nextLink']; ?>">Następny &gt;&gt;</a>
+        $i = 1;
+        $user = User::getLoggedUser();
+        ?>
         <table id="monthViewTable">
             <caption>
                 <?php echo $this->dateInfo["mc"] . " " . $this->dateInfo["rok"]; ?>
