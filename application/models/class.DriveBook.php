@@ -16,7 +16,8 @@ class DriveBook extends Model
     {
         $driveBooks = array();
         $table = new Table("drive_book");
-        $results = $table->fetchAll("DATE(drive_date) = " . $date->format("yyyy-mm-dd") . " AND osk_id = " . $osk_id);
+        echo $date->format("Y-m-d")."<br/>";
+        $results = $table->fetchAll("DATE(drive_date) = '" . $date->format("Y-m-d") . "' AND osk_id = " . $osk_id);
         while ($results->next()) {
             $row = $results->current();
             $book = new DriveBook($row["id"]);
@@ -52,7 +53,12 @@ class DriveBook extends Model
     public function __construct($id)
     {
         if ($id != -1) {
-            parent::__construct("drvie_book", $id);
+            parent::__construct("drive_book", $id);
+        } else {
+            $this->_payment = "&nbsp;";
+            $this->_driveDate = "&nbsp;";
+            $this->_driveType = "&nbsp;";
+            $this->_driveLocation = "&nbsp;";
         }
     }
 
@@ -138,6 +144,9 @@ class DriveBook extends Model
         $this->setOsk($data["osk_id"]);
         $this->setStudent($data["student_id"]);
         $this->setTeacher($data["teacher_id"]);
+        $this->_driveLocation = $data["location"];
+        $this->_driveType = $data["drive_type"];
+        $this->_payment = "30";
     }
 
     public function getStudentName()
@@ -145,7 +154,24 @@ class DriveBook extends Model
         if ($this->_student != null) {
             return $this->_student->getFirstName() . " " . $this->_student->getLastName();
         } else {
-            return "";
+            return "&nbsp;";
+        }
+    }
+
+    public function getDriveHour()
+    {
+        if($this->_student != null) {
+            return $this->_student->getDrivenHour() + 1;
+        } else {
+            return "&nbsp;";
+        }
+    }
+
+    public function getStudentPhone() {
+        if($this->_student != null) {
+            return $this->_student->getPhoneNumber();
+        } else {
+            return "&nbsp;";
         }
     }
 }

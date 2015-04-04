@@ -73,7 +73,6 @@ class GrafikController extends BaseLpunktController
             $hour = date("H", $date);
             $oskMapHours[$hour] = $driveBook;
         }
-        $this->_view->oskMapHours = $oskMapHours;
         $date["mcstart"] = new DateTime($date["year"] . '-' . $date["mc"] . '-01');
         $date["ldni"] = date_format($date["mcstart"], 't');
         $date["mcstart"] = date_format($date["mcstart"], 'N');
@@ -116,10 +115,11 @@ class GrafikController extends BaseLpunktController
         $oskMapHours = array();
         $driveBooks = DriveBook::getDayCalendarForOsk(new DateTime(), User::getLoggedUser()->getOskId());
         foreach ($driveBooks as $driveBook) {
-            $date = $driveBook->getDriveDate();
-            $hour = date("H", $date);
+            $d = new DateTime($driveBook->getDriveDate());
+            $hour = date("H", $d->getTimestamp());
             $oskMapHours[$hour] = $driveBook;
         }
+        $this->_view->oskMapHours = $oskMapHours;
         $this->_view->oskMapHours = $oskMapHours;
         $date["mcstart"] = new DateTime($date["year"] . '-' . $date["mc"] . '-01');
         $date["ldni"] = date_format($date["mcstart"], 't');

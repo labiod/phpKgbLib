@@ -9,7 +9,7 @@
             <option  value="" >Brak przypisanych OSK</option> 
             <?php } else{?>
             <?php foreach ($this->oskList as $osk) {?>
-            <option value="<?php echo $osk['id_osk'];?>" ><?php echo $osk['nazwa'];?></option> 
+            <option value="<?php echo $osk['id'];?>" ><?php echo $osk['osk_name'];?></option>
             <?php } }?>
             
         </select> <br/>

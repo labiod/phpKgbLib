@@ -39,11 +39,11 @@ class UserController extends BaseLpunktController {
         if (isset($tab['submit'])) {
             HttpSession::getSession()->setAttribute("osk_id", $tab["osk_id"]);
             $query = new Table("osk");
-            $query->find("id_osk = ".$tab["osk_id"]);
+            $query->find("id = ".$tab["osk_id"]);
             $result = $query->fetch()->getData();
             $user = User::getLoggedUser();
-            $user->setOsk($tab["osk_id"],$result[0]["nazwa"]);
-            HttpSession::getSession()->setAttribute("osk_name", $result[0]["nazwa"]);
+            $user->setOsk($tab["osk_id"],$result[0]["osk_name"]);
+            HttpSession::getSession()->setAttribute("osk_name", $result[0]["osk_name"]);
             $this->setMessage("Poprawnie zalogowano do OSK ".$user->getOskName());
             //tu coś nie działa!!!
          //   $user->forceSerialize();
@@ -52,7 +52,7 @@ class UserController extends BaseLpunktController {
         } else {
             $user = User::getLoggedUser();
             $query = new Table("osk_site");
-            $query->join("osk", "osk_site.osk_id = osk.id_osk");
+            $query->join("osk", "osk_site.osk_id = osk.id");
             $query->where("user_id = '$0'");
             $query->addParameter($user->getUserId());
             $result = $query->fetch();

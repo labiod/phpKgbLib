@@ -18,7 +18,7 @@ class Teacher extends Model {
 
     protected function createQuery() {
         $query = new Table ( $this->table_name );
-        $query->join("users s", "user_id = s.id");
+        $query->join("users s", "user_id = s.id_user");
         return $query;
     }
 

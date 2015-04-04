@@ -82,12 +82,11 @@ if ($component != null) {
                 <tr>
                     <td><?php echo $this->oskHours[$i++]; ?>:00</td>
                     <td><?php echo $drive->getStudentName(); ?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $drive->getDriveLocation(); ?></td>
+                    <td><?php echo $drive->getDriveType(); ?></td>
+                    <td><?php echo $drive->getDriveHour(); ?></td>
+                    <td><?php echo $drive->getStudentPhone(); ?></td>
+                    <td><?php echo $drive->getDrivePayment(); ?></td>
                 </tr>
             <?php
             }

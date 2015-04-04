@@ -33,9 +33,19 @@ class Student extends Model {
         return $this->_lastName;
     }
 
+    public function getDrivenHour()
+    {
+        return $this->_drivenHours;
+    }
+
+    public function getPhoneNumber()
+    {
+        return $this->_phoneNumber;
+    }
+
     protected function createQuery() {
         $query = new Table ( $this->table_name );
-        $query->join("users s", "user_id = s.id");
+        $query->join("users s", "user_id = s.id_user");
         return $query;
     }
 
