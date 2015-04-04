@@ -16,7 +16,6 @@ class DriveBook extends Model
     {
         $driveBooks = array();
         $table = new Table("drive_book");
-        echo $date->format("Y-m-d")."<br/>";
         $results = $table->fetchAll("DATE(drive_date) = '" . $date->format("Y-m-d") . "' AND osk_id = " . $osk_id);
         while ($results->next()) {
             $row = $results->current();
@@ -32,6 +31,9 @@ class DriveBook extends Model
         return new DriveBook(-1);
     }
 
+    /**
+     * @var DateTime
+     */
     private $_driveDate;
     private $_driveLocation;
     private $_driveType;
@@ -56,7 +58,7 @@ class DriveBook extends Model
             parent::__construct("drive_book", $id);
         } else {
             $this->_payment = "&nbsp;";
-            $this->_driveDate = "&nbsp;";
+            $this->_driveDate = null;
             $this->_driveType = "&nbsp;";
             $this->_driveLocation = "&nbsp;";
         }
@@ -140,7 +142,7 @@ class DriveBook extends Model
 
     public function fetchData($data)
     {
-        $this->setDriveDate($data["drive_date"]);
+        $this->setDriveDate(new DateTime($data["drive_date"]));
         $this->setOsk($data["osk_id"]);
         $this->setStudent($data["student_id"]);
         $this->setTeacher($data["teacher_id"]);

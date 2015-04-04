@@ -10,26 +10,28 @@ if ($component != null) {
     <?php $component->show(); ?>
     </div><?php
 } ?>
-    <div id="grafik_content">
-        <div id="grafik_top">
-            <div id="grafik_title">Grafik jazd</div>
-            <div>
-                <a class="dni_grafik" href="grafik/osk/prev">&lt;&lt;</a>
+<div id="grafik_full">
+    <div id="grafik_top">
+        <div id="grafik_title">Grafik jazd</div>
+        <div>
+            <a class="dni_grafik" href="grafik/osk/prev">&lt;&lt;</a>
 
-                <div class="dni_grafik"><a>1</a></div>
-                <div class="dni_grafik"><a>2</a></div>
-                <div class="dni_grafik"><a>3</a></div>
-                <div class="dni_grafik"><a>4</a></div>
-                <div class="dni_grafik"><a>5</a></div>
-                <div class="dni_grafik"><a>6</a></div>
-                <div class="dni_grafik"><a>7</a></div>
-                <a class="dni_grafik" href="grafik/osk/next">&gt;&gt;</a>
-            </div>
-            <div id="category">
-                <div id="category_title">Kategoria</div>
-                <div id="category_type">B</div>
-            </div>
+            <div class="dni_grafik"><a>1</a></div>
+            <div class="dni_grafik"><a>2</a></div>
+            <div class="dni_grafik"><a>3</a></div>
+            <div class="dni_grafik"><a>4</a></div>
+            <div class="dni_grafik"><a>5</a></div>
+            <div class="dni_grafik"><a>6</a></div>
+            <div class="dni_grafik"><a>7</a></div>
+            <a class="dni_grafik" href="grafik/osk/next">&gt;&gt;</a>
         </div>
+        <div id="category">
+            <div id="category_title">Kategoria</div>
+            <div id="category_type">B</div>
+        </div>
+    </div>
+    <div id="grafik_content">
+
         <div id="day_info">
             <div id="day_of_month"
                  class="div_bordered grafik_div_floating_left"><?php echo $this->dateInfo["day"] ?></div>
@@ -92,5 +94,6 @@ if ($component != null) {
             }
             ?>
         </table>
+    </div>
     </div>
 <?php include("layouts/footer.php"); ?>

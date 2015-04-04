@@ -251,11 +251,33 @@ a.dni_grafik {
 
 }
 
-
-
 #day_view_table td {
     height: 35px;
     color: #fff;
     border: 1px solid #fff;
-    border-width: 2px 0;
+    border-width: 0 0 2px;
+}
+
+#categories {
+    margin-left: 640px;
+    font-weight: bold;
+}
+#categories h4, #categories div {
+    border: 1px solid #606262;
+    margin: 5px 10px;
+    padding: 3px 0;
+}
+#categories h4{
+    color: #f26822;
+    font-size: 1.5em;
+}
+#categories div{
+    border: 1px solid #606262;
+    color: #fff;
+    font-size: 3em;
+    margin: 5px 10px;
+}
+#categories div.selected_cat{
+    color: #000;
+    background: #3b3b3b;
 }

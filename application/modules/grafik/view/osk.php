@@ -79,7 +79,7 @@
             <div>A1</div>
             <div>A2</div>
             <div>A</div>
-            <div>B1</div>
+            <div class="selected_cat">B1</div>
             <div>B</div>
             <div>C</div>
             <div>D</div>
