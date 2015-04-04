@@ -1,6 +1,6 @@
 <?php
 abstract class BasicApplication {
-    private static $TMP_PATH = "config.ini";
+    private static $CONFIG_PATH = "config.ini";
 
 	/**
 	 *
@@ -19,7 +19,7 @@ abstract class BasicApplication {
 	protected $_session = null;
 	protected $url = "";
 	protected function __construct() {
-        $this->_context = new Context(BasicApplication::$TMP_PATH);
+        $this->_context = new Context(BasicApplication::$CONFIG_PATH);
 		$this->_session = HttpSession::getSession ();
 		$url = substr ( $_SERVER ['REQUEST_URI'], 1 );
 		$conn = DBConnection::connection ( $this->_context->getParam ( "db", "host" ),

@@ -14,7 +14,7 @@
             echo $user->getUserName(); ?></span>
         <a href="<?php echo $this->dateLinks['prevLink']; ?>">&lt;&lt; Poprzedni</a>
         <a href="<?php echo $this->dateLinks['nextLink']; ?>">Następny &gt;&gt;</a>
-        <table id="monthViewTable">
+        <table id="month_view_table">
             <caption>
                 <?php echo $this->dateInfo["mc"] . " " . $this->dateInfo["rok"]; ?>
             </caption>

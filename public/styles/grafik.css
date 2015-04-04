@@ -6,42 +6,98 @@
         Purpose of the stylesheet follows.
 */
 
-#monthViewTable {
-	text-align: center;
+#month_view_table {
+    text-align: center;
+    float: left;
 }
 
-#monthViewTable caption {
-	font-size: 2em;
-	text-align: center;
-	padding: 3px;
+#month_view_table caption {
+    font-size: 2em;
+    text-align: center;
+    padding: 3px;
 }
 
-#monthViewTable th {
-	text-align: center;
-	font-size: 1.8em;
+#month_view_table th {
+    text-align: center;
+    width: 80px;
+    padding: 4px;
+    background: #f15925;
+    border: 1px solid #eee;
+    border-width: 1px 1px 1px 0;
+    color: #fff;
+    font-weight: bold;
 }
 
-#monthViewTable td {
-	text-align: center;
+#month_view_table td {
+    text-align: center;
+    width: 80px;
+    border: 1px solid #eee;
+    border-width: 0 1px 1px 0;
 }
 
-#monthViewTable td a {
-	display: block;
-	padding: 1.1em;
-	background: #eee;
-	font-size: 2em;
+#month_view_table td:first-child, #month_view_table th:first-child {
+    border-left: 1px solid #eee;
 }
 
-#dayPlan {
-	display: none;
+#month_view_table td a {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
 }
 
-#grafik_content {
-	margin-top: 5px;
+#month_view_table td a div:first-child {
+    font-size: 2em;
+}
+#month_view_table td a div {
+    padding: 3px 0 2px;
+}
+
+#month_view_table td.sunday a {
+    color: #f15925;
+}
+#month_view_table td div.hoursCount {
+    font-size: 16px;
+    color: #000;
+    background: #221f1f; /* Old browsers */
+    background: -moz-linear-gradient(top,  #221f1f 0%, #606362 36%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#221f1f), color-stop(36%,#606362)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #221f1f 0%,#606362 36%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #221f1f 0%,#606362 36%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #221f1f 0%,#606362 36%); /* IE10+ */
+    background: linear-gradient(to bottom,  #221f1f 0%,#606362 36%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#221f1f', endColorstr='#606362',GradientType=0 ); /* IE6-9 */
+
+}
+#month_view_table td div.hoursCountNone {
+    color: #741112
+}
+.navLinks, #pickMonth, #pickYear {
+    display: inline-block;
+}
+.navLinks {
+    font-size: 0.8em;
+}
+
+#grafik_full {
     margin-left: 220px;
-	text-align: center;
-    border: 1px solid #606262;
+}
+#grafik_content {
+    margin-top: 5px;
+    text-align: center;
     padding: 2px;
+}
+
+#grafik_content caption {
+    color: #fff;
+    font-size: 28px;
+}
+
+#grafik_content select {
+    color: #fff;
+    border: 1px solid #fff;
+    background: transparent;
 }
 
 #grafik_top {
@@ -52,7 +108,7 @@
 }
 
 #grafik_title {
-	text-align: center;
+    text-align: center;
     border: 1px solid #606262;
     color: #fdd015;
     font-size: 1.30em;
@@ -79,6 +135,7 @@ div.dni_grafik {
 a.dni_grafik {
     text-decoration: none;
 }
+
 #category {
     float: right;
 }
@@ -100,35 +157,95 @@ a.dni_grafik {
 
 #day_info {
     margin-top: 10px;
+    border-bottom: 2px solid #606262;
 }
 
-#day_of_month {
-     font-size: 3.5em;
-     border: 1px solid #606262;
-     font-weight: bold;
-     color: #ffffff;
-     float: left;
-     display: block;
-     padding: 25px 40px;
-     margin-left: 20px;
-     margin-top: 20px;
- }
+#day_info .grafik_div_floating_left {
+    margin-top: 20px;
+}
 
-#day_of_week a {
+#day_of_month, #grafik_addition_info {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #ffffff;
+    display: block;
+    padding: 25px 40px;
+    margin: 20px 40px 0 20px;
+}
+
+#month_name, #day_of_week {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+#day_of_week a, #month_name a {
+    display: block;
+    line-height: 1em;
+    margin-top: 5px;
+}
+
+.div_bordered {
+    border: 1px solid #606262;
     display: block;
 }
 
-#day_of_week .grafik_div_floating_left {
+#day_of_week .div_bordered, #month_name .div_bordered {
     font-size: 1.4em;
-    border: 1px solid #606262;
     font-weight: bold;
     color: #ffffff;
     float: left;
     display: block;
     padding: 5px 10px;
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 180px;
+    margin-top: 5px;
 }
+
 .grafik_div_floating_left {
     float: left;
+}
+
+.grafik_div_floating_right {
+    float: right;
+}
+
+#day_view_table {
+
+}
+
+#day_view_table th {
+    border: 1px solid #b5b5b6;
+    border-width: 1px 0 1px 0;
+    padding: 10px 0;
+    background-color: #606262;
+}
+
+#day_view_table th:first-child {
+     border: 1px solid #b5b5b6;
+     border-width: 1px 0 1px 1px;
+ }
+
+#day_view_table th:last-child {
+    border: 1px solid #b5b5b6;
+    border-width: 1px 1px 1px 0;
+}
+
+#day_view_table th:first-child span {
+    border-left: 0;
+}
+
+#day_view_table th span {
+    border-left: 1px solid #000000;
+    padding: 0 10px;
+}
+
+#day_view_table tr {
+    background: url("/public/images/grafik_bg_empty.png");
+}
+
+
+#day_view_table td {
+    height: 35px;
+    color: #2a2729;
 }

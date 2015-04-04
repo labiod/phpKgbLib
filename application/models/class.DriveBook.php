@@ -1,0 +1,151 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 02/04/2015
+ * Time: 20:35
+ */
+class DriveBook extends Model
+{
+    /**
+     * @param DateTime $date
+     * @return DriveBook[]
+     */
+    public static function getDayCalendarForOsk($date, $osk_id)
+    {
+        $driveBooks = array();
+        $table = new Table("drive_book");
+        $results = $table->fetchAll("DATE(drive_date) = " . $date->format("yyyy-mm-dd") . " AND osk_id = " . $osk_id);
+        while ($results->next()) {
+            $row = $results->current();
+            $book = new DriveBook($row["id"]);
+            $book->fetchData($row);
+            $driveBooks[] = $book;
+        }
+        return $driveBooks;
+    }
+
+    public static function emptyMock()
+    {
+        return new DriveBook(-1);
+    }
+
+    private $_driveDate;
+    private $_driveLocation;
+    private $_driveType;
+    private $_payment;
+    /**
+     * @var Osk
+     */
+    private $_osk;
+    /**
+     * @var Student
+     */
+    private $_student;
+
+    /**
+     * @var Teacher
+     */
+    private $_teacher;
+
+    public function __construct($id)
+    {
+        if ($id != -1) {
+            parent::__construct("drvie_book", $id);
+        }
+    }
+
+    public function setDriveDate($date)
+    {
+        $this->_driveDate = $date;
+    }
+
+    public function getDriveDate()
+    {
+        return $this->_driveDate;
+    }
+
+    public function setDriveLocation($location)
+    {
+        $this->_driveLocation = $location;
+    }
+
+    public function getDriveLocation()
+    {
+        return $this->_driveLocation;
+    }
+
+    public function setDriveType($driveType)
+    {
+        $this->_driveType = $driveType;
+    }
+
+    public function getDriveType()
+    {
+        return $this->_driveType;
+    }
+
+    public function setDrivePayment($drivePayment)
+    {
+        $this->_payment = $drivePayment;
+    }
+
+    public function getDrivePayment()
+    {
+        return $this->_payment;
+    }
+
+    public function setStudent($studentId)
+    {
+        $student = new Student($studentId);
+        $student->fetch();
+        $this->_student = $student;
+    }
+
+    public function getStudent()
+    {
+        return $this->_student;
+    }
+
+    public function setOsk($oskId)
+    {
+        $osk = new Osk($oskId);
+        $osk->fetch();
+        $this->_osk = $osk;
+    }
+
+    public function getOsk()
+    {
+        return $this->_osk;
+    }
+
+    public function setTeacher($teacherId)
+    {
+        $teacher = new Teacher($teacherId);
+        $teacher->fetch();
+        $this->_teacher = $teacher;
+    }
+
+    public function getTeacher()
+    {
+        return $this->_osk;
+    }
+
+    public function fetchData($data)
+    {
+        $this->setDriveDate($data["drive_date"]);
+        $this->setOsk($data["osk_id"]);
+        $this->setStudent($data["student_id"]);
+        $this->setTeacher($data["teacher_id"]);
+    }
+
+    public function getStudentName()
+    {
+        if ($this->_student != null) {
+            return $this->_student->getFirstName() . " " . $this->_student->getLastName();
+        } else {
+            return "";
+        }
+    }
+}

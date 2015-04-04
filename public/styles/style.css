@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 /******** general styles *********/
 html {
-    background: #343131;
+    background: #221f1f;
 }
 
 body {
@@ -207,8 +207,9 @@ div.menu_title {
 }
 #info_boxes_top dt {
     color: #606262;
-    width: 160px;
+    width: 140px;
     display: inline-block;
+    padding-left: 3px;
 }
 #info_boxes_top dd{
     color: #ffffff;
@@ -279,7 +280,7 @@ div.menu_title {
 }
 /********** content ***********/
 #content {
-
+    margin-bottom: 20px;
 }
 /******** register form ********/
 fieldset {

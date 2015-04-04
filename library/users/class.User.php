@@ -91,7 +91,7 @@ class User extends Model {
 		$this->email = $data ["email"];
 		$this->role_id = $data ["role_id"];
 		$this->role_name = $data ["role_name"];
-		$this->_userName = $data ["imie"] . " " . $data["nazwisko"];
+		$this->_userName = $data ["first_name"] . " " . $data["last_name"];
 		$this->loadPrivilage ();
 	}
 	public function loadPrivilage() {
