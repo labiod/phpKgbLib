@@ -241,11 +241,21 @@ a.dni_grafik {
 }
 
 #day_view_table tr {
-    background: url("/public/images/grafik_bg_empty.png");
+    background: -moz-linear-gradient(left,  rgba(76,76,76,0) 0%, rgba(54,51,51,1) 24%, rgba(54,51,51,0) 51%, rgba(54,51,51,1) 77%, rgba(19,19,19,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(76,76,76,0)), color-stop(24%,rgba(54,51,51,1)), color-stop(51%,rgba(54,51,51,0)), color-stop(77%,rgba(54,51,51,1)), color-stop(100%,rgba(19,19,19,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(76,76,76,0) 0%,rgba(54,51,51,1) 24%,rgba(54,51,51,0) 51%,rgba(54,51,51,1) 77%,rgba(19,19,19,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(76,76,76,0) 0%,rgba(54,51,51,1) 24%,rgba(54,51,51,0) 51%,rgba(54,51,51,1) 77%,rgba(19,19,19,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(76,76,76,0) 0%,rgba(54,51,51,1) 24%,rgba(54,51,51,0) 51%,rgba(54,51,51,1) 77%,rgba(19,19,19,0) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(76,76,76,0) 0%,rgba(54,51,51,1) 24%,rgba(54,51,51,0) 51%,rgba(54,51,51,1) 77%,rgba(19,19,19,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004c4c4c', endColorstr='#00131313',GradientType=1 ); /* IE6-9 */
+
 }
+
 
 
 #day_view_table td {
     height: 35px;
-    color: #2a2729;
+    color: #fff;
+    border: 1px solid #fff;
+    border-width: 2px 0;
 }
