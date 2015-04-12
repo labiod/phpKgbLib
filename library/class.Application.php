@@ -13,17 +13,17 @@ class Application extends BasicApplication {
     /**
      * @var Application
      */
-    private static $_instance = null;
+    private static $mInstance = null;
 
     /**
      * @return Application
      */
     public static function getInstance()
     {
-        if(self::$_instance == null) {
-            self::$_instance = new Application();
+        if(self::$mInstance == null) {
+            self::$mInstance = new Application();
         }
-        return self::$_instance;
+        return self::$mInstance;
     }
 
     public function dispatch() {
@@ -85,6 +85,10 @@ class Application extends BasicApplication {
 		$this->_action = $action;
 		$this->controller->setUrl ( $this->url );
 		$this->controller->dispatch ( $this->_action, $this->_module );
+        if($this->getParam("build", "type") == "debug") {
+            $this->showLogger();
+            die();
+        }
 	}
 	public static function loadComponent($componentName) {
 		$newComponent = Component::factory ( $componentName );

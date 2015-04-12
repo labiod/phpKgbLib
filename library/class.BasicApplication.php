@@ -1,5 +1,7 @@
 <?php
-abstract class BasicApplication {
+require_once "class.Context.php";
+
+abstract class BasicApplication extends Context {
     private static $CONFIG_PATH = "config.ini";
 
 	/**
@@ -7,11 +9,6 @@ abstract class BasicApplication {
 	 * @var BasicController
 	 */
 
-
-    /**
-     * @var Context
-     */
-    private $_context;
 	protected $controller = null;
 	protected $_module = "";
 	protected $_request = null;
@@ -19,12 +16,12 @@ abstract class BasicApplication {
 	protected $_session = null;
 	protected $url = "";
 	protected function __construct() {
-        $this->_context = new Context(BasicApplication::$CONFIG_PATH);
+        parent::__construct(BasicApplication::$CONFIG_PATH);
 		$this->_session = HttpSession::getSession ();
 		$url = substr ( $_SERVER ['REQUEST_URI'], 1 );
-		$conn = DBConnection::connection ( $this->_context->getParam ( "db", "host" ),
-            $this->_context->getParam ( "db", "user" ), $this->_context->getParam ( "db", "password" ) );
-		$conn->selectDB ( $this->_context->getParam ( "db", "dbname" ) );
+		$conn = DBConnection::connection ( $this->getParam ( "db", "host" ),
+            $this->getParam ( "db", "user" ), $this->getParam ( "db", "password" ) );
+		$conn->selectDB ( $this->getParam ( "db", "dbname" ) );
 		$conn->setCharset ( "utf8" );
 		$this->url = $url;
 	}
@@ -53,6 +50,6 @@ abstract class BasicApplication {
 	}
 
     public function getContext() {
-        return $this->_context;
+        return $this;
     }
 }

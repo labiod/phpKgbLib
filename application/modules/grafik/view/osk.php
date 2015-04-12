@@ -27,13 +27,11 @@
 //        ?>
         <table id="month_view_table" cellspacing="0">
             <caption>
-                <a class="navLinks" href="<?php echo $this->dateLinks['prevMonth']; ?>">&lt;&lt; Poprzedni</a>
                 <div id="pickMonth"><select><option>Wybierz miesiąc</option><option value="1">Styczeń</option></select></div>
                 <?php echo $this->dateInfo["mc"] . " " . $this->dateInfo["year"]; ?>
-                <div id="pickYear"><select><option>Wybierz rok</option><option value="2016">2016</option></select></div>
-                <a class="navLinks" href="<?php echo $this->dateLinks['nextMonth']; ?>">Następny &gt;&gt;</a>
+                <div id="p
+            <tr>ickYear"><select><option>Wybierz rok</option><option value="2016">2016</option></select></div>
             </caption>
-            <tr>
                 <th>Poniedziałek</th>
                 <th>Wtorek</th>
                 <th>Środa</th>

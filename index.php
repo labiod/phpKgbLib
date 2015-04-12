@@ -12,8 +12,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $
 
 AutoLoader::setLoader(STANDARD_LOADER);
 try {
-    $index = Application::getInstance();
-    $index->dispatch();
+    $context = Application::getInstance();
+    Log::d($context, "Index", "Log Test");
+
+    $context->dispatch();
 } catch (Exception $e) {
     // header ("Content-Type: text/html; charset=utf-8");
     echo "error " . $e;

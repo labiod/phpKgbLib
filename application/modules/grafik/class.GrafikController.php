@@ -40,8 +40,6 @@ class GrafikController extends BaseLpunktController
         }
 
         $dateLinks['dayLink'] = "/grafik/podgladDnia/y/" . $date["rok"] . "/m/" . $date["mc"] . "/d/";
-        $dateLinks['prevLink'] = $this->getLink("kursant", -1, $date["rok"], $date["mc"]);
-        $dateLinks['nextLink'] = $this->getLink("kursant", +1, $date["rok"], $date["mc"]);
         $this->_view->dateLinks = $dateLinks;
         $this->_view->userView = HttpSession::getSession()->getAttribute("user_name", "");
         $date["mcstart"] = new DateTime($date["rok"] . '-' . $date["mc"] . '-01');
@@ -62,15 +60,13 @@ class GrafikController extends BaseLpunktController
             $date["mc"] = $tab['m'];
         }
         $dateLinks['dayLink'] = "/grafik/oskDay/y/" . $date["year"] . "/m/" . $date["mc"] . "/d/";
-        $dateLinks['prevMonth'] = $this->getLink("osk", -1, $date["year"], $date["mc"]);
-        $dateLinks['nextMonth'] = $this->getLink("osk", 1, $date["year"], $date["mc"]);
         $this->_view->dateLinks = $dateLinks;
         $this->_view->userView = HttpSession::getSession()->getAttribute("user_name", "");
         $oskMapHours = array();
         $driveBooks = DriveBook::getDayCalendarForOsk(new DateTime(), User::getLoggedUser()->getOskId());
         foreach ($driveBooks as $driveBook) {
             $d = $driveBook->getDriveDate();
-            $hour = date("H", $d->getTimestamp());
+            $hour = date("H", $d->format("U"));
             $oskMapHours[$hour] = $driveBook;
         }
         $date["mcstart"] = new DateTime($date["year"] . '-' . $date["mc"] . '-01');
@@ -103,20 +99,20 @@ class GrafikController extends BaseLpunktController
             $date["day"] = $tab['d'];
         }
 
-        $dateLinks['prevDay'] = $this->getLink("osk", -1, $date["year"], $date["mc"], $date["day"]);
-        $dateLinks['prevMonth'] = $this->getLink("osk", -1, $date["year"], $date["mc"]);
-        $dateLinks['nextDay'] = $this->getLink("osk", 1, $date["year"], $date["mc"], $date["day"]);
-        $dateLinks['nextMonth'] = $this->getLink("osk", 1, $date["year"], $date["mc"]);
+        $dateLinks['prevDay'] = $this->getLink("oskDay", "day", -1, $date["year"], $date["mc"], $date["day"]);
+        $dateLinks['prevMonth'] = $this->getLink("oskDay", "month", -1, $date["year"], $date["mc"], $date["day"]);
+        $dateLinks['nextDay'] = $this->getLink("oskDay", "day", 1, $date["year"], $date["mc"], $date["day"]);
+        $dateLinks['nextMonth'] = $this->getLink("oskDay", "month", 1, $date["year"], $date["mc"], $date["day"]);
         $this->_view->dateLinks = $dateLinks;
         $this->_view->userView = HttpSession::getSession()->getAttribute("user_name", "");
         $this->_view->oskHours = array(
             6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
         );
         $oskMapHours = array();
-        $driveBooks = DriveBook::getDayCalendarForOsk(new DateTime(), User::getLoggedUser()->getOskId());
+        $driveBooks = DriveBook::getDayCalendarForOsk(new DateTime($date["year"]."-".$date["mc"]."-".$date["day"]), User::getLoggedUser()->getOskId());
         foreach ($driveBooks as $driveBook) {
             $d = $driveBook->getDriveDate();
-            $hour = date("H", $d->getTimestamp());
+            $hour = date("H", $d->format("U"));
             $oskMapHours[$hour] = $driveBook;
         }
         $this->_view->oskMapHours = $oskMapHours;
@@ -154,9 +150,9 @@ class GrafikController extends BaseLpunktController
 //WHERE DATE(`data`)
     }
 
-    private function getLink($action, $shift, $y, $mc, $day = null)
+    private function getLink($action, $incrementType, $shift, $y, $mc, $day)
     {
-        if ($day == null) {
+        if ($incrementType == "month") {
             $newDate = null;
             if ($shift > 0) {
                 if ($mc == 12) {
@@ -175,7 +171,12 @@ class GrafikController extends BaseLpunktController
                     $newDate["year"] = $y;
                 }
             }
-            return "/grafik/" . $action . "/y/" . $newDate["year"] . "/m/" . $newDate["mc"];
+            $mcstart = new DateTime($y . "-" . $mc . '-01');
+            $ldni = date_format($mcstart, 't');
+            if ($day > $ldni) {
+                $day = $ldni;
+            }
+            return "/grafik/" . $action . "/y/" . $newDate["year"] . "/m/" . $newDate["mc"] . "/d/" . $day;
         } else {
             $newDate = null;
             $mcstart = new DateTime($y . "-" . $mc . '-01');

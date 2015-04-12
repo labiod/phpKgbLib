@@ -13,6 +13,8 @@ require_once 'library/models/class.DBResult.php';
  *         
  */
 class Table {
+    const TAG = "Table";
+
 	protected $conn = null;
 	protected $table;
 	protected $_id;
@@ -159,6 +161,7 @@ class Table {
 		elseif ($this->order != "") {
 			$sql .= " ORDER By " . $this->order;
 		}
+        Log::d(Application::getInstance(), Table::TAG . "." . __FUNCTION__, $sql);
 		return $this->conn->query ( $sql );
 	}
 	
@@ -188,6 +191,7 @@ class Table {
 			$sql .= " HAVING " . $this->having;
 		if ($this->order != "")
 			$sql .= " ORDER BY " . $this->order;
+        Log::d(Application::getInstance(), Table::TAG . "." .__FUNCTION__, $sql);
 		return $this->conn->query ( $sql );
 	}
 	

@@ -25,6 +25,8 @@ abstract class BasicController {
 		$this->_view = new BasicView($this->_context);
 		$this->_response = new Response ();
 		$this->_view->redirect = $this->_url;
+        $this->_view->mUpdateDate = $this->_context->getParam("build", "updateDate");
+        $this->_view->mBuildVersion = $this->_context->getParam("build", "version");
 		$this->initAll ();
 		
 		if ($this->_session->isSetAttr ( "message" )) {

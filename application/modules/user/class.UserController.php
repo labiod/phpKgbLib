@@ -53,7 +53,7 @@ class UserController extends BaseLpunktController {
             $user = User::getLoggedUser();
             $query = new Table("osk_site");
             $query->join("osk", "osk_site.osk_id = osk.id");
-            $query->where("user_id = '$0'");
+            $query->where("osk_site.user_id = $0");
             $query->addParameter($user->getUserId());
             $result = $query->fetch();
             if ($result->isNull()) {
