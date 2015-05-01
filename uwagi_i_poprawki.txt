@@ -1,1 +1,3 @@
 gdy nie ma folderu cache - trzeba go utworzyc recznie. Zautomatyzowac!!
+Branch develop - do rozwoju strony
+Branch release - wersja do wrzucenia na serwer
