@@ -12,8 +12,9 @@ set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $
 
 AutoLoader::setLoader(STANDARD_LOADER);
 try {
+//    $test = new Test();
+//    $test->show();
     $context = Application::getInstance();
-    Log::d($context, "Index", "Log Test");
 
     $context->dispatch();
 } catch (Exception $e) {

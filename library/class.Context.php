@@ -50,6 +50,9 @@ class Context {
                 require_once "cache/" . $time . "_" . $this->mFileName . ".php";
                 $this->mTable = $table;
             } else {
+                if(!is_dir("cache")) {
+                    mkdir("cache");
+                }
                 $file = fopen ( $this->mFileName, "r" );
                 $stable = "<?php\n ";
                 while ( $line = fgets ( $file ) ) {
