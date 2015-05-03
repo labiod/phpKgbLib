@@ -69,6 +69,7 @@ div#header {
     position: relative;
     left: 550px;
     top: -160px;
+    width: 250px;
 }
 #buttons a {
     border: 1px solid #d7d7d7;
@@ -89,6 +90,9 @@ div#header {
     text-decoration: none;
     font-size: 1.3em;
     font-weight: bold;
+}
+#buttons a:hover {
+    text-shadow: 1px 1px 10px #fff;
 }
 #register_butt {
     color: #f05025;
