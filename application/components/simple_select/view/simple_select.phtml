@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var $this SimpleSelect
+ */
+?>
+<select name="<?php echo $this->name; ?>">
+    <?php
+    /**
+     * @var $item OptionItem
+     */
+    foreach($this->items as $item) {
+    ?>
+        <option name="<?php echo $item->getName(); ?>" value="<?php echo $item->getValue(); ?>" <?php if($item->getSelected()) echo "selected='selected'"; ?>><?php echo $item->getTitle(); ?></option>
+    <?php
+    }
+    ?>
+</select>

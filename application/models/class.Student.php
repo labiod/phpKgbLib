@@ -56,4 +56,9 @@ class Student extends Model {
         $this->_drivenHours = $data["driven_hours"];
         $this->_phoneNumber = $data["phone_number"];
     }
+
+    public function getFieldToUpdate()
+    {
+        // TODO: Implement getFieldToUpdate() method.
+    }
 }

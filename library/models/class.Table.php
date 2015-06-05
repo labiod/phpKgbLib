@@ -125,10 +125,7 @@ class Table {
 			$sql .= " HAVING " . $this->having;
 		if ($orderBy != "")
 			$sql .= " ORDER BY " . $orderBy;
-		$result = mysql_query ( $sql, $this->conn->getConn () ) or die ( mysql_error () . " " . $sql );
-		if (! $result || mysql_num_rows ( $result ) == 0)
-			return new DB_Result ();
-		return new DB_Result ( $result );
+        return $this->conn->query ( $sql );
 	}
 	
 	/**
@@ -284,10 +281,7 @@ class Table {
 	 */
 	public function delete($where) {
 		$sql = "DELETE FROM " . $this->table . " WHERE " . $where;
-		$result = mysql_query ( $sql, $this->conn->getConn () ) or die ( mysql_error () . $where );
-		if (! $result)
-			throw new Exception ();
-		return $result;
+		return $this->conn->query($sql);
 	}
 	/**
 	 *

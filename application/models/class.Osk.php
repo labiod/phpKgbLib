@@ -26,4 +26,9 @@ class Osk extends Model {
         $this->_oskAddress = $data["address"];
         $this->_city = $data["city"];
     }
+
+    public function getFieldToUpdate()
+    {
+        // TODO: Implement getFieldToUpdate() method.
+    }
 }

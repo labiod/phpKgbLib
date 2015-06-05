@@ -28,4 +28,9 @@ class Teacher extends Model {
         $this->_lastName = $data["first_name"];
         $this->_teacherColor = $data["teacher_color"];
     }
+
+    public function getFieldToUpdate()
+    {
+        // TODO: Implement getFieldToUpdate() method.
+    }
 }

@@ -103,7 +103,10 @@ class AdminOskController extends AdminBasicController {
                 }
                 header($link);
             }            	
-		
 	}
+
+    public function categoryAction() {
+
+    }
 }
 ?>

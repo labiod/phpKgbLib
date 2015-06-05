@@ -142,4 +142,9 @@ class User extends Model {
     public function getUserName() {
         return $this->_userName;
     }
+
+    public function getFieldToUpdate()
+    {
+        // TODO: Implement getFieldToUpdate() method.
+    }
 }

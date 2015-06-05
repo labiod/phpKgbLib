@@ -6,14 +6,126 @@
         Purpose of the stylesheet follows.
 */
 
-#osk_info{
-    font-size: 0.9em;
+a, a:link, a:visited {
+    color: #006622;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-#osk_info label{
-    display: inline-block;
-    width: 100px;
-}
-#osk_info span{
+a, a:link, a:visited {
+    color: #006622;
     font-weight: bold;
+    text-decoration: none;
+}
+
+#header {
+    width: 1000px;
+}
+
+#log_info {
+    text-align: right;
+    padding: 10px 4px;
+}
+
+#header a img {
+    width: 100%;
+}
+
+#admin_main_menu {
+    float: left;
+}
+
+#admin_category {
+    margin-left: 230px;
+    padding: 4px;
+}
+
+div#admin_category a {
+    display: inline-block;
+}
+
+div#admin_category a img.icon {
+    float: left;
+    padding: 0 3px;
+}
+
+#tab_list {
+    margin: 10px 8px;
+    text-align: center;
+}
+
+table#tab_list, table#tab_edit {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #eee none repeat scroll 0 0;
+    border-color: #006622;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    text-align: center;
+    width: 100%;
+}
+
+table#tab_edit {
+    background: #f4f4f4 none repeat scroll 0 0;
+    margin-top: 10px;
+}
+
+table#tab_list th, table#tab_edit th {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: rgba(100, 150, 50, 50) repeat-x scroll 0 0;
+    border-color: #006622;
+    border-image: none;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    height: 36px;
+    padding: 0 7px 4px;
+    text-align: center;
+}
+
+table#tab_list td, table#tab_edit td {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #006622;
+    border-image: none;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 6px;
+}
+
+table#tab_list tr td:first-child {
+    border-width: 0 1px 1px 1px;
+}
+
+table td.left {
+    text-align: right;
+}
+
+table td.right {
+    text-align: left;
+}
+
+input.text {
+    padding: 5px;
+}
+
+input.button {
+    background: rgba(100, 150, 50, 50) no-repeat scroll 0 0;
+    border: medium none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    height: 35px;
+    width: 150px;
 }

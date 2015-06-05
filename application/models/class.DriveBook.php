@@ -176,4 +176,9 @@ class DriveBook extends Model
             return "&nbsp;";
         }
     }
+
+    public function getFieldToUpdate()
+    {
+        // TODO: Implement getFieldToUpdate() method.
+    }
 }

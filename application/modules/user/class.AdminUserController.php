@@ -33,7 +33,6 @@ class AdminUserController extends AdminBasicController {
                 $this->_view->users = $query->getData();
             else
                 $this->_view->users = "";
-            
 	}
 	public function loginAction() {
 		
