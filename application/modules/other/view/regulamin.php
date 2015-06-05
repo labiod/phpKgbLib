@@ -1,4 +1,4 @@
-<?php include ("layouts/header.php"); ?>
+<?php include ("layouts/login_header.php"); ?>
 
 <div class="title">
 	<h3 class="title">Regulamin. AdLing :: Biuro Tłumaczeń.</h3>

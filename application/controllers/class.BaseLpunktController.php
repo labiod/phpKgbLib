@@ -14,7 +14,7 @@ class BaseLpunktController extends BasicIndexController {
             $this->_view->subMenu = array(
                 new ListItem("Twój Profil", "/kursant/profil"),
                 new ListItem("Twój Kurs", "/kursant/kursy"),
-                new ListItem("Strefa Kursanta", "/kursant/grafik"),
+                new ListItem("Strefa Kursanta", "/grafik/kursant"),
                 new ListItem("Płatności", "/kursant/platnosci"),
                 new ListItem("Artykuły", "/articles"),
                 new ListItem("Powiadomienia", "/content/messages"),

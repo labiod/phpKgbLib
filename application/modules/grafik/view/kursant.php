@@ -1,4 +1,4 @@
-<?php include("layouts/uheader.php"); ?>
+<?php include("layouts/user_header.php"); ?>
     <div id="grafik_content">
         <h2 id="grafik_title">Grafik jazd</h2>
 

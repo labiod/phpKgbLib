@@ -18,6 +18,7 @@ if (isset ( $this->title )) {
 ?>	
     </title>
 <link rel="stylesheet" href="/public/styles/style.css" type="text/css" />
+<link rel="stylesheet" href="/public/styles/login_page.css" type="text/css" />
 <script src="/public/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="/public/js/script.js" type="text/javascript"></script>
 <!--[if gte IE 9]>

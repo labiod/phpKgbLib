@@ -8,7 +8,7 @@ EOD;
 if ($this->isAjax) {
     echo $tableHeader;
 } else {
-	include ("layouts/uheader.php");
+	include ("layouts/user_header.php");
     echo $tableHeader;
 	include ("layouts/footer.php");
 }

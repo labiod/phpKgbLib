@@ -1,4 +1,4 @@
-<?php include ("layouts/header.php"); ?>
+<?php include ("layouts/login_header.php"); ?>
 <div id="Content">
 	<form action="/other/upload" method="post"
 		enctype="multipart/form-data">

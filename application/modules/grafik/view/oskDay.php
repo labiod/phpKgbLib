@@ -1,4 +1,4 @@
-<?php include("layouts/uheader.php"); ?>
+<?php include("layouts/user_header.php"); ?>
 <?php
 /**
  * @var $this BasicView

@@ -18,7 +18,7 @@ class User extends Model {
 	private $nr = "";
 	private $role_id;
 	private $role_name;
-	private $osk_id;
+	private $osk_id = -1;
 	private $osk_name;
 	private $user_id;
     private $_userName;

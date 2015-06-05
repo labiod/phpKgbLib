@@ -1,6 +1,6 @@
 <?php
 $cont = $this->content->toArray ();
-include ("layouts/header.php");
+include ("layouts/login_header.php");
 
 ?>
 <div id="Content">

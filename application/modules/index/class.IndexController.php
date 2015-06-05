@@ -22,7 +22,7 @@ class IndexController extends BaseLpunktController
             $this->forward("./index/index_logged");
             die();
         } else {
-            $this->_view->header = "header.php";
+            $this->_view->header = "login_header.php";
         }
     }
 

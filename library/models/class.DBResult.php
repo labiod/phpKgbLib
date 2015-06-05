@@ -31,8 +31,9 @@ class DBResult extends Data {
 			$this->index = - 1;
 			$this->count = 0;
 			$this->data = array ();
-			if ($this->error != null && count ( $this->error ) > 0)
-				throw new DBResultException ( $this->error );
+			if ($this->error != null && count ( $this->error ) > 0) {
+                throw new DBResultException ( $this->error );
+            }
 		}
 		// $this->current = $this->data[0];
 	}

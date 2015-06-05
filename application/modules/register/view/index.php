@@ -1,4 +1,4 @@
-<?php include ("layouts/header.php"); ?>
+<?php include ("layouts/login_header.php"); ?>
 <h2 id="title" class="orange_button_big">Rejestracja</h2>
 <div class="clear"></div>
 <fieldset>

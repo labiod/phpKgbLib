@@ -1,4 +1,4 @@
-<?php include("layouts/uheader.php");
+<?php include("layouts/user_header.php");
     $component = $this->getComponent("strefa");
     if($component != null) {
     ?><div class="strefa_left_menu">

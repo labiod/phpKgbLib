@@ -1,4 +1,4 @@
-<?php include ("layouts/header.php"); ?>
+<?php include ("layouts/login_header.php"); ?>
 <script src="/public/js/faq.js" type="text/javascript"></script>
 
 <div class="title">
