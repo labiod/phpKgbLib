@@ -6,14 +6,10 @@
  * Time: 20:12
  */
 
-class AdminCategoryController extends AdminBasicController {
+class AdminCategoryController extends BaseAdminLpunktController {
 
     public function initAll() {
-        $items = array();
-        array_push($items, new ListItem("Kategorie", "/admin/category/show"));
-        $component = new SimpleMenu($items, "Zarządzanie stroną", "admin_menu");
-        $this->_view->addComponent($component, "admin_menu");
-
+        parent::initAll();
         $table = new Table("vehicle_types");
         $vehicles = $table->fetchAll();
         $items = array();
@@ -46,7 +42,7 @@ class AdminCategoryController extends AdminBasicController {
             }
             $categories = new Table("categories");
             $categories->join("vehicle_types", "vehicle_types.id = vehicle_type");
-            $this->_view->_category = $categories->find("id = " . $tab['id']);
+            $this->_view->_category = $categories->find("categories.id = " . $tab['id']);
         }
     }
 

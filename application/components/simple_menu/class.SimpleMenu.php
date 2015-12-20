@@ -16,7 +16,7 @@ class SimpleMenu extends Component {
     public function __construct($menuItems, $title = "", $id = "") {
         $this->_menuItems = $menuItems;
         $this->_id = $id;
-        $this->_title = $title;
+        $this->setTitle($title);
     }
 	public function show() {
         ob_start();
@@ -29,7 +29,15 @@ EOD;
         echo $content;
 	}
 
+    public function setTitle($title) {
+        if(strpos($this, "@") == 0) {
+            $this->_title = ResGenerator::getString($title);
+        } else {
+            $this->_title = $title;
+        }
+    }
+
     public function hasTitle() {
-        return$this->_title;
+        return $this->_title;
     }
 }
