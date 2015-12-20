@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<resources>
+    <string name="admin_users_menu_title">Zarządzanie użytkownikami</string>
+    <string name="admin_osk_text">Osk</string>
+    <string name="admin_instructors_text">Instruktorzy</string>
+    <string name="admin_students_text">Kursanci</string>
+</resources>
