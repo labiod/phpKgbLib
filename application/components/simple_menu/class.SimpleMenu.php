@@ -30,11 +30,7 @@ EOD;
 	}
 
     public function setTitle($title) {
-        if(strpos($this, "@") == 0) {
-            $this->_title = ResGenerator::getString($title);
-        } else {
-            $this->_title = $title;
-        }
+        $this->_title = $title;
     }
 
     public function hasTitle() {
