@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -379,5 +380,8 @@
     <Folder Include="scripts\tables_update" />
     <Folder Include="scripts" />
     <Folder Include="test" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
   </ItemGroup>
 </Project>
