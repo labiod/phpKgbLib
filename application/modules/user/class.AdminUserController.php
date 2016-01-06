@@ -1,8 +1,6 @@
 <?php
-class AdminUserController extends AdminBasicController {
-    
-	public function initAll() {
-	}
+class AdminUserController extends BaseAdminLpunktController {
+
 	public function indexAction() {
             $query = new Table("users");
             $query->join("roles", "users.role_id = roles.id_role");
@@ -27,7 +25,7 @@ class AdminUserController extends AdminBasicController {
                         break;
                 }
             }
-            $query->setOrderBy("nazwisko, imie, miasto");           
+            $query->setOrderBy("last_name, first_name, city");
             $query = $query->fetch();
             if(!$query->isNull())
                 $this->_view->users = $query->getData();

@@ -12,6 +12,7 @@ class BaseAdminLpunktController extends AdminBasicController {
         $items = array();
         array_push($items, new ListItem("Kategorie", "/admin/category/show"));
         array_push($items, new ListItem("Typy pojazdów", "/admin/vehicles/showType"));
+        array_push($items, new ListItem("Wojwództwa", "/admin/settings/regions"));
         $component = new SimpleMenu($items, "LPunkt konfiguracja", "admin_menu");
         $this->_view->addComponent($component, "admin_menu");
 
@@ -20,7 +21,8 @@ class BaseAdminLpunktController extends AdminBasicController {
         array_push($items, new ListItem("Osk", "/admin/osk/show"));
         array_push($items, new ListItem("Instruktorzy", "/admin/instructors/show"));
         array_push($items, new ListItem("Kursanci", "/admin/students/show"));
-        $component = new SimpleMenu($items, "@string/admin_users_menu_title", "users");
+        array_push($items, new ListItem("Użytkownicy", "/admin/user/index"));
+        $component = new SimpleMenu($items, "Zarządzanie użytkownikami", "users");
         $this->_view->addComponent($component, "users");
     }
 } 
