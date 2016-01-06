@@ -24,6 +24,7 @@ class AdminUserController extends BaseAdminLpunktController {
                         $this->_view->caption = 'Lista wszystkich użytkowników';
                         break;
                 }
+                $this->_view->usersType = $tab["role"];
             }
             $query->setOrderBy("last_name, first_name, city");
             $query = $query->fetch();

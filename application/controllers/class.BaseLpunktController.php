@@ -6,6 +6,10 @@
  * Time: 16:57
  */
 
+require_once 'lib/controllers/class.BasicIndexController.php';
+require_once 'application/components/simple_menu/class.ListItem.php';
+require_once 'application/components/simple_menu/class.SimpleMenu.php';
+
 class BaseLpunktController extends BasicIndexController {
     protected function initAll()
     {

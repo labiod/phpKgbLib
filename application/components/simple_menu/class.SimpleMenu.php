@@ -1,5 +1,6 @@
 <?php
 require_once "class.ListItem.php";
+require_once "lib/views/class.Component.php";
 
 class SimpleMenu extends Component {
 

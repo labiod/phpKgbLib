@@ -21,6 +21,9 @@
                 <th>Imie</th>
                 <th>E-mail</th>
                 <th>Miasto</th>
+                <?php if(!isset($this->userType)) {
+                    echo "<th>Typ</th>";
+                } ?>
                 <th>Aktywny</th>
                 <th>Akcje</th>
             </tr>
@@ -34,6 +37,18 @@
                         <td><?php echo $users["first_name"]; ?></td>
                         <td><?php echo $users["email"]; ?></td>
                         <td><?php echo $users["city"]; ?></td>
+                        <?php if(!isset($this->userType)) {
+                            if($users["role_name"] == "student") {
+                                $type = "Kursant";
+                            } else if ($users["role_name"] == "teacher") {
+                                $type = "Instruktor";
+                            } else if ($users["role_name"] == "admin") {
+                                $type = "Administrator";
+                            } else {
+                                $type = "Osk";
+                            }
+                            echo "<td>$type</td>";
+                        } ?>
                         <td><?php if ($users["active"] == 'Y') { ?>
                                 tak
                             <?php } else { ?>

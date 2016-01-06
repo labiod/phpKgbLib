@@ -1,5 +1,4 @@
 <?php
-
 /**
  * index short summary.
  *
@@ -8,7 +7,3 @@
  * @version 1.0
  * @author gbetlej
  */
-class index
-{
-    
-}

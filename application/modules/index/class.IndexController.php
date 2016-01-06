@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/controllers/class.BasicIndexController.php';
+require_once 'application/controllers/class.BaseLpunktController.php';
 
 class IndexController extends BaseLpunktController
 {

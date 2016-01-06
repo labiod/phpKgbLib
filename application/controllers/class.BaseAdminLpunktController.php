@@ -6,6 +6,8 @@
  * Time: 12:03
  */
 
+require_once "lib/controllers/class.AdminBasicController.php";
+
 class BaseAdminLpunktController extends AdminBasicController {
     public function initAll() {
         //Lpunkt konfiguracja
@@ -18,10 +20,10 @@ class BaseAdminLpunktController extends AdminBasicController {
 
         //Lpunkt zarządzanie użytkownikami
         $items = array();
-        array_push($items, new ListItem("Osk", "/admin/osk/show"));
-        array_push($items, new ListItem("Instruktorzy", "/admin/instructors/show"));
-        array_push($items, new ListItem("Kursanci", "/admin/students/show"));
-        array_push($items, new ListItem("Użytkownicy", "/admin/user/index"));
+        array_push($items, new ListItem("Osk", "/admin/user/index/role/osk"));
+        array_push($items, new ListItem("Instruktorzy", "/admin/user/index/role/teacher"));
+        array_push($items, new ListItem("Kursanci", "/admin/user/index/role/student"));
+        array_push($items, new ListItem("Wszyscy użytkownicy", "/admin/user/index"));
         $component = new SimpleMenu($items, "Zarządzanie użytkownikami", "users");
         $this->_view->addComponent($component, "users");
     }
