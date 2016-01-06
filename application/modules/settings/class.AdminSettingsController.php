@@ -1,7 +1,8 @@
 <?php
-class AdminSettingsController extends AdminBasicController {
+class AdminSettingsController extends BaseAdminLpunktController {
 	private $_metaTag;
-	protected function initAll() {
+	public function initAll() {
+        parent::initAll();
 		$this->_metaTag = new Table ( "metatags" );
 	}
 	public function indexAction() {
@@ -26,4 +27,28 @@ class AdminSettingsController extends AdminBasicController {
 			}
 		}
 	}
+
+    public function regionsAction() {
+        $table = new Table("districts");
+        $this->_view->_region = $table->fetchAll("", "nazwa");
+    }
+
+    public function addRegionAction() {
+        $tab = $this->getParametersMap();
+        if(isset($tab["submit"])) {
+            $category = new District();
+            $category->setName($tab["name"]);
+            $category->update();
+            $this->forward("admin/settings/regions", "msg=Województwo zostało dodane");
+        }
+    }
+
+    public function removeRegionAction() {
+        $tab = $this->getParametersMap();
+        if(isset($tab["id"])) {
+            $table = new Table("districts");
+            $table->delete("id_wojewodztwo = ".$tab["id"]);
+            $this->forward("admin/settings/regions", "msg=Województwo zostało usuniete");
+        }
+    }
 }

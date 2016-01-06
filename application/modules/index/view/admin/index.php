@@ -6,5 +6,7 @@
      */
     $component = $this->getComponent("admin_menu");
     $component->show();
+    $component = $this->getComponent("users");
+    $component->show();
 ?>
 <?php include ("layouts/afooter.php"); ?>

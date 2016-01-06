@@ -8,6 +8,8 @@
          */
         $component = $this->getComponent("admin_menu");
         $component->show();
+        $component = $this->getComponent("users");
+        $component->show();
         $categories = $this->_categories;
         ?>
     </div>
