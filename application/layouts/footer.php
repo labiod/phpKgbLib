@@ -1,5 +1,4 @@
     <div class="clear"></div>
-</div>
 <div id="footer">
     <div class="block_footer">© Lpunkt 2013 - Updated: <?php echo $this->mUpdateDate; ?>, Version: <?php echo $this->mBuildVersion; ?></div>
     <div class="block_footer">
