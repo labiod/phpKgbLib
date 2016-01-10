@@ -24,6 +24,7 @@ class BaseAdminLpunktController extends AdminBasicController {
         array_push($items, new ListItem("Instruktorzy", "/admin/user/index/role/teacher"));
         array_push($items, new ListItem("Kursanci", "/admin/user/index/role/student"));
         array_push($items, new ListItem("Wszyscy użytkownicy", "/admin/user/index"));
+        array_push($items, new ListItem("Uprawnienia", "/admin/user/userPrivilages"));
         $component = new SimpleMenu($items, "Zarządzanie użytkownikami", "users");
         $this->_view->addComponent($component, "users");
     }

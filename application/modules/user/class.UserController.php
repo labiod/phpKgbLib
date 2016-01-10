@@ -1,4 +1,4 @@
-<?php
+d<?php
 require_once 'application/controllers/class.BaseLpunktController.php';
 
 class UserController extends BaseLpunktController {

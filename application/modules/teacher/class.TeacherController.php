@@ -1,7 +1,7 @@
 <?php
 require_once 'application/controllers/class.BaseLpunktController.php';
 
-class TeachersController extends BaseLpunktController 
+class TeacherController extends BaseLpunktController
 {
     private $_users = null;
     

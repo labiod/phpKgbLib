@@ -7,7 +7,7 @@
  */
 require_once "application/controllers/class.BaseAdminLpunktController.php";
 
-class TeachersAdminController extends BaseAdminLpunktController {
+class TeacherAdminController extends BaseAdminLpunktController {
 
     public function indexAction() {
 

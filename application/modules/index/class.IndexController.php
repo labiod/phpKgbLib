@@ -19,7 +19,11 @@ class IndexController extends BaseLpunktController
                 $this->forward("./admin/index");
                 die();
             }
-            $this->forward("./index/index_logged");
+            if(User::getLoggedUser()->getId() != 0) {
+                $this->forward("./" . User::getLoggedUser()->getRoleName());
+            } else {
+                $this->forward("./index/index_logged");
+            }
             die();
         } else {
             $this->_view->header = "login_header.php";
