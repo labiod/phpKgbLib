@@ -1,6 +1,7 @@
 <?php include ("layouts/header_log_reg.php"); ?>
 <div id="register_box">
 	<div class="inside_reg_box">
+		<div class="ok_sign show_selected">OK!</div>
 		<div class="ok_sign">OK!</div>
 	</div>
 	<div class="inside_reg_box steps">
@@ -16,15 +17,12 @@
 	</div>
 	<div class="inside_reg_box">
 		<form id="register_form" action="/register/register" method="post">
-			<div class="register_step">
-				przyciski
-			</div>
 			<div class="register_step" id="1_step_box">
 				<label><input type="radio" name="role_id" value="1" />Kursant</label><br />
 				<label><input type="radio" name="role_id" value="3" />Instruktor</label><br />
 				<label><input type="radio" name="role_id" value="2" />OSK</label><br />
 			</div>
-			<div class="register_step selected_step_box" id="2_step_box">
+			<div class="register_step show_selected" id="2_step_box">
 				<input name="firstname" placeholder="Podaj swoje imię..." /><br />
 				<input name="lastname" placeholder="Podaj swoje nazwisko..." /><br />
 				<input type="date" name="birthdate" /><br />
@@ -34,14 +32,13 @@
 				<input type="password" name="password" placeholder="Podaj swoje hasło..." /><br />
 				<input type="password" name="password_conf" placeholder="Podaj swoją datę urodzienia..." /><br />
 			</div>
+			<div class="clear"></div>
+			<div id="back_next_btns">
+				<a href="#" id="back_btn">&lt;&lt;</a><a href="#" id="next_btn">&gt;&gt;</a>
+			</div>
 		</form>
 	</div>
 	<div class="clear"></div>
-
-	<div class="clear"></div>
-	<div id="back_next">
-		<a href="#">&lt;&lt;</a><a href="#">&gt;&gt;</a>
-	</div>
 </div>
 <div class="clear"></div>
 <!--<fieldset>

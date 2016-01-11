@@ -8,15 +8,13 @@
 	display: none;
 	padding-left: 50px;
 }
-.selected_step_box {
-	display: block;
-}
 .inside_reg_box {
 	float: left;
 	margin: 10px 0;
 	padding: 0 5px;
 	height: 270px;
 	border-left: 1px solid #D7D7D7;
+	position: relative;
 }
 .inside_reg_box:first-child {
 	border: none;
@@ -53,4 +51,23 @@
 	font-family: fantasy;
 	color: #D7D7D7;
 	padding: 70px 10px;
+	display: none;
+}
+#back_next_btns a{
+	display: block;
+	font-size: 20pt;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	position: absolute;
+	bottom: 5px;
+}
+#back_btn {
+	left: 25px;
+}
+#next_btn {
+	right: 0;
+}
+.show_selected {
+	display: block;
 }
