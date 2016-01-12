@@ -1,36 +1,39 @@
 <?php include ("layouts/header_log_reg.php"); ?>
 <div id="register_box">
 	<div class="inside_reg_box">
-		<div class="ok_sign show_selected">OK!</div>
+		<div class="ok_sign">OK!</div>
 		<div class="ok_sign">OK!</div>
 	</div>
 	<div class="inside_reg_box steps">
-		<ul>
-			<li id="1_step_name">Rejestracja</li>
-			<li>&dArr;</li>
-			<li id="2_step_name" class="selected_step"><?php echo $this->type; ?></li>
-			<li>&dArr;</li>
+		<ul id="steps_names">
+			<li id="1_step_name" class="selected_step">Rejestracja</li>
+			<li id="2_step_name"><?php echo $this->type; ?></li>
 			<li id="3_step_name">Em@il</li>
-			<li>&dArr;</li>
 			<li id="4_step_name">Potwierdź</li>
 		</ul>
 	</div>
 	<div class="inside_reg_box">
 		<form id="register_form" action="/register/register" method="post">
-			<div class="register_step" id="1_step_box">
-				<label><input type="radio" name="role_id" value="1" />Kursant</label><br />
+			<div class="register_step show_selected" id="1_step_box">
+				<label><input type="radio" name="role_id" value="1" checked="checked" />Kursant</label><br />
 				<label><input type="radio" name="role_id" value="3" />Instruktor</label><br />
 				<label><input type="radio" name="role_id" value="2" />OSK</label><br />
 			</div>
-			<div class="register_step show_selected" id="2_step_box">
-				<input name="firstname" placeholder="Podaj swoje imię..." /><br />
-				<input name="lastname" placeholder="Podaj swoje nazwisko..." /><br />
-				<input type="date" name="birthdate" /><br />
+			<div class="register_step" id="2_step_box">
+				<input name="firstname" required placeholder="Podaj swoje imię..." /><br />
+				<input name="lastname" required placeholder="Podaj swoje nazwisko..." /><br />
+				<input name="birthdate" required pattern="\d{1,2}/\d{1,2}/\d{4}" title="dd/mm/yyyy" placeholder="dd/mm/yyyy"/><br />
 			</div>
 			<div class="register_step" id="3_step_box">
-				<input type="email" name="email" placeholder="Podaj swój adres email..." /><br />
-				<input type="password" name="password" placeholder="Podaj swoje hasło..." /><br />
-				<input type="password" name="password_conf" placeholder="Podaj swoją datę urodzienia..." /><br />
+				<input type="email" name="email" required placeholder="Podaj swój adres email..." /><br />
+				<input type="password" name="password" required placeholder="Podaj swoje hasło..." /><br />
+				<input type="password" name="password_conf" required placeholder="Potwierdź hasło..." /><br />
+			</div>
+			<div class="register_step" id="4_step_box">
+				<img id="captcha" src="/public/securimage/securimage_show.php" alt="CAPTCHA Image" />
+				<input type="text" name="captcha_code" size="10" maxlength="6" required />
+				<a href="#" onclick="document.getElementById('captcha').src = '/public/securimage/securimage_show.php?' + Math.random(); return false">[ Different Image ]</a>
+				<input type="submit" name="submit" value="Zarejestruj" />
 			</div>
 			<div class="clear"></div>
 			<div id="back_next_btns">
@@ -41,32 +44,4 @@
 	<div class="clear"></div>
 </div>
 <div class="clear"></div>
-<!--<fieldset>
-    <form id="register_form" action="/register/register" method="post">
-        <legend id="step_1">Krok 1</legend><legend id="step_2">Krok 2</legend><legend id="step_3">Krok 3</legend>
-        <div class="clear"></div>
-    <div id="stepdiv_1">
-        <label for="imie">Imię</label> 
-        <input name="imie" id="imie" type="text" required /> <br /> 
-        <label for="nazwisko">Nazwisko</label>
-        <input name="nazwisko" id="nazwisko" type="text" required /> <br /> 
-    </div>    
-    <div id="stepdiv_2">
-        <label for="email_adr">em@il</label> 
-        <input name="email" id="email_adr" type="email" required /> <br /> 
-        <label for="pass">Hasło</label>
-        <input type="password" name="password" id="pass" required /> <br /> 
-    </div>   
-    <div id="stepdiv_3">
-       <img id="captcha" src="/public/securimage/securimage_show.php" alt="CAPTCHA Image" />
-       <input type="text" name="captcha_code" size="10" maxlength="6" />
-       <a href="#" onclick="document.getElementById('captcha').src = '/public/securimage/securimage_show.php?' + Math.random(); return false">[ Different Image ]</a>
-    </div> 
-    <input type="button" value="Wstecz" id="wstecz" class="blue_button_big" hidden/>
-    <input type="button" value="Dalej" id="dalej" class="blue_button_big" />
-    <input type="submit" value="Rejestruj" name="submit" id="submit" class="blue_button_big" hidden/>
-    </form>
-</fieldset>-->
-
-
 <?php include ("layouts/footer.php"); ?>

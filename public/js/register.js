@@ -1,57 +1,65 @@
 ﻿$(document).ready(function() {
+	$(".register_step").hide();
+	$(".register_step").first().show();
+	$("#steps_names li").removeClass("selected_step");
+	$("#steps_names li").first().addClass("selected_step");
 
-	//rejestracja
-/*	$("#register_form div").hide();
-	$("#stepdiv_1").show();
 	var nr = 1;
-	var changeStep = function() {
+	var changeStep = function () {
 		switch (nr) {
-		case "1":
-			$("#dalej").show();
-			$("#wstecz").hide();
-			$("#submit").hide();
-			break;
-		case "2":
-			$("#dalej").show();
-			$("#wstecz").show();
-			$("#submit").hide();
-			break;
-		case "3":
-			$("#dalej").hide();
-			$("#wstecz").show();
-			$("#submit").show();
-			break;
+			case "1":
+				$("#next_btn").show();
+				$("#back_btn").hide();
+				break;
+			case "2":
+			case "3":
+				$("#next_btn").show();
+				$("#back_btn").show();
+				break;
+			case "4":
+				$("#next_btn").hide();
+				$("#back_btn").show();
+				break;
 		}
-		$("#register_form div").hide();
-		$("#stepdiv_" + nr).show();
-	};
-	$("#register_form legend").click(function() {
-		nr = $(this).attr("id").split("_")[1];
-		changeStep();
-	});
-	$("#dalej").click(function() {
-		if (nr < 3) {
+		$(".register_step").hide();
+		$("#" + nr + "_step_box").show();
+		$("#steps_names li").removeClass("selected_step");
+		$("#" + nr + "_step_name").first().addClass("selected_step");
+	}
+
+	$("#next_btn").click(function () {
+		validate();
+		if (nr < 4) {
 			nr++;
 			changeStep();
 		}
-
 	});
-	$("#wstecz").click(function() {
+	$("#back_btn").click(function () {
+		validate();
 		if (nr > 1) {
 			nr--;
 			changeStep();
 		}
 	});
+	$("#register_form").submit(function () {
+		return validate();
+	});
 
-	$("#register_form").submit(function() {
-		if ($("#email_adr").val() == null || $("#email_adr").val() == "" || $("#pass").val() == null || $("#pass").val() == "") {
-			alert("Wypełnij pola e-mail oraz hasło!");
-			return false;
-		}
-		if (($("#role").val() == "instruktor" || $("#role").val() == "osk") && ($("#nr").val() == null || $("#nr").val() == "")) {
-			alert("Musisz podać numer!");
+	var validate = function() {
+		if ($("#password").val() != $("#password_conf").val()) {
+			alert("Hasła nie są jednakowe!");
+			$("#password_conf").focus();
 			return false;
 		}
 		return true;
-	});*/
+	}
+	//rejestracja
+	/*	
+	};
+	$("#register_form legend").click(function() {
+		nr = $(this).attr("id").split("_")[1];
+		changeStep();
+	});
+
+	*/
 });
