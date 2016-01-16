@@ -1,0 +1,73 @@
+﻿#register_box {
+	border: 1px solid #606262;
+	width: 800px;
+	height: 300px;
+	margin: 10px auto 30px;
+}
+.register_step {
+	display: none;
+	padding-left: 50px;
+}
+.inside_reg_box {
+	float: left;
+	margin: 10px 0;
+	padding: 0 5px;
+	height: 270px;
+	border-left: 1px solid #D7D7D7;
+	position: relative;
+}
+.inside_reg_box:first-child {
+	border: none;
+}
+.inside_reg_box input {
+	color: white;
+	font-size: 12pt;
+	text-align: right;
+	margin: 10px 0;
+	padding: 5px 3px;
+	width: 400px;
+	height: 30px;
+	border: 1px solid #D7D7D7;
+	background: transparent;
+}
+.steps {
+	font-size: 18pt;
+}
+.steps ul {
+	list-style: none;
+	text-align: right;
+	font-weight: bold;
+	color: #D7D7D7;
+}
+.steps li {
+	padding: 3px 30px;
+}
+.selected_step {
+	color: #F05025;
+}
+.ok_sign {
+	font-size: 30pt;
+	font-weight: bold;
+	font-family: fantasy;
+	color: #D7D7D7;
+	padding: 70px 10px;
+	display: none;
+}
+#back_next_btns a{
+	display: block;
+	font-size: 20pt;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	position: absolute;
+	bottom: 5px;
+}
+#back_btn {
+	left: 25px;
+}
+#next_btn {
+	right: 0;
+}
+.show_selected {
+	display: block;
+}

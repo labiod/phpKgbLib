@@ -9,6 +9,9 @@ class RegisterController extends BaseLpunktController {
 	}
 	function indexAction() {
 		$this->_view->title = "Lpunkt.pl - Rejestracja";
+		$this->_view->type = "Kursant"; //todo!
+		
+	//	Log::d(Application::getInstance(), "role", $users["role_name"]);
 	}
 	function registerAction() {
                 session_start();
